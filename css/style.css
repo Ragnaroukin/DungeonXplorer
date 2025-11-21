@@ -13,3 +13,26 @@
     --police-titre: 'Pirata One', cursive;
     --police-texte: 'Roboto', sans-serif;
 }
+
+html {
+    background-color: var(--fond-principal);
+    color: var(--texte-principal);
+    font: var(--police-texte);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: var(--police-titre) !important;
+}
+
+p, span, a, li, button, label, input, blockquote {
+    font-family: var(--police-texte) !important;
+}
+
+#page-top {
+    background-color: var(--fond-principal);
+    color: var(--texte-principal);
+}
+
+#logo {
+    height: 6.5em;
+}
