@@ -1,0 +1,15 @@
+:root {
+    /*Couleur*/
+    --fond-principal : #1A1A1A;
+    --fond-secondaire : #2E2E2E;
+    --texte-principal : #E5E5E5;
+    --texte-secondaire : #BFBFBF;
+    --interactif : #C4975E;
+    --attention : #8B1E1E;
+    --succes : #4A7A66;
+
+
+    /*Police*/
+    --police-titre: 'Pirata One', cursive;
+    --police-texte: 'Roboto', sans-serif;
+}
