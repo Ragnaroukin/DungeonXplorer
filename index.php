@@ -1,5 +1,6 @@
 <?php
 require 'autoload.php';
+require 'models/router.php';
 // Instanciation du routeur
 $router = new Router('DungeonXplorer');
 
