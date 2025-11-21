@@ -1,0 +1,159 @@
+-- Création de la table Class (Classe des personnages)
+CREATE TABLE Class (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    class_name VARCHAR(50) NOT NULL,
+    class_description TEXT,
+    class_base_pv INT NOT NULL,
+    class_base_mana INT NOT NULL,
+    class_base_strength INT NOT NULL,
+    class_base_initiative INT NOT NULL,
+    class_max_items INT NOT NULL
+);
+
+-- Création de la table Items (Objets disponibles dans le jeu)
+CREATE TABLE Items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(50) NOT NULL,
+    item_description TEXT,
+    item_image VARCHAR(255),
+    item_type VARCHAR(50) NOT NULL -- Ex: 'Arme', 'Armure', 'Potion', etc.
+);
+
+
+-- Création de la table Monster (Monstres rencontrés dans l'histoire)
+CREATE TABLE Monster (
+    monster_id INT AUTO_INCREMENT PRIMARY KEY,
+    monster_name VARCHAR(50) NOT NULL,
+    monster_pv INT NOT NULL,
+    monster_mana INT,
+    monster_initiative INT NOT NULL,
+    monster_strength INT NOT NULL,
+    monster_attack TEXT,
+    monster_xp INT NOT NULL
+    -- loot_id supprimé
+);
+
+-- Table intermédiaire pour les butins des monstres (Monster - Items)
+-- Permet à un monstre de lâcher plusieurs types d'objets, avec une quantité.
+CREATE TABLE Monster_Loot (
+    monster_id INT PRIMARY KEY,
+    item_id INT PRIMARY KEY,
+    loot_quantity INT NOT NULL DEFAULT 1,
+    loot_drop_rate DECIMAL(5, 2) DEFAULT 1.0, -- Taux de chance de drop (ex: 0.5 pour 50%)
+    FOREIGN KEY (monster_id) REFERENCES Monster(monster_id),
+    FOREIGN KEY (item_id) REFERENCES Items(item_id)
+);
+
+-- Création de la table Hero (Personnage principal)
+-- Les équipements (armor, primary_weapon, etc.) font référence à des Items.
+CREATE TABLE Hero (
+    hero_id INT AUTO_INCREMENT PRIMARY KEY,
+    hero_name VARCHAR(50) NOT NULL,
+    class_id INT, -- Relation avec Class
+    hero_image VARCHAR(255),
+    hero_biography TEXT,
+    hero_pv INT NOT NULL,
+    hero_mana INT NOT NULL,
+    hero_strength INT NOT NULL,
+    hero_initiative INT NOT NULL,
+    
+    hero_armor_item_id INT,
+    hero_primary_weapon_item_id INT,
+    hero_secondary_weapon_item_id INT,
+    hero_shield_item_id INT,
+    
+    hero_spell_list TEXT,
+    hero_xp INT NOT NULL,
+    hero_level INT DEFAULT 1,
+    
+    FOREIGN KEY (hero_class_id) REFERENCES Class(class_id),
+    FOREIGN KEY (hero_armor_item_id) REFERENCES Items(item_id),
+    FOREIGN KEY (hero_primary_weapon_item_id) REFERENCES Items(item_id),
+    FOREIGN KEY (hero_secondary_weapon_item_id) REFERENCES Items(item_id),
+    FOREIGN KEY (hero_shield_item_id) REFERENCES Items(item_id)
+);
+
+-- Création de la table Level (Niveaux de progression des classes)
+CREATE TABLE Level (
+    class_id INT PRIMARY KEY, -- Relation avec Class
+    level_number INT PRIMARY KEY,
+    level_required_xp INT NOT NULL,
+    level_pv_bonus INT NOT NULL,
+    level_mana_bonus INT NOT NULL,
+    level_strength_bonus INT NOT NULL,
+    level_initiative_bonus INT NOT NULL,
+    FOREIGN KEY (class_id) REFERENCES Class(class_id)
+);
+
+
+-- Création de la table Chapter (Chapitres de l'histoire)
+CREATE TABLE Chapter (
+    chapter_id INT AUTO_INCREMENT PRIMARY KEY,
+    chapter_content TEXT NOT NULL,
+    chapter_image VARCHAR(255)
+);
+
+-- Table intermédiaire pour les trésors dans les chapitres (Chapter - Items)
+CREATE TABLE Chapter_Treasure (
+    aventure_id INT PRIMARY KEY,
+    chapter_id INT PRIMARY KEY,
+    item_id INT PRIMARY KEY,
+    treasure_quantity INT NOT NULL DEFAULT 1,
+    FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id),
+    FOREIGN KEY (item_id) REFERENCES Items(id),
+);
+
+-- Création de la table Encounter (Rencontres dans les chapitres)
+CREATE TABLE Encounter (
+    aventure_id INT PRIMARY KEY,
+    chapter_id INT PRIMARY KEY,
+    monster_id INT PRIMARY KEY,
+    FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id),
+    FOREIGN KEY (monster_id) REFERENCES Monster(monster_id)
+);
+
+-- Table intermédiaire pour l'inventaire des héros (Hero - Items)
+CREATE TABLE Inventory (
+    hero_id INT PRIMARY KEY,
+    item_id INT PRIMARY KEY,
+    inventory_quantity INT NOT NULL DEFAULT 1,
+    FOREIGN KEY (hero_id) REFERENCES Hero(hero_id),
+    FOREIGN KEY (item_id) REFERENCES Items(item_id),
+);
+
+-- Création de la table Links (Liens entre chapitres)
+CREATE TABLE Links (
+    aventure_id INT PRIMARY KEY,
+    chapter_id INT PRIMARY KEY,
+    link_aventure_id INT,
+    link_chapter_id INT,
+    description TEXT,
+    FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id),
+    FOREIGN KEY (link_aventure_id,link_chapter_id) REFERENCES Chapter(aventure_id,chapter_id)
+);
+
+-- Table intermédiaire pour le suivi de progression (Hero - Chapter)
+CREATE TABLE Hero_Progress (
+    aventure_id INT PRIMARY KEY,
+    hero_id INT PRIMARY KEY,
+    chapter_id INT PRIMARY KEY,
+    progress_status VARCHAR(20) DEFAULT 'Completed', -- Ex: 'Started', 'Completed', 'Failed'
+    progress_completion_date DATETIME, -- Pour marquer quand le chapitre a été terminé
+    FOREIGN KEY (hero_id) REFERENCES Hero(hero_id),
+    FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id)
+);
+
+
+-- Création de la table Aventure (Aventure a faire)
+CREATE TABLE Aventure (
+    aventure_id INT AUTO_INCREMENT PRIMARY KEY,
+    aventure_content TEXT NOT NULL,
+    aventure_image VARCHAR(255)
+);
+
+-- Création de la table Joueur (Utilisateur)
+CREATE TABLE Aventure (
+    joueur_id INT AUTO_INCREMENT PRIMARY KEY,
+    joueur_name TEXT NOT NULL,
+    joueur_password VARCHAR(255)
+);
