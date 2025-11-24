@@ -1,4 +1,5 @@
 -- Création de la table Class (Classe des personnages)
+drop table Class;
 CREATE TABLE Class (
     class_id INT AUTO_INCREMENT PRIMARY KEY,
     class_name VARCHAR(50) NOT NULL,
@@ -11,6 +12,7 @@ CREATE TABLE Class (
 );
 
 -- Création de la table Items (Objets disponibles dans le jeu)
+Drop table Items;
 CREATE TABLE Items (
     item_id INT AUTO_INCREMENT PRIMARY KEY,
     item_name VARCHAR(50) NOT NULL,
@@ -21,6 +23,7 @@ CREATE TABLE Items (
 
 
 -- Création de la table Monster (Monstres rencontrés dans l'histoire)
+Drop table Monster;
 CREATE TABLE Monster (
     monster_id INT AUTO_INCREMENT PRIMARY KEY,
     monster_name VARCHAR(50) NOT NULL,
@@ -35,6 +38,7 @@ CREATE TABLE Monster (
 
 -- Table intermédiaire pour les butins des monstres (Monster - Items)
 -- Permet à un monstre de lâcher plusieurs types d'objets, avec une quantité.
+Drop table monster_loot;
 CREATE TABLE Monster_Loot (
     monster_id INT,
     item_id INT,
@@ -44,6 +48,7 @@ CREATE TABLE Monster_Loot (
 
 -- Création de la table Hero (Personnage principal)
 -- Les équipements (armor, primary_weapon, etc.) font référence à des Items.
+drop table hero;
 CREATE TABLE Hero (
     hero_id INT AUTO_INCREMENT PRIMARY KEY,
     hero_name VARCHAR(50) NOT NULL,
@@ -66,6 +71,7 @@ CREATE TABLE Hero (
 );
 
 -- Création de la table Level (Niveaux de progression des classes)
+drop table level;
 CREATE TABLE Level (
     class_id INT, -- Relation avec Class
     level_number INT,
@@ -79,6 +85,7 @@ CREATE TABLE Level (
 
 
 -- Création de la table Chapter (Chapitres de l'histoire)
+drop table chapter;
 CREATE TABLE Chapter (
     chapter_id INT AUTO_INCREMENT PRIMARY KEY,
     chapter_content TEXT NOT NULL,
@@ -86,6 +93,7 @@ CREATE TABLE Chapter (
 );
 
 -- Table intermédiaire pour les trésors dans les chapitres (Chapter - Items)
+drop table chapter_treasure;
 CREATE TABLE Chapter_Treasure (
     aventure_id INT,
     chapter_id INT,
@@ -95,6 +103,7 @@ CREATE TABLE Chapter_Treasure (
 );
 
 -- Création de la table Encounter (Rencontres dans les chapitres)
+drop table encounter;
 CREATE TABLE Encounter (
     aventure_id INT,
     chapter_id INT,
@@ -102,6 +111,7 @@ CREATE TABLE Encounter (
 );
 
 -- Table intermédiaire pour l'inventaire des héros (Hero - Items)
+drop table inventory;
 CREATE TABLE Inventory (
     hero_id INT,
     item_id INT,
@@ -109,6 +119,7 @@ CREATE TABLE Inventory (
 );
 
 -- Création de la table Links (Liens entre chapitres)
+drop table Links;
 CREATE TABLE Links (
     aventure_id INT,
     chapter_id INT,
@@ -119,6 +130,7 @@ CREATE TABLE Links (
 );
 
 -- Table intermédiaire pour le suivi de progression (Hero - Chapter)
+drop table hero_progress;
 CREATE TABLE Hero_Progress (
     aventure_id INT,
     hero_id INT,
@@ -129,6 +141,7 @@ CREATE TABLE Hero_Progress (
 
 
 -- Création de la table Aventure (Aventure a faire)
+drop table aventure;
 CREATE TABLE Aventure (
     aventure_id INT AUTO_INCREMENT PRIMARY KEY,
     aventure_content TEXT NOT NULL,
@@ -136,6 +149,7 @@ CREATE TABLE Aventure (
 );
 
 -- Création de la table Joueur (Utilisateur)
+drop joueur;
 CREATE TABLE Joueur (
     joueur_id INT AUTO_INCREMENT PRIMARY KEY,
     joueur_name TEXT NOT NULL,
@@ -152,7 +166,7 @@ ALTER TABLE Monster_Loot ADD CONSTRAINT pk_Monster_Loot PRIMARY KEY(item_id,mons
 
 ALTER TABLE Monster_Loot ADD CONSTRAINT fk_Monster_Loot FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);
 ALTER TABLE Monster_Loot ADD CONSTRAINT fk_Monster_Loot FOREIGN KEY (item_id) REFERENCES Items(item_id);
-ALTER TABLE Hero ADD CONSTRAINT fk_Hero FOREIGN KEY (hero_class_id) REFERENCES Class(class_id);
+ALTER TABLE Hero ADD CONSTRAINT fk_Hero FOREIGN KEY (class_id) REFERENCES Class(class_id);
 ALTER TABLE Hero ADD CONSTRAINT fk_Hero FOREIGN KEY (hero_armor_item_id) REFERENCES Items(item_id);
 ALTER TABLE Hero ADD CONSTRAINT fk_Hero FOREIGN KEY (hero_primary_weapon_item_id) REFERENCES Items(item_id);
 ALTER TABLE Hero ADD CONSTRAINT fk_Hero FOREIGN KEY (hero_secondary_weapon_item_id) REFERENCES Items(item_id);
@@ -168,12 +182,3 @@ ALTER TABLE Inventory ADD CONSTRAINT fk_Inventory FOREIGN KEY (hero_id) REFERENC
 ALTER TABLE Inventory ADD CONSTRAINT fk_Inventory FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk_Encounter FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk_Encounter FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);
-
-    
-    
-        
-    
-    
-   
-            ,
-    
