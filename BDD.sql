@@ -136,7 +136,7 @@ CREATE TABLE Aventure (
 );
 
 -- Création de la table Joueur (Utilisateur)
-CREATE TABLE Aventure (
+CREATE TABLE Joueur (
     joueur_id INT AUTO_INCREMENT PRIMARY KEY,
     joueur_name TEXT NOT NULL,
     joueur_password VARCHAR(255)
