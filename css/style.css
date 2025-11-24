@@ -36,3 +36,35 @@ p, span, a, li, button, label, input, blockquote {
 #logo {
     height: 6.5em;
 }
+
+.masthead {
+    background : linear-gradient(
+        rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/1.jpg') no-repeat center center;   
+}
+
+
+.btn-primary , .btn-xl {
+    background-color: var(--attention);
+    border-width: 0px ;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--attention);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity ease-in-out 0.25s;
+  }
+
+  .back-attention{
+    background-color: var(--attention);
+  }
+
+  #submitButton{
+    background-color: var(--attention);
+  }
+
