@@ -7,7 +7,7 @@
 </popup>
 
 <?php
-require_once "../connexionBDD.php";
+require_once "../connexion.php";
 session_start();
 $pseudo = strip_tags($_POST["pseudo"]);
 $mdp = strip_tags($_POST["mdp"]);
@@ -16,7 +16,7 @@ if(isset($pseudo) && isset($mdp)) {
 
     $hash = password_hash($mdp, PASSWORD_DEFAULT);
 
-    $req = $pdo->prepare("INSERT INTO User(user_pseudo, user_mdp) VALUES(:pseudo, :mdp)");
+    $req = $pdo->prepare("INSERT INTO Joueur(joueur_pseudo, joueur_mdp) VALUES(:pseudo, :mdp)");
     $req->bindParam(":pseudo", $pseudo, PDO::PARAM_STR);
     $req->bindParam(":mdp", $hash, PDO::PARAM_STR);
     try{
@@ -26,10 +26,13 @@ if(isset($pseudo) && isset($mdp)) {
         exit();
     }
     
-    $req = $pdo->prepare("SELECT user_id FROM User WHERE user_pseudo = :pseudo");
+    $req = $pdo->prepare("SELECT joueur_id FROM Joueur WHERE joueur_pseudo = :pseudo");
     $req->bindParam(":pseudo", $pseudo, type:PDO::PARAM_STR);
     $req->execute();
 
-    $_SESSION["id"] = $req->fetch()["user_id"];
+    $joueur = $req->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION["id"] = $joueur["joueur_id"];
+    $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
 }
 ?>

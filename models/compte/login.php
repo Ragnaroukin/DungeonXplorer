@@ -7,21 +7,24 @@
 </popup>
 
 <?php
-require_once "../connexionBDD.php";
+require_once "../connexion.php";
 session_start();
 $pseudo = strip_tags($_POST["pseudo"]);
 $mdp = strip_tags($_POST["mdp"]);
 
  
-$req = $pdo->prepare("SELECT * FROM User WHERE user_pseudo = :pseudo");
+$req = $pdo->prepare("SELECT * FROM Joueur WHERE joueur_pseudo = :pseudo");
 $req->bindParam(":pseudo", $pseudo, type:PDO::PARAM_STR);
 $req->execute();
 
-$user = $req->fetch();
+$joueur = $req->fetch(PDO::FETCH_ASSOC);
 
-if(password_verify($mdp, $user["user_mdp"])) {
-    $_SESSION["id"] = $user["user_id"];
+if(password_verify($mdp, $joueur["joueur_mdp"])) {
+    $_SESSION["id"] = $joueur["joueur_id"];
+    $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
+    echo "<script>alert('Connexion réussie')</script>";
 } else {
-    echo "<script>alert('Mot de passe incorrecte')</script>";
+    echo "<script>alert('Connexion échouée')</script>";
+    exit();
 }
 ?>
