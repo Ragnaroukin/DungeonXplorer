@@ -42,14 +42,27 @@ require_once("views/header.php");
     <input type="submit" name="combattre">
 </form>
 
+<!-- Le guerrier est 0, Le mage est 1 ,Le voleur possède l'id 2 -->
 <?php 
     if(isset($_POST['choice'])) {
         $choice = $_POST['choice'];
     
-        switch($choice) {
+        switch($choice) { 
                 case "physical" :
+                    $attaque = rand(1,6) + $reponseHero['hero_strength']; //L'arme n'est pas encore pris en compte !corrige
+                    $defense = rand(1,6) + (int) $reponseMonstre['monster_strength'];
+                    $degat = max(0, $attaque - $defense);
+                    $reponseMonstre['monster_pv'] -= $degat;
                     break;
                 case "magical" :
+                    if ($reponseHero['class_id'] == 1) {
+                        $attaque = rand(1,6) + rand(1,6); //Valeur du mana pas pris en compte !corrige Rajoute dans le BDD une table magique
+                        $defense = rand(1,6) + (int) $reponseMonstre['monster_strength'];
+                        $degat = max(0, $attaque - $defense);
+                        $reponseMonstre['monster_pv'] -= $degat;
+                    } else {
+                        echo "Vous n'êtes pas un mage !";
+                    }
                     break;
                 case "health_potion" :
                     break;
