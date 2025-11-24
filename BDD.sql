@@ -51,6 +51,7 @@ CREATE TABLE Monster_Loot (
 DROP TABLE IF EXISTS Hero;
 CREATE TABLE Hero (
     hero_id INT AUTO_INCREMENT PRIMARY KEY,
+    joueur_id INT,
     hero_name VARCHAR(50) NOT NULL,
     class_id INT, -- Relation avec Class
     hero_image VARCHAR(255),
@@ -173,6 +174,7 @@ ALTER TABLE Hero ADD CONSTRAINT fk2_Hero FOREIGN KEY (hero_armor_item_id) REFERE
 ALTER TABLE Hero ADD CONSTRAINT fk3_Hero FOREIGN KEY (hero_primary_weapon_item_id) REFERENCES Items(item_id);
 ALTER TABLE Hero ADD CONSTRAINT fk4_Hero FOREIGN KEY (hero_secondary_weapon_item_id) REFERENCES Items(item_id);
 ALTER TABLE Hero ADD CONSTRAINT fk5_Hero FOREIGN KEY (hero_shield_item_id) REFERENCES Items(item_id);
+ALTER TABLE Hero ADD CONSTRAINT fk6_Hero FOREIGN KEY (joueur_id) REFERENCES Joueur(joueur_id);
 ALTER TABLE Level ADD CONSTRAINT fk_Level FOREIGN KEY (class_id) REFERENCES Class(class_id);
 ALTER TABLE Hero_Progress ADD CONSTRAINT fk1_Hero_Progress FOREIGN KEY (hero_id) REFERENCES Hero(hero_id);
 ALTER TABLE Hero_Progress ADD CONSTRAINT fk2_Hero_Progress FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
