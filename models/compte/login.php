@@ -1,10 +1,8 @@
-<popup>
-    <form method="post">
-        <label>Nom d'utilisateur : <input type="text" name="pseudo" required></label>
-        <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
-        <button type="submit">Se connecter</button>
-    </form>
-</popup>
+<form method="post">
+    <label>Nom d'utilisateur : <input type="text" name="pseudo" required></label>
+    <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
+    <button type="submit">Se connecter</button>
+</form>
 
 <?php
 require_once "../connexion.php";

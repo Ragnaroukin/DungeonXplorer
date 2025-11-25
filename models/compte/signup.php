@@ -1,10 +1,8 @@
-<popup>
-    <form method="post">
-        <label>Nom d'utilisateur : <input type="text" name="pseudo" required></label>
-        <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
-        <button type="submit">S'inscrire</button>
-    </form>
-</popup>
+<form method="post">
+    <label>Nom d'utilisateur : <input type="text" name="pseudo" required></label>
+    <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
+    <button type="submit">S'inscrire</button>
+</form>
 
 <?php
 require_once "../connexion.php";
@@ -22,7 +20,8 @@ if(isset($pseudo) && isset($mdp)) {
     try{
         $req->execute();
     } catch (PDOException $e) {
-        echo "<script>alert('Pseudo déjà utilisé !')</script>";
+        echo "<script>alert(\"Erreur lors de l'inscription !\")</script>";
+        //echo $e->getMessage();
         exit();
     }
     
