@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="fr">
+=======
+<html lang="en">
+>>>>>>> require
 
 <head>
     <meta charset="utf-8" />
@@ -7,9 +11,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="icon" href="/DungeonXplorer/img/Logo.png" type="image/png">
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>DungeonXplorer</title>
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@400;700&display=swap"
@@ -37,7 +41,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/DungeonXplorer/views/dashboard.php">Administration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin">Administration</a></li>
                 </ul>
             </div>
         </div>

@@ -22,12 +22,29 @@ html {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: var(--police-titre) !important;
+<<<<<<< HEAD
+=======
+    color: var(--texte-principal);
+>>>>>>> require
 }
 
 p, span, a, li, button, label, input, blockquote {
     font-family: var(--police-texte) !important;
 }
 
+<<<<<<< HEAD
+=======
+#lienHome {
+    color: var(--texte-principal);
+    display: flex;
+    align-items: flex-start;
+}
+
+#lienHome h1 {
+    align-self: center;
+}
+
+>>>>>>> require
 #page-top {
     background-color: var(--fond-principal);
     color: var(--texte-principal);
@@ -37,6 +54,7 @@ p, span, a, li, button, label, input, blockquote {
     height: 6.5em;
 }
 
+<<<<<<< HEAD
 .masthead {
     background : linear-gradient(
         rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/1.jpg') no-repeat center center;   
@@ -68,3 +86,76 @@ p, span, a, li, button, label, input, blockquote {
     background-color: var(--attention);
   }
 
+=======
+#sidebarMenu {
+    background-color: var(--fond-secondaire) !important;
+    color: var(--texte-secondaire);
+    position: fixed;
+}
+
+.bi {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+
+.sidebar .nav-link {
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.sidebar .nav-link.active {
+  color: var(--interactif);
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+}
+
+#div-dashboard {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  inherits: false;
+  background-color: var(--fond-secondaire);
+  max-width: 15em;
+  height: auto;
+  text-align: center;
+  border: var(--texte-secondaire) solid;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+  margin-right: 0;
+  margin-left: 0;
+  max-width: none;
+}
+>>>>>>> require

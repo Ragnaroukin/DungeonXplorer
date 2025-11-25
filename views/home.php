@@ -1,4 +1,5 @@
 <?php 
+<<<<<<< HEAD
 require_once("header.php");
 ?>
 
@@ -340,6 +341,10 @@ require_once("header.php");
 
 
 
+=======
+require_once("views/header.php");
+?>
+>>>>>>> require
 <?php
 require_once("views/footer.php");
 ?>
