@@ -18,10 +18,14 @@ require_once("views/header.php");
     $initiative_hero = rand(1, 6) + $reponseHero['hero_initiative'];
     $initiative_monstre = rand(1, 6) + $reponseMonstre['monster_initiative'];
 
+    function parserManaCost($spell) {
+        echo intval(substr( $spell,strpos($spell, '-') + 1)); 
+        return intval(substr( $spell,strpos($spell, '-') + 1)); 
+    }
 
     if($initiative_hero < $initiative_monstre || ($initiative_hero = $initiative_monstre && $reponseHero['class_id'] != 2) ) {
         if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
-            $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+            $magical_mana_cost = parserManaCost('Magie générique - 5');
             if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
                 $reponseMonstre['monster_mana'] -= $magical_mana_cost;
                 $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
@@ -85,7 +89,7 @@ require_once("views/header.php");
                     break;
                 case "magical" :
                     if ($reponseHero['class_id'] == 1) {
-                        $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+                        $magical_mana_cost = parserManaCost($reponseHero['hero_spell_list']); //parserCost existe pas encore
                         if ($reponseHero['hero_mana'] - $magical_mana_cost >= 0) {
                             $reponseHero['hero_mana'] -= $magical_mana_cost;
                             $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
@@ -114,7 +118,7 @@ require_once("views/header.php");
             // Tours du monstre
 
             if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
-                $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+                $magical_mana_cost = parserManaCost('Magie générique - 5');
                 if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
                     $reponseMonstre['monster_mana'] -= $magical_mana_cost;
                     $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
