@@ -6,7 +6,7 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
-$router->addRoute('dashboard', 'DashboardController@index'); // Pour la partie administrateur
+$router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
 
 // Appel de la méthode route
 $router->route(trim($_SERVER['REQUEST_URI'], '/'));

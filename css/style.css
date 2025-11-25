@@ -86,3 +86,17 @@ p, span, a, li, button, label, input, blockquote {
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
+#div-dashboard {
+  display: flex;
+  align-items: center;
+}
+
+.section-block {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.section-block:last-child {
+    border-bottom: none; /* pas de trait sous le dernier */
+}
