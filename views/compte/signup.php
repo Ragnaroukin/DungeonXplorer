@@ -5,7 +5,7 @@
 </form>
 
 <?php
-require_once "../connexion.php";
+require_once "../models/connexion.php";
 session_start();
 $pseudo = strip_tags($_POST["pseudo"]);
 $mdp = strip_tags($_POST["mdp"]);
