@@ -1,12 +1,12 @@
 :root {
     /*Couleur*/
-    --fond-principal : #1A1A1A;
-    --fond-secondaire : #2E2E2E;
-    --texte-principal : #E5E5E5;
-    --texte-secondaire : #BFBFBF;
-    --interactif : #C4975E;
-    --attention : #8B1E1E;
-    --succes : #4A7A66;
+    --fond-principal: #1A1A1A;
+    --fond-secondaire: #2E2E2E;
+    --texte-principal: #E5E5E5;
+    --texte-secondaire: #BFBFBF;
+    --interactif: #C4975E;
+    --attention: #8B1E1E;
+    --succes: #4A7A66;
 
 
     /*Police*/
@@ -20,11 +20,29 @@ html {
     font: var(--police-texte);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--police-titre) !important;
 }
 
-p, span, a, li, button, label, input, blockquote {
+p,
+span,
+a,
+li,
+button,
+label,
+input,
+blockquote {
     font-family: var(--police-texte) !important;
 }
 
@@ -35,4 +53,35 @@ p, span, a, li, button, label, input, blockquote {
 
 #logo {
     height: 6.5em;
+}
+
+.masthead {
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/1.jpg') no-repeat center center;
+}
+
+
+.btn-primary,
+.btn-xl {
+    background-color: var(--attention);
+    border-width: 0px;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--attention);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity ease-in-out 0.25s;
+}
+
+.back-attention {
+    background-color: var(--attention);
+}
+
+#submitButton {
+    background-color: var(--attention);
 }
