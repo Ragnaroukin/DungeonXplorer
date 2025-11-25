@@ -51,6 +51,7 @@ p, span, a, li, button, label, input, blockquote {
 #sidebarMenu {
     background-color: var(--fond-secondaire) !important;
     color: var(--texte-secondaire);
+    position: fixed;
 }
 
 .bi {
@@ -92,11 +93,23 @@ p, span, a, li, button, label, input, blockquote {
   align-items: center;
 }
 
-.section-block {
-    padding: 15px 0;
-    border-bottom: 1px solid #ccc;
+.card {
+  inherits: false;
+  background-color: var(--fond-secondaire);
+  max-width: 15em;
+  height: auto;
+  text-align: center;
+  border: var(--texte-secondaire) solid;
+  padding: 10px;
+  flex-shrink: 0;
 }
 
-.section-block:last-child {
-    border-bottom: none; /* pas de trait sous le dernier */
+.scroll-container {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
 }

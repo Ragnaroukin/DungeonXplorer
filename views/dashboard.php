@@ -29,7 +29,7 @@
                             <h3>
                                 <a class="nav-link d-flex align-items-center gap-2" href="#treasures">
                                     <i class="fa-solid fa-gem"></i>
-                                    Trésors
+                                    Objets
                                 </a>
                             </h3>
                         </li>
@@ -56,26 +56,34 @@
         </div>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
-                class="d-flex flex-column justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2 chapters section-block">Chapitres</h1>
-                <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
+                class="d-flex flex-column justify-content-between flex-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom w-100">
+                <h1 class="h2" id="chapters">Chapitres</h1>
+                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <div class="card">
+                        <h3 class="text-nowrap">Chapitre 1</h3>
+                        <img src="img/Castle01.jpg" alt="chapitre1">
+                    </div>
                 </div>
-                <h1 class="h2 monsters section-block">Monstres</h1>
-                <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
+                <h1 class="h2" id="monsters">Monstres</h1>
+                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <div class="card">
+                        <h3 class="text-nowrap">Vampire</h3>
+                        <img src="img/Vampire01.jpg" alt="chapitre1">
+                    </div>
                 </div>
-                <h1 class="h2 treasures section-block">Trésors</h1>
-                <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
+                <h1 class="h2" id="treasures">Objets</h1>
+                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <div class="card">
+                        <h3 class="text-nowrap">Épée 1</h3>
+                        <img src="img/Sword01.jpg" alt="chapitre1">
+                    </div>
                 </div>
-                <h1 class="h2 hero section-block">Héros</h1>
-                <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
+                <h1 class="h2" id="hero">Héros</h1>
+                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <div class="card">
+                        <h3 class="text-nowrap">Magicienne</h3>
+                        <img src="img/Magician01.jpg" alt="chapitre1">
+                    </div>
                 </div>
             </div>
         </main>
