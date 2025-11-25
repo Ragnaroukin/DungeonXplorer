@@ -14,6 +14,33 @@ require_once("views/header.php");
 
     $reponseLevel = $bdd->prepare('SELECT level_required_xp   ,level_pv_bonus  ,level_mana_bonus   ,level_strength_bonus   ,level_initiative_bonus   FROM level where level_number  = ? and class_id = ?');
     $reponseLevel->execute(array($reponseHero['level'],$reponseHero['class_id']));
+
+    $initiative_hero = rand(1, 6) + $reponseHero['hero_initiative'];
+    $initiative_monstre = rand(1, 6) + $reponseMonstre['monster_initiative'];
+
+
+    if($initiative_hero < $initiative_monstre || ($initiative_hero = $initiative_monstre && $reponseHero['class_id'] != 2) ) {
+        if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
+            $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+            if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
+                $reponseMonstre['monster_mana'] -= $magical_mana_cost;
+                $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
+            } else { //Fait une attaque physique si il n'a pas assez de mana.
+                $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; //L'arme n'est pas encore pris en compte !corrige
+            }
+        } else {
+            $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];  //L'arme n'est pas encore pris en compte !corrige
+        }
+        $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2); //Armure n'est pas encore pris en compte !corrige
+        $degat = max(0, $attaque - $defense);
+        $reponseHero['hero_pv'] -= $degat;
+
+        //Verification de la victoire du Monstre
+
+        if ($reponseHero['hero_pv'] <= 0) {
+            
+        }
+    }
 ?>
 
 <img src= "<?php  $reponseMonstre['monstre_image']  ?>" alt="image_monstre">
@@ -47,19 +74,27 @@ require_once("views/header.php");
     if(isset($_POST['choice'])) {
         $choice = $_POST['choice'];
     
+        //Tour du joueur
+
         switch($choice) { 
                 case "physical" :
                     $attaque = rand(1,6) + $reponseHero['hero_strength']; //L'arme n'est pas encore pris en compte !corrige
-                    $defense = rand(1,6) + (int) $reponseMonstre['monster_strength'];
+                    $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Armure n'est pas encore pris en compte !corrige
                     $degat = max(0, $attaque - $defense);
                     $reponseMonstre['monster_pv'] -= $degat;
                     break;
                 case "magical" :
                     if ($reponseHero['class_id'] == 1) {
-                        $attaque = rand(1,6) + rand(1,6); //Valeur du mana pas pris en compte !corrige Rajoute dans le BDD une table magique
-                        $defense = rand(1,6) + (int) $reponseMonstre['monster_strength'];
-                        $degat = max(0, $attaque - $defense);
-                        $reponseMonstre['monster_pv'] -= $degat;
+                        $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+                        if ($reponseHero['hero_mana'] - $magical_mana_cost >= 0) {
+                            $reponseHero['hero_mana'] -= $magical_mana_cost;
+                            $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
+                            $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Armure n'est pas encore pris en compte !corrige
+                            $degat = max(0, $attaque - $defense);
+                            $reponseMonstre['monster_pv'] -= $degat;
+                        } else {
+                            echo "Vous n'avez pas assez de mana !";
+                        }
                     } else {
                         echo "Vous n'êtes pas un mage !";
                     }
@@ -69,9 +104,40 @@ require_once("views/header.php");
                 case "mana_potion" :
                     break;
             }
+        
+            //Verification de la victoire du joueur
+
+            if ($reponseMonstre['monster_pv'] <= 0) {
+
+            }
+
+            // Tours du monstre
+
+            if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
+                $magical_mana_cost = parserManaCost(); //parserCost existe pas encore
+                if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
+                    $reponseMonstre['monster_mana'] -= $magical_mana_cost;
+                    $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
+                } else { //Fait une attaque physique si il n'a pas assez de mana.
+                    $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; //L'arme n'est pas encore pris en compte !corrige
+                }
+            } else {
+                $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];  //L'arme n'est pas encore pris en compte !corrige
+            }
+            $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2); //Armure n'est pas encore pris en compte !corrige
+            $degat = max(0, $attaque - $defense);
+            $reponseHero['hero_pv'] -= $degat;
+
+            //Verification de la victoire du Monstre
+
+            if ($reponseHero['hero_pv'] <= 0) {
+
+            }
+        
     } else {
         echo "Choisissez une action";
     }
+    
     
 ?>
 
