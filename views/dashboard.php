@@ -1,4 +1,11 @@
-<?php require_once "header.php" ?>
+<?php
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=DungeonXplorer","root", "");
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+} 
+require_once "header.php" 
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" id="sidebarMenu">
@@ -27,7 +34,7 @@
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link d-flex align-items-center gap-2" href="#treasures">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#objects">
                                     <i class="fa-solid fa-gem"></i>
                                     Objets
                                 </a>
@@ -57,33 +64,83 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
                 class="d-flex flex-column justify-content-between flex-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom w-100">
-                <h1 class="h2" id="chapters">Chapitres</h1>
-                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
-                    <div class="card">
-                        <h3 class="text-nowrap">Chapitre 1</h3>
-                        <img src="img/Castle01.jpg" alt="chapitre1">
+                <div class="d-flex justify-content-between mb-3 w-100">
+                    <h1 class="h2" id="chapters">Chapitres</h1>
+                    <div>
+                        <button type="button" class="btn btn-warning">Ajouter</button>
+                        <button type="button" class="btn btn-outline-secondary">Voir tout</button>
                     </div>
+                </div>
+                <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <?php
+                    $sql = "SELECT chapter_id, chapter_num, chapter_image FROM `Chapter`";
+
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $chapters = $stmt->fetchAll(PDO::FETCH_ASSOC);   // tableau de tableaux associatifs
+                    
+                    foreach ($chapters as $chapter) {
+                    ?>
+                    <div class="card">
+                        <h3 class="text-nowrap">Chapitre <?php echo $chapter["chapter_num"] ?></h3>
+                        <img src="<?php echo $chapter["chapter_image"] ?>" alt="img">
+                    </div>
+                    <?php } ?>
                 </div>
                 <h1 class="h2" id="monsters">Monstres</h1>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <?php
+                    $sql = "SELECT monster_name, monster_image FROM `Monster`";
+
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $monsters = $stmt->fetchAll(PDO::FETCH_ASSOC);   // tableau de tableaux associatifs
+                    
+                    foreach ($monsters as $monster) {
+                    ?>
                     <div class="card">
-                        <h3 class="text-nowrap">Vampire</h3>
-                        <img src="img/Vampire01.jpg" alt="chapitre1">
+                        <h3 class="text-nowrap"><?php echo $monster["monster_name"] ?></h3>
+                        <img src="<?php echo $monster["monster_image"] ?>" alt="img">
                     </div>
+                    <?php } ?>
                 </div>
-                <h1 class="h2" id="treasures">Objets</h1>
+                <h1 class="h2" id="objects">Objets</h1>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <?php
+                    $sql = "SELECT item_name, item_image FROM `Items`";
+
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $items = $stmt->fetchAll(PDO::FETCH_ASSOC);   // tableau de tableaux associatifs
+                    
+                    foreach ($items as $item) {
+                    ?>
                     <div class="card">
-                        <h3 class="text-nowrap">Épée 1</h3>
-                        <img src="img/Sword01.jpg" alt="chapitre1">
+                        <h3 class="text-nowrap"><?php echo $item["item_name"] ?></h3>
+                        <img src="<?php echo $item["item_image"] ?>" alt="img">
                     </div>
+                    <?php } ?>
                 </div>
                 <h1 class="h2" id="hero">Héros</h1>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
+                    <?php
+                    $sql = "SELECT class_name, class_img FROM `Class`";
+
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+
+                    $classes = $stmt->fetchAll(PDO::FETCH_ASSOC);   // tableau de tableaux associatifs
+                    
+                    foreach ($classes as $class) {
+                    ?>
                     <div class="card">
-                        <h3 class="text-nowrap">Magicienne</h3>
-                        <img src="img/Magician01.jpg" alt="chapitre1">
+                        <h3 class="text-nowrap"><?php echo $class["class_name"] ?></h3>
+                        <img src="<?php echo $class["class_img"] ?>" alt="img">
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </main>
