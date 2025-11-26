@@ -140,8 +140,20 @@ require_once("views/header.php");
                     }
                     break;
                 case "health_potion" :
+                    //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
+                    if ($reponseHero['hero_pv'] + 10 > $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus'] ) {
+                        $reponseHero['hero_pv'] = $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus'];
+                    } else {
+                        $reponseHero['hero_pv'] += 10;
+                    }
                     break;
                 case "mana_potion" :
+                    //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
+                    if ($reponseHero['hero_mana'] + 10 > $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus'] ) { 
+                        $reponseHero['hero_mana'] = $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus'];
+                    } else {
+                        $reponseHero['hero_mana'] += 10;
+                    }
                     break;
             }
         
