@@ -5,12 +5,12 @@ require_once("views/header.php");
 <?php
     //Requete pour le Monstre
     $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_xp FROM Monster where monster_id = ?');
-    $queryMonstre->execute(array(1));
+    $queryMonstre->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
     $reponseMonstre = $queryMonstre->fetch();
     
     //Requete pour le Hero
     $queryHero = $bdd->prepare('SELECT hero_name ,class_id,hero_image,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level ,hero_xp, hero_armor_item_id,hero_weapon_item_id,hero_shield_item_id FROM hero where hero_id = ?');
-    $queryHero->execute(array(1));
+    $queryHero->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
     $reponseHero = $queryHero->fetch();
     
     //Requete pour les class et les effets propre
@@ -22,6 +22,9 @@ require_once("views/header.php");
     $queryLevel = $bdd->prepare('SELECT level_required_xp   ,level_pv_bonus  ,level_mana_bonus   ,level_strength_bonus   ,level_initiative_bonus   FROM level where level_number  = ? and class_id = ?');
     $queryLevel->execute(array($reponseHero['hero_level'],$reponseHero['class_id']));
     $reponseLevel = $queryLevel->fetch();
+
+    //Preparation de la requete qui sera appeler a la fin du combat
+    $queryLink = $bdd->prepare('SELECT link_aventure_id   ,link_chapter_id  FROM Links where aventure_id  = ? and chapter_id = ? and link_choice = ?');
 
     //Requete pour les Objets du hero
     $queryItem = $bdd->prepare('SELECT item_value FROM Items where item_id = ?');
@@ -71,7 +74,9 @@ require_once("views/header.php");
         //Verification de la victoire du Monstre
 
         if ($reponseHero['hero_pv'] <= 0) {
-            
+            //A faire
+            //$queryLink->execute(array(1,1,1));
+            //$reponseLink = $queryLink->fetch();
         }
     }
 ?>
@@ -143,7 +148,9 @@ require_once("views/header.php");
             //Verification de la victoire du joueur
 
             if ($reponseMonstre['monster_pv'] <= 0) {
-
+                //A faire
+                //$queryLink->execute(array(1,1,1));
+                //$reponseLink = $queryLink->fetch();
             }
 
             // Tours du monstre
@@ -167,7 +174,9 @@ require_once("views/header.php");
             //Verification de la victoire du Monstre
 
             if ($reponseHero['hero_pv'] <= 0) {
-
+                //A faire
+                //$queryLink->execute(array(1,1,1));
+                //$reponseLink = $queryLink->fetch();
             }
         
     } else {
