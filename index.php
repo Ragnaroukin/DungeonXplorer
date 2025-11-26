@@ -12,7 +12,6 @@ $router = new Router('DungeonXplorer');
 $router->addRoute('', 'HomeController@index'); // Pour la racine
 $router->addRoute('login', 'CompteController@login');
 $router->addRoute('signup', 'CompteController@signup');
-$router->addRoute('connexion', 'ConnexionController@index');
 
 
 // Appel de la méthode route
