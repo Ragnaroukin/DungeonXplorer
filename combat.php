@@ -3,39 +3,68 @@ require_once("views/header.php");
 ?>
 
 <?php
-    $reponseMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_xp FROM Monster where monster_id = ?');
-    $reponseMonstre->execute(array($_POST['monster_id']));
+    //Requete pour le Monstre
+    $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_xp FROM Monster where monster_id = ?');
+    $queryMonstre->execute(array(1));
+    $reponseMonstre = $queryMonstre->fetch();
+    
+    //Requete pour le Hero
+    $queryHero = $bdd->prepare('SELECT hero_name ,class_id,hero_image,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level ,hero_xp, hero_armor_item_id,hero_weapon_item_id,hero_shield_item_id FROM hero where hero_id = ?');
+    $queryHero->execute(array(1));
+    $reponseHero = $queryHero->fetch();
+    
+    //Requete pour les class et les effets propre
+    $queryClass = $bdd->prepare('SELECT class_name  ,class_base_pv ,class_base_mana  ,class_base_strength  ,class_base_initiative  FROM Class where class_id  = ?');
+    $queryClass->execute(array($reponseHero['class_id']));
+    $reponseClass = $queryClass->fetch();
+    
+    //Requete pour les level et les stats associer
+    $queryLevel = $bdd->prepare('SELECT level_required_xp   ,level_pv_bonus  ,level_mana_bonus   ,level_strength_bonus   ,level_initiative_bonus   FROM level where level_number  = ? and class_id = ?');
+    $queryLevel->execute(array($reponseHero['hero_level'],$reponseHero['class_id']));
+    $reponseLevel = $queryLevel->fetch();
 
-    $reponseHero = $bdd->prepare('SELECT hero_name ,class_id,hero_image,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level ,hero_xp  FROM hero where hero_id = ?');
-    $reponseHero->execute(array($_POST['hero_id']));
+    //Requete pour les Objets du hero
+    $queryItem = $bdd->prepare('SELECT item_value FROM Items where item_id = ?');
+    $queryItem->execute(array($reponseHero['hero_weapon_item_id']));
+    $reponseItem['weapon_value'] = $queryItem->fetch();        
+    $queryItem->execute(array($reponseHero['hero_shield_item_id']));
+    $reponseItem['shield_value'] = $queryItem->fetch();
+    $queryItem->execute(array($reponseHero['hero_armor_item_id']));
+    $reponseItem['armor_value'] = $queryItem->fetch();
 
-    $reponseClass = $bdd->prepare('SELECT class_name  ,class_base_pv ,class_base_mana  ,class_base_strength  ,class_base_initiative  FROM Class where class_id  = ?');
-    $reponseClass->execute(array($reponseHero['class_id']));
+    function parserManaCost($spell) {
+        $pos = strpos($spell, '-');
+        echo intval(substr( $spell,strpos($spell, '-') + 1)); 
+        if ($pos == false) {
+            return false;
+        } else {
+            return intval(substr( $spell,$pos + 1));
+        }
+    }
 
-    $reponseLevel = $bdd->prepare('SELECT level_required_xp   ,level_pv_bonus  ,level_mana_bonus   ,level_strength_bonus   ,level_initiative_bonus   FROM level where level_number  = ? and class_id = ?');
-    $reponseLevel->execute(array($reponseHero['level'],$reponseHero['class_id']));
+    // Definie si le monstre est capable d'utiliser des capaciter magiques
+    if (parserManaCost($reponseMonstre['monster_spell']) != false) {
+        $magical_monster == true;
+    }
 
+    //Calcule de l'intiative
     $initiative_hero = rand(1, 6) + $reponseHero['hero_initiative'];
     $initiative_monstre = rand(1, 6) + $reponseMonstre['monster_initiative'];
 
-    function parserManaCost($spell) {
-        echo intval(substr( $spell,strpos($spell, '-') + 1)); 
-        return intval(substr( $spell,strpos($spell, '-') + 1)); 
-    }
-
+    //Tour du monstre si le monstre a l'initiative
     if($initiative_hero < $initiative_monstre || ($initiative_hero = $initiative_monstre && $reponseHero['class_id'] != 2) ) {
-        if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
+        if ($magical_monster == true) {
             $magical_mana_cost = parserManaCost('Magie générique - 5');
             if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
                 $reponseMonstre['monster_mana'] -= $magical_mana_cost;
                 $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
             } else { //Fait une attaque physique si il n'a pas assez de mana.
-                $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; //L'arme n'est pas encore pris en compte !corrige
+                $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
             }
         } else {
-            $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];  //L'arme n'est pas encore pris en compte !corrige
+            $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
         }
-        $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2); //Armure n'est pas encore pris en compte !corrige
+        $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2) + $reponseItem['shield_value'] + $reponseItem['armor_value'];
         $degat = max(0, $attaque - $defense);
         $reponseHero['hero_pv'] -= $degat;
 
@@ -47,6 +76,7 @@ require_once("views/header.php");
     }
 ?>
 
+<!-- Affichage Monstre -->
 <img src= "<?php  $reponseMonstre['monstre_image']  ?>" alt="image_monstre">
 <h3><?php  $reponseMonstre['monstre_name'] ?></h3>
 <p> <?php  $reponseMonstre['monster_pv'] ?> PV |
@@ -54,6 +84,7 @@ require_once("views/header.php");
     <?php  $reponseMonstre['monster_strength'] ?> Force 
 </p>
 
+<!-- Affichage Hero -->
 <img src= "<?php $reponseHero['hero_image']  ?>" alt="image_hero">
 <h3><?php $reponseHero['hero_name'] ?></h3>
 <p> 
@@ -64,6 +95,7 @@ require_once("views/header.php");
     Level : <?php $reponseHero['hero_level'] ?> (<?php $reponseHero['hero_xp'] ?>/<?php $reponseLevel['level_required_xp']?> <!-- Xp requis n'est pas forcement celui du suivant ! revoir quand la base est bien définis -->)
 </p> 
 
+<!-- Choix du Joueur -->
 <form action="" method="post"> 
     <input type="radio" name="choice" value="physical"> Attaque physique
     <input type="radio" name="choice" value="magical"> Attaque Magique
@@ -82,18 +114,17 @@ require_once("views/header.php");
 
         switch($choice) { 
                 case "physical" :
-                    $attaque = rand(1,6) + $reponseHero['hero_strength']; //L'arme n'est pas encore pris en compte !corrige
-                    $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Armure n'est pas encore pris en compte !corrige
-                    $degat = max(0, $attaque - $defense);
+                    $attaque = rand(1,6) + $reponseHero['hero_strength'] + $reponseItem['weapon_value'];
+                    $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2);  //Le monstre n'a pas d'armure
                     $reponseMonstre['monster_pv'] -= $degat;
                     break;
                 case "magical" :
                     if ($reponseHero['class_id'] == 1) {
-                        $magical_mana_cost = parserManaCost($reponseHero['hero_spell_list']); //parserCost existe pas encore
+                        $magical_mana_cost = parserManaCost($reponseHero['hero_spell_list']);
                         if ($reponseHero['hero_mana'] - $magical_mana_cost >= 0) {
                             $reponseHero['hero_mana'] -= $magical_mana_cost;
                             $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
-                            $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Armure n'est pas encore pris en compte !corrige
+                            $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Le monstre n'a pas d'armure
                             $degat = max(0, $attaque - $defense);
                             $reponseMonstre['monster_pv'] -= $degat;
                         } else {
@@ -117,18 +148,19 @@ require_once("views/header.php");
 
             // Tours du monstre
 
-            if ($magical_monster == true) { //Definition de monstre magique pas encore implementer
+            if ($magical_monster == true) {
                 $magical_mana_cost = parserManaCost('Magie générique - 5');
                 if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
                     $reponseMonstre['monster_mana'] -= $magical_mana_cost;
                     $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
                 } else { //Fait une attaque physique si il n'a pas assez de mana.
-                    $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; //L'arme n'est pas encore pris en compte !corrige
+                    $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
                 }
             } else {
-                $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];  //L'arme n'est pas encore pris en compte !corrige
+                $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; 
             }
-            $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2); //Armure n'est pas encore pris en compte !corrige
+            $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2)  + $reponseItem['shield_value'] + $reponseItem['armor_value'];
+        $degat = max(0, $attaque - $defense);
             $degat = max(0, $attaque - $defense);
             $reponseHero['hero_pv'] -= $degat;
 
