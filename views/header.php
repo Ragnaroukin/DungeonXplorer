@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="fr">
-=======
-<html lang="en">
->>>>>>> require
 
 <head>
     <meta charset="utf-8" />
