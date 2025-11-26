@@ -105,5 +105,56 @@ require_once "header.php";
             <input class="submit-btn" type="submit" value="Ajouter">
         </div>
     </form>
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function (e) {
+
+            let erreurs = [];
+
+            // Récupération des champs
+            const nom = document.getElementById('num');
+            const pv = document.getElementById('pv');
+            const mp = document.getElementById('mp');
+            const str = document.getElementById('str');
+            const ini = document.getElementById('ini');
+            const maxItem = document.getElementById('max-item');
+            const description = document.getElementById('description');
+            const image1 = document.getElementById('imageInput1');
+            const image2 = document.getElementById('imageInput2');
+
+            // Vérification champs texte
+            if (nom.value.trim() === "")
+                erreurs.push("Le nom est obligatoire.");
+
+            if (description.value.trim() === "")
+                erreurs.push("La description est obligatoire.");
+
+            // Vérification champs numériques
+            function verifierNombre(champ, nomChamp) {
+                if (champ.value === "" || isNaN(champ.value)) {
+                    erreurs.push(nomChamp + " doit être un nombre valide.");
+                }
+            }
+
+            verifierNombre(pv, "Vie");
+            verifierNombre(mp, "Mana");
+            verifierNombre(str, "Force");
+            verifierNombre(ini, "Initiative");
+            verifierNombre(maxItem, "Max item");
+
+            // Vérification images
+            if (image1.files.length === 0)
+                erreurs.push("Image 1 manquante.");
+
+            if (image2.files.length === 0)
+                erreurs.push("Image 2 manquante.");
+
+            // Si erreurs : on bloque l'envoi
+            if (erreurs.length > 0) {
+                e.preventDefault();
+                alert("Erreurs détectées :\n\n" + erreurs.join("\n"));
+            }
+
+        });
+    </script>
 </section>
 <?php require_once "footer.php" ?>
