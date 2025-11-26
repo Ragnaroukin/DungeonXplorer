@@ -13,31 +13,26 @@ require_once("header.php");
         <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
+
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse" ></i>
+<i class="fa-solid fa-user"></i>
                         </span>
                         <h4 class="my-3">Profil & Progression</h4>
                         <p class="text-muted">Votre compte conservera l'état de votre personnage (caractéristiques, inventaire) et vous permettra de reprendre votre quête à tout moment.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                    <i class="fa-solid fa-book-bookmark"></i>
+
                         </span>
                         <h4 class="my-3">Aventure Immersive</h4>
                         <p class="text-muted">Plongez dans un récit interactif de dark fantasy et faites des choix qui influenceront votre progression dans l'univers du Val Perdu.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                            <i class="fa-solid fa-dragon"></i>
                         </span>
                         <h4 class="my-3">Création de Personnage</h4>
                         <p class="text-muted">Choisissez votre classe (Guerrier, Voleur ou Magicien) et définissez les caractéristiques de votre héros pour commencer l'aventure.</p>
@@ -49,8 +44,8 @@ require_once("header.php");
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Héros et vilains principaux</h2>
+                    <h3 class="section-subheading text-muted">Partez à l'aventure, et affrontez des ennemis redoutables !</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
@@ -63,8 +58,8 @@ require_once("header.php");
                                 <img class="img-fluid" src="/DungeonXplorer/img/Magician01.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <div class="portfolio-caption-heading">La villageoise</div>
+                                <div class="portfolio-caption-subheading text-muted">La quête commence par la disparition de la fille du bourgmestre dans la forêt du Val Perdu, où rôderait un sorcier maléfique dans son château en ruines.</div>
                             </div>
                         </div>
                     </div>
@@ -75,11 +70,11 @@ require_once("header.php");
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="/DungeonXplorer/img/2.jpg" alt="..." />
+                                <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                                <div class="portfolio-caption-heading">Le Berserke</div>
+                                <div class="portfolio-caption-subheading text-muted">Le Berserker, une classe avancée et brutale, canalise sa fureur dévastatrice pour terrasser ses ennemis, mais ce pouvoir a un prix : il est toujours à la merci de sa rage incontrôlable.</div>
                             </div>
                         </div>
                     </div>
@@ -90,11 +85,11 @@ require_once("header.php");
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="/DungeonXplorer/img/3.jpg" alt="..." />
+                                <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                                <div class="portfolio-caption-heading">L'arbalète</div>
+                                <div class="portfolio-caption-subheading text-muted">L'Arbalète est l'incarnation de la précision froide; elle remplace la bravoure par la stratégie et la force par l'impact implacable.</div>
                             </div>
                         </div>
                     </div>
@@ -105,11 +100,11 @@ require_once("header.php");
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="/DungeonXplorer/img/4.jpg" alt="..." />
+                                <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                                <div class="portfolio-caption-heading">Le vampire</div>
+                                <div class="portfolio-caption-subheading text-muted">Le Vieux Vampire est l'incarnation de la corruption éternelle et du pouvoir aristocratique, dont la présence glace le sang et rappelle que même les mythes les plus sombres vivent dans l'ombre du Val Perdu.</div>
                             </div>
                         </div>
                     </div>
@@ -120,11 +115,11 @@ require_once("header.php");
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="/DungeonXplorer/img/5.jpg" alt="..." />
+                                <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                                <div class="portfolio-caption-heading">La Jeune Femme Vampire</div>
+                                <div class="portfolio-caption-subheading text-muted">La Jeune Femme Vampire est l'âme de la séduction fatale; une beauté glaciale et éphémère qui masque une soif éternelle et une solitude qui corrompt tout ce qu'elle touche.</div>
                             </div>
                         </div>
                     </div>
@@ -135,11 +130,11 @@ require_once("header.php");
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="/DungeonXplorer/img/6.jpg" alt="..." />
+                                <img class="img-fluid" src="/DungeonXplorer/img/Evil Warrior.jpg" alt="Evil Warrior" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                                <div class="portfolio-caption-heading">Le Guerrier Maléfique</div>
+                                <div class="portfolio-caption-subheading text-muted">Le Guerrier Maléfique est l'âme de la trahison implacable; un combattant sans honneur qui a vendu sa force et son acier aux ombres, ne vivant que pour la destruction et le chaos.</div>
                             </div>
                         </div>
                     </div>
@@ -150,7 +145,7 @@ require_once("header.php");
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h2 class="section-heading text-uppercase">A propos de nous</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
                 <ul class="timeline">
@@ -158,50 +153,51 @@ require_once("header.php");
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4>2022-2023</h4>
+                                <h4 class="subheading">Notre Humble Commencement</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Animée par la nostalgie des livres dont vous êtes le héros populaires dans les années 80-90, Les Aventuriers du Val Perdu est officiellement fondée. L'association se donne pour mission de raviver cette expérience unique en la transposant sur le Web, jetant ainsi les bases du projet DungeonXplorer. </p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/2.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
+                                <h4>Mai 2024</h4>
+                                <h4 class="subheading">Le Projet Web Prend Vie</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Pour concrétiser sa vision, l'association missionne une première équipe de développement pour concevoir DungeonXplorer, une application Web interactive. L'objectif est de créer un espace où la communauté pourra réaliser et mettre en ligne ses propres aventures de dark fantasy.</p></div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>Décembre 2024</h4>
+                                <h4 class="subheading">Refonte et Plein Service</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Suite à des tensions et l'arrêt des travaux précédents, une nouvelle équipe est confiée l'intégralité du projet. Cette phase marque la transition vers un service complet, avec l'adoption du pattern MVC en PHP et la finalisation des fonctionnalités essentielles de la V1</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/4.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4>Juillet 2025</h4>
+                                <h4 class="subheading">Lancement de DungeonXplorer V1</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">DungeonXplorer est officiellement mis en ligne ! La V1 permet aux joueurs de créer un personnage (Guerrier, Voleur, Magicien) et de plonger dans leur première aventure personnalisée. Ce lancement ouvre la voie à de futures expansions, incluant de nouvelles aventures et fonctionnalités avancées (V2).</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <h4>
-                                Be Part
+                                Tester
                                 <br />
-                                Of Our
+                                Le 
+                                Jeu 
                                 <br />
-                                Story!
+                                ! ! !
                             </h4>
                         </div>
                     </li>
@@ -252,25 +248,6 @@ require_once("header.php");
                 </div>
             </div>
         </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/DungeonXplorer/img/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/DungeonXplorer/img/google.svg" alt="..." aria-label="Google Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/DungeonXplorer/img/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/DungeonXplorer/img/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container">
