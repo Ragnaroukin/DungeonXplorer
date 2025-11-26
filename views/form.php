@@ -1,6 +1,6 @@
 <?php require_once "header.php" ?>
 <section class="get-in-touch">
-    <h1 class="title">Ajout de chapitre :</h1>
+    <h1 class="title">Ajout Model :</h1>
     <form class="contact-form row">
         <div class="img-field">
             <div id="upload-box">

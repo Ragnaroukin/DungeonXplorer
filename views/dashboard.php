@@ -67,7 +67,7 @@ require_once "header.php"
                 <div class="d-flex justify-content-between mb-3 w-100">
                     <h1 class="h2" id="chapters">Chapitres</h1>
                     <div>
-                        <button type="button" class="btn btn-warning">Ajouter</button>
+                        <a href="admin/add/chapter"><button type="button" class="btn btn-warning">Ajouter</button></a>
                         <button type="button" class="btn btn-outline-secondary">Voir tout</button>
                     </div>
                 </div>
@@ -88,7 +88,13 @@ require_once "header.php"
                     </div>
                     <?php } ?>
                 </div>
-                <h1 class="h2" id="monsters">Monstres</h1>
+                <div class="d-flex justify-content-between mb-3 w-100">
+                    <h1 class="h2" id="monsters">Monstres</h1>
+                    <div>
+                        <a href="admin/add/monster"><button type="button" class="btn btn-warning">Ajouter</button></a>
+                        <button type="button" class="btn btn-outline-secondary">Voir tout</button>
+                    </div>
+                </div>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
                     <?php
                     $sql = "SELECT monster_name, monster_image FROM `Monster`";
@@ -106,7 +112,13 @@ require_once "header.php"
                     </div>
                     <?php } ?>
                 </div>
-                <h1 class="h2" id="objects">Objets</h1>
+                <div class="d-flex justify-content-between mb-3 w-100">
+                    <h1 class="h2" id="objects">Objets</h1>
+                    <div>
+                        <a href="admin/add/item"><button type="button" class="btn btn-warning">Ajouter</button></a>
+                        <button type="button" class="btn btn-outline-secondary">Voir tout</button>
+                    </div>
+                </div>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
                     <?php
                     $sql = "SELECT item_name, item_image FROM `Items`";
@@ -124,7 +136,13 @@ require_once "header.php"
                     </div>
                     <?php } ?>
                 </div>
-                <h1 class="h2" id="hero">Héros</h1>
+                <div class="d-flex justify-content-between mb-3 w-100">
+                    <h1 class="h2" id="hero">Héros</h1>
+                    <div>
+                        <a href="admin/add/class"><button type="button" class="btn btn-warning">Ajouter</button></a>
+                        <button type="button" class="btn btn-outline-secondary">Voir tout</button>
+                    </div>
+                </div>
                 <div class="d-flex flex-nowrap align-items-center pt-3 pb-2 mb-3 border-top w-100 scroll-container">
                     <?php
                     $sql = "SELECT class_name, class_img FROM `Class`";

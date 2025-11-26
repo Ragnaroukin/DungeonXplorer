@@ -23,7 +23,7 @@ class Router
 
         // Enlève les barres obliques en trop
         $url = trim($url, '/');
-
+        
         // Vérification de la correspondance de l'URL à une route définie
         foreach ($this->routes as $route => $controllerMethod) {
             // Vérifie si l'URL correspond à une route avec des paramètres
