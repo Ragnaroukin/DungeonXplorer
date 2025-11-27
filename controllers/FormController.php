@@ -3,31 +3,30 @@ class FormController
 {
     public function index()
     {
-        echo "TYPE index";
-        require_once 'views/form.php';
+        require_once __DIR__."/../views/form.php";
     }
 
     public function choose($type)
     {
         switch ($type) {
             case "monster":
-                require_once "views/formMonster.php";
+                require_once __DIR__."/../views/formMonster.php";
                 break;
 
             case "chapter":
-                require_once "views/formChap.php";
+                require_once __DIR__."/../views/formChap.php";
                 break;
 
             case "item":
-                require_once "views/formItem.php";
+                require_once __DIR__."/../views/formItem.php";
                 break;
 
             case "class":
-                require_once "views/formClass.php";
+                require_once __DIR__."/../views/formClass.php";
                 break;
 
             default:
-                require_once "views/404.php";
+                require_once __DIR__."/../views/404.php";
         }
     }
 }

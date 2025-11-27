@@ -1,9 +1,7 @@
-<?php 
-require_once "header.php";
-?>
+<?php require_once "header.php"?>
 <section class="get-in-touch">
     <h1 class="title">Ajout de classe :</h1>
-    <form class="contact-form row" method="post" action="">
+    <form class="contact-form row" method="post" enctype="multipart/form-data" action="../exec/class">
         <div class="img-field">
             <div id="upload-box1">
                 <span id="text1">Cliquer pour ajouter une image</span>
