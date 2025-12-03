@@ -2,10 +2,13 @@
 require_once("views/header.php");
 ?>
 
+<?php 
+require_once("views/header.php");
+?>
 
 <?php
         //Requete pour le Monstre
-        $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_xp FROM Monster where monster_id = ?');
+        $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_spell,monster_xp FROM Monster where monster_id = ?');
         $queryMonstre->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
         $reponseMonstre = $queryMonstre->fetch();
         
@@ -38,170 +41,151 @@ require_once("views/header.php");
         $queryItem->execute(array($reponseHero['hero_armor_item_id']));
         $tempItem = $queryItem->fetch(); 
         $reponseItem['armor_value'] = $tempItem['item_value'];
-
-
-        function parserManaCost($spell) {
-            $pos = strpos($spell, '-');
-            echo intval(substr( $spell,strpos($spell, '-') + 1)); 
-            if ($pos == false) {
-                return false;
-            } else {
-                return intval(substr( $spell,$pos + 1));
-            }
-        }
-
-        // Definie si le monstre est capable d'utiliser des capaciter magiques
-        $magical_monster = false;
-        if ($reponseMonstre['monster_spell'] != null) {
-                $magical_monster = true;
-        }
-
-        //Calcule de l'intiative
-        $initiative_hero = rand(1, 6) + $reponseHero['hero_initiative'];
-        $initiative_monstre = rand(1, 6) + $reponseMonstre['monster_initiative'];
-
-        //Tour du monstre si le monstre a l'initiative
-        if($initiative_hero < $initiative_monstre || ($initiative_hero = $initiative_monstre && $reponseHero['class_id'] != 2) ) {
-            if ($magical_monster == true) {
-                $magical_mana_cost = parserManaCost('Magie générique - 5');
-                if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
-                    $reponseMonstre['monster_mana'] -= $magical_mana_cost;
-                    $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
-                } else { //Fait une attaque physique si il n'a pas assez de mana.
-                    $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
-                }
-            } else {
-                $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
-            }
-            $defense = (int) rand(1,6) + (int) ($reponseHero['hero_strength']/2) + $reponseItem['shield_value'] + $reponseItem['armor_value'];
-            $degat = max(0, $attaque - $defense);
-            $reponseHero['hero_pv'] -= $degat;
-
-            //Verification de la victoire du Monstre
-
-            if ($reponseHero['hero_pv'] <= 0) {
-                //A faire
-                //$queryLink->execute(array(1,1,1));
-                //$reponseLink = $queryLink->fetch();
-            }
-        }
 ?>
 
 <!-- Affichage Monstre -->
-<img src= "<?php  $reponseMonstre['monster_image']  ?>" alt="image_monstre">
-<h3><?php  echo $reponseMonstre['monster_name']; ?></h3>
-<p> <?php  echo $reponseMonstre['monster_pv']; ?> PV |
-    <?php  echo $reponseMonstre['monster_mana']; ?> Mana |
-    <?php  echo $reponseMonstre['monster_strength']; ?> Force 
-</p>
+<h3 id="monster_nom" >default</h3>
+<p id="monster_stat">default</p>
 
 <!-- Affichage Hero -->
-<img src= "<?php $reponseClass['class_image']  ?>" alt="image_hero">
-<h3><?php echo $reponseHero['hero_name']; ?></h3>
-<p> 
-    <?php echo $reponseHero['hero_pv']; ?> / <?php echo $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus']; ?> PV |
-    <?php echo $reponseHero['hero_mana']; ?> / <?php echo $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus']; ?> Mana |
-    <?php echo $reponseHero['hero_initiative']; ?> / <?php echo $reponseClass['class_base_initiative'] + $reponseLevel['level_initiative_bonus']; ?> Initiative |
-    <?php echo $reponseHero['hero_strength']; ?> / <?php echo $reponseClass['class_base_strength'] + $reponseLevel['level_strength_bonus']; ?> Force |
-    Level : <?php echo $reponseHero['hero_level']; ?> (<?php echo $reponseHero['hero_xp'] ?>/<?php echo  $reponseLevel['level_required_xp']?> <!-- Xp requis n'est pas forcement celui du suivant ! revoir quand la base est bien définis -->)
-</p> 
+<h3 id="hero_nom">default</h3>
+<p id="hero_stat">default</p> 
 
-<!-- Choix du Joueur -->
-<form action="" method="post"> 
-    <input type="radio" name="choice" value="physical"> Attaque physique
-    <input type="radio" name="choice" value="magical"> Attaque Magique
-    <input type="radio" name="choice" value="health_potion"> Boire une potion de vie
-    <input type="radio" name="choice" value="mana_potion"> Boire une potion de mana
-    <hr/>
-    <input type="submit" name="combattre">
+<form> 
+    <input type="button" value="Attaque physique" onClick="combat(physical)">
+    <input type="button" value="Attaque Magique" onClick="combat(magical)">
+    <input type="button" value="Boire une potion de vie" onClick="combat(health_potion)">
+    <input type="button" value="Boire une potion de mana" onClick="combat(mana_potion)">
 </form>
 
-<!-- Le guerrier est 0, Le mage est 1 ,Le voleur possède l'id 2 -->
-<?php
-        if(isset($_POST['choice'])) {
-            $choice = $_POST['choice'];
-        
-            //Tour du joueur
+<script>
+    const monster_nom = document.getElementById("monster_nom");
+    const monster_stat = document.getElementById("monster_stat");
+    const hero_nom = document.getElementById("hero_nom");
+    const hero_stat = document.getElementById("hero_stat");
 
-            switch($choice) { 
-                    case "physical" :
-                        $attaque = rand(1,6) + $reponseHero['hero_strength'] + $reponseItem['weapon_value'];
-                        $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2);  //Le monstre n'a pas d'armure
-                        $reponseMonstre['monster_pv'] -= $degat;
-                        break;
-                    case "magical" :
-                        if ($reponseHero['class_id'] == 1) {
-                            $magical_mana_cost = parserManaCost($reponseHero['hero_spell_list']);
-                            if ($reponseHero['hero_mana'] - $magical_mana_cost >= 0) {
-                                $reponseHero['hero_mana'] -= $magical_mana_cost;
-                                $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
-                                $defense = rand(1,6) + (int) ($reponseMonstre['monster_strength']/2); //Le monstre n'a pas d'armure
-                                $degat = max(0, $attaque - $defense);
-                                $reponseMonstre['monster_pv'] -= $degat;
-                            } else {
-                                echo "Vous n'avez pas assez de mana !";
-                            }
+    let monster_name = <?php echo $reponseMonstre['monster_name'];?>;
+    let monster_image;
+    let monster_pv = <?php echo $reponseMonstre['monster_pv'];?>;
+    let monster_mana = <?php echo $reponseMonstre['monster_mana'];?>;
+    let monster_initiative = <?php echo $reponseMonstre['monster_initiative'];?>;
+    let monster_strength = <?php echo $reponseMonstre['monster_strength'];?>;
+    let monster_attack = <?php echo $reponseMonstre['monster_attack'];?>;
+    let monster_spell = <?php echo $reponseMonstre['monster_spell'];?>;
+   
+    let hero_name  = <?php echo $reponseHero['hero_name']; ?>;
+    let class_id  = <?php echo $reponseHero['class_id']; ?>;
+    let hero_pv  = <?php echo $reponseHero['hero_pv']; ?>;
+    let hero_mana  = <?php echo $reponseHero['hero_mana']; ?>;
+    let hero_strength  = <?php echo $reponseHero['hero_strength']; ?>;
+    let hero_initiative  = <?php echo $reponseHero['hero_initiative']; ?>;
+    let hero_armor_value = <?php echo  $reponseItem['armor_value']; ?>;
+    let hero_weapon_value  = <?php echo $reponseItem['weapon_value']; ?>;
+    let hero_shield_value  = <?php echo $reponseItem['shield_value']; ?>;
+    
+    const hero_max_pv  = <?php echo $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus']; ?>;
+    const hero_max_mana  = <?php echo $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus']; ?>;
+
+    function parserManaCost(spell) {
+            let pos = strpos(spell, '-');
+            return intval(substr( spell,pos + 1));
+    }
+
+    function tour_joueur(choice) {
+            switch(choice) { 
+                case "physical" :
+                    let attaque = Math.random(1,6) + hero_strength + hero_weapon_value;
+                    let defense = Math.random(1,6) + Math.round(monster_strength/2);
+                    let degat = Math.max(0, attaque - defense);
+                    monster_pv -= degat;
+                    break;
+                case "magical" :
+                    if (classe == 1) {
+                        let magical_mana_cost = parserManaCost(spell);
+                        if (hero_mana - magical_mana_cost >= 0) {
+                            hero_mana -= magical_mana_cost;
+                            let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
+                            let defense = Math.random(1,6) + (int) (monster_strength/2); //Le monstre n'a pas d'armure
+                            let degat = Math.max(0, attaque - defense);
+                            monster_pv -= degat;
                         } else {
-                            echo "Vous n'êtes pas un mage !";
+                            print("Vous n'avez pas assez de mana !");
                         }
-                        break;
-                    case "health_potion" :
-                        //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
-                        if ($reponseHero['hero_pv'] + 10 > $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus'] ) {
-                            $reponseHero['hero_pv'] = $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus'];
-                        } else {
-                            $reponseHero['hero_pv'] += 10;
-                        }
-                        break;
-                    case "mana_potion" :
-                        //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
-                        if ($reponseHero['hero_mana'] + 10 > $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus'] ) { 
-                            $reponseHero['hero_mana'] = $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus'];
-                        } else {
-                            $reponseHero['hero_mana'] += 10;
-                        }
-                        break;
-                }
-            
-                //Verification de la victoire du joueur
-
-                if ($reponseMonstre['monster_pv'] <= 0) {
-                    //A faire
-                    //$queryLink->execute(array(1,1,1));
-                    //$reponseLink = $queryLink->fetch();
-                }
-
-                // Tours du monstre
-
-                if ($magical_monster == true) {
-                    $magical_mana_cost = parserManaCost('Magie générique - 5');
-                    if ($reponseMonstre['monster_mana'] - $magical_mana_cost >= 0) {
-                        $reponseMonstre['monster_mana'] -= $magical_mana_cost;
-                        $attaque = rand(1,6) + rand(1,6) + $magical_mana_cost;
-                    } else { //Fait une attaque physique si il n'a pas assez de mana.
-                        $attaque = rand(1,6) +  $reponseMonstre['monster_strength'];
+                    } else {
+                        print("Vous n'êtes pas un mage !");
                     }
-                } else {
-                    $attaque = rand(1,6) +  $reponseMonstre['monster_strength']; 
-                }
-                $defense = rand(1,6) + (int) ($reponseHero['hero_strength']/2)  + $reponseItem['shield_value'] + $reponseItem['armor_value'];
-                $degat = max(0, $attaque - $defense);
-                $reponseHero['hero_pv'] -= $degat;
+                    break;
+                case "health_potion" :
+                    //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
+                    if (hero_pv + 10 > hero_max_pv ) {
+                        hero_pv = hero_max_pv;
+                    } else {
+                        hero_pv += 10;
+                    }
+                    break;
+                case "mana_potion" :
+                    //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
+                    if (hero_mana + 10 > hero_max_mana ) { 
+                        hero_mana = hero_max_mana;
+                    } else {
+                        hero_mana += 10;
+                    }
+                    break;
+            }
+    }
 
-                //Verification de la victoire du Monstre
-
-                if ($reponseHero['hero_pv'] <= 0) {
-                    //A faire
-                    //$queryLink->execute(array(1,1,1));
-                    //$reponseLink = $queryLink->fetch();
-                }
-            
+    function tour_monstre() {
+        if (monster_spell != null ) {
+            let magical_mana_cost = parserManaCost(spell);
+            if (monster_mana - magical_mana_cost >= 0) {
+                monster_mana -= magical_mana_cost;
+                let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
+            } else {
+                let attaque = Math.random(1,6) + monster_strength;
+            }
         } else {
-            echo "Choisissez une action";
+            let attaque = Math.random(1,6) + monster_strength;
         }
+            let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
+            let degat = Math.max(0, attaque - defense);
+            hero_pv -= degat;       
+    }
+
+    function first_turn_initiative() {
+        let init_hero = rand(1, 6) + hero_initiative;
+        let init_monstre = rand(1, 6) + monster_initiative;
+
+        if(init_hero < init_monstre || (init_hero = init_monstre && class_id != 2) ) {
+            tour_monstre();
+        }
+    }
+
+    function affichage_monstre() {
+        //mettre l'image
+        monster_nom.textContent = monster_name;
+        monster_stat.textContent = monster_pv + "PV | " + monster_mana + "Mana |" + monster_strength + "Force";
+    }
+
+    function affichage_hero() {
+        //mettre image
+        hero_nom.textContent = hero_name;
+        hero_stat.textContent = hero_pv + "/ " + hero_max_pv + "PV  | " + hero_mana+ " / " + hero_max_mana + "Mana";
+    }
     
-    
-?>
+    function combat(action){
+			tour_hero(action);
+			affichage_monstre();
+			affichage_hero();
+			sleep(2);
+			tour_monstre();
+			affichage_monstre();
+			affichage_hero();
+	}
+
+    affichage_monstre();
+	affichage_hero();
+    first_turn_initiative();
+</script>
 
 <?php
 require_once("views/footer.php");
