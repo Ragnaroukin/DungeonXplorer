@@ -2,10 +2,6 @@
 require_once("views/header.php");
 ?>
 
-<?php 
-require_once("views/header.php");
-?>
-
 <?php
         //Requete pour le Monstre
         $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_spell,monster_xp FROM Monster where monster_id = ?');
@@ -13,7 +9,7 @@ require_once("views/header.php");
         $reponseMonstre = $queryMonstre->fetch();
         
         //Requete pour le Hero
-        $queryHero = $bdd->prepare('SELECT hero_name ,class_id,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level ,hero_xp, hero_armor_item_id,hero_weapon_item_id,hero_shield_item_id FROM hero where hero_id = ?');
+        $queryHero = $bdd->prepare('SELECT hero_name ,class_id,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level, hero_spell_list ,hero_xp, hero_armor_item_id,hero_weapon_item_id,hero_shield_item_id FROM hero where hero_id = ?');
         $queryHero->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
         $reponseHero = $queryHero->fetch();
         
@@ -64,16 +60,16 @@ require_once("views/header.php");
     const hero_nom = document.getElementById("hero_nom");
     const hero_stat = document.getElementById("hero_stat");
 
-    let monster_name = <?php echo $reponseMonstre['monster_name'];?>;
+    let monster_name = <?php  echo json_encode($reponseMonstre['monster_name']);?>;
     let monster_image;
     let monster_pv = <?php echo $reponseMonstre['monster_pv'];?>;
     let monster_mana = <?php echo $reponseMonstre['monster_mana'];?>;
     let monster_initiative = <?php echo $reponseMonstre['monster_initiative'];?>;
     let monster_strength = <?php echo $reponseMonstre['monster_strength'];?>;
-    let monster_attack = <?php echo $reponseMonstre['monster_attack'];?>;
-    let monster_spell = <?php echo $reponseMonstre['monster_spell'];?>;
+    let monster_attack = <?php echo json_encode($reponseMonstre['monster_attack']);?>;
+    let monster_spell = null;
    
-    let hero_name  = <?php echo $reponseHero['hero_name']; ?>;
+    let hero_name  = <?php echo json_encode($reponseHero['hero_name']); ?>;
     let class_id  = <?php echo $reponseHero['class_id']; ?>;
     let hero_pv  = <?php echo $reponseHero['hero_pv']; ?>;
     let hero_mana  = <?php echo $reponseHero['hero_mana']; ?>;
@@ -82,6 +78,7 @@ require_once("views/header.php");
     let hero_armor_value = <?php echo  $reponseItem['armor_value']; ?>;
     let hero_weapon_value  = <?php echo $reponseItem['weapon_value']; ?>;
     let hero_shield_value  = <?php echo $reponseItem['shield_value']; ?>;
+    let hero_spell =  <?php echo json_encode($reponseHero['hero_spell_list']); ?>;
     
     const hero_max_pv  = <?php echo $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus']; ?>;
     const hero_max_mana  = <?php echo $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus']; ?>;
@@ -96,7 +93,7 @@ require_once("views/header.php");
                 case "physical" :
                     let attaque = Math.random(1,6) + hero_strength + hero_weapon_value;
                     let defense = Math.random(1,6) + Math.round(monster_strength/2);
-                    let degat = Math.max(0, attaque - defense);
+                    let degat = Math.round(Math.max(0, attaque - defense));
                     monster_pv -= degat;
                     break;
                 case "magical" :
@@ -106,7 +103,7 @@ require_once("views/header.php");
                             hero_mana -= magical_mana_cost;
                             let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
                             let defense = Math.random(1,6) + (int) (monster_strength/2); //Le monstre n'a pas d'armure
-                            let degat = Math.max(0, attaque - defense);
+                            let degat = Math.round(Math.max(0, attaque - defense));
                             monster_pv -= degat;
                         } else {
                             print("Vous n'avez pas assez de mana !");
@@ -135,25 +132,26 @@ require_once("views/header.php");
     }
 
     function tour_monstre() {
+        let attaque;
         if (monster_spell != null ) {
             let magical_mana_cost = parserManaCost(spell);
             if (monster_mana - magical_mana_cost >= 0) {
                 monster_mana -= magical_mana_cost;
-                let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
+                attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
             } else {
-                let attaque = Math.random(1,6) + monster_strength;
+                attaque = Math.random(1,6) + monster_strength;
             }
         } else {
-            let attaque = Math.random(1,6) + monster_strength;
+            attaque = Math.random(1,6) + monster_strength;
         }
             let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
-            let degat = Math.max(0, attaque - defense);
+            let degat = Math.round(Math.max(0, attaque - defense));
             hero_pv -= degat;       
     }
 
     function first_turn_initiative() {
-        let init_hero = rand(1, 6) + hero_initiative;
-        let init_monstre = rand(1, 6) + monster_initiative;
+        let init_hero = Math.random(1, 6) + hero_initiative;
+        let init_monstre = Math.random(1, 6) + monster_initiative;
 
         if(init_hero < init_monstre || (init_hero = init_monstre && class_id != 2) ) {
             tour_monstre();
@@ -163,13 +161,13 @@ require_once("views/header.php");
     function affichage_monstre() {
         //mettre l'image
         monster_nom.textContent = monster_name;
-        monster_stat.textContent = monster_pv + "PV | " + monster_mana + "Mana |" + monster_strength + "Force";
+        monster_stat.textContent = monster_pv + " PV | " + monster_mana + " Mana | " + monster_strength + " Force";
     }
 
     function affichage_hero() {
         //mettre image
         hero_nom.textContent = hero_name;
-        hero_stat.textContent = hero_pv + "/ " + hero_max_pv + "PV  | " + hero_mana+ " / " + hero_max_mana + "Mana";
+        hero_stat.textContent = hero_pv + "/" + hero_max_pv + " PV  | " + hero_mana+ " /" + hero_max_mana + " Mana";
     }
     
     function combat(action){
