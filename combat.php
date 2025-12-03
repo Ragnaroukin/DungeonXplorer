@@ -54,11 +54,17 @@ require_once("views/header.php");
     <input type="button" value="Boire une potion de mana" onClick="action_soin_mana()">
 </form>
 
+<p id="log_hero"></p> 
+<p id="log_monster"></p> 
+
 <script>
     const monster_nom = document.getElementById("monster_nom");
     const monster_stat = document.getElementById("monster_stat");
     const hero_nom = document.getElementById("hero_nom");
     const hero_stat = document.getElementById("hero_stat");
+
+    const log_hero = document.getElementById("log_hero");
+    const log_monster = document.getElementById("log_monster");
 
     let monster_name = <?php  echo json_encode($reponseMonstre['monster_name']);?>;
     let monster_image;
@@ -95,6 +101,7 @@ require_once("views/header.php");
                     let defense = Math.random(1,6) + Math.round(monster_strength/2);
                     let degat = Math.round(Math.max(0, attaque - defense));
                     monster_pv -= degat;
+                    log_hero.textContent = "Vous l'attaquez pour :" + degat + " !";
                     break;
                 case "magical" :
                     if (class_id == 1) {
@@ -105,11 +112,12 @@ require_once("views/header.php");
                             let defense = Math.random(1,6) + (monster_strength/2); //Le monstre n'a pas d'armure
                             let degat = Math.round(Math.max(0, attaque - defense));
                             monster_pv -= degat;
+                            log_hero.textContent = "Vous l'attaquez avec vote magie pour :" + degat + " !";
                         } else {
-                            //print("Vous n'avez pas assez de mana !");
+                            log_hero.textContent = "Vous n'avez pas assez de mana !";
                         }
                     } else {
-                        //print("Vous n'êtes pas un mage !");
+                        log_hero.textContent = "Vous n'êtes pas un mage !";
                     }
                     break;
                 case "health_potion" :
@@ -119,6 +127,7 @@ require_once("views/header.php");
                     } else {
                         hero_pv += 10;
                     }
+                    log_hero.textContent = "Vous vous soignez avec une potion de soin !";
                     break;
                 case "mana_potion" :
                     //Ne verifie pas si il y a des potions dans l'inventaire et leur valeur
@@ -127,6 +136,7 @@ require_once("views/header.php");
                     } else {
                         hero_mana += 10;
                     }
+                    log_hero.textContent = "Vous vous régénérez avec une potion de mana !";
                     break;
             }
     }
@@ -138,17 +148,26 @@ require_once("views/header.php");
             if (monster_mana - magical_mana_cost >= 0) {
                 monster_mana -= magical_mana_cost;
                 attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
+                let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
+                let degat = Math.round(Math.max(0, attaque - defense));
+                hero_pv -= degat;
+                log_monster.textContent = "Le monstre utilise sa magie et inflige : " + degat;
             } else {
                 attaque = Math.random(1,6) + monster_strength;
+                log_monster.textContent = "Le monstre utilise :" + monster_attack;
+                let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
+                let degat = Math.round(Math.max(0, attaque - defense));
+                hero_pv -= degat;
+                log_monster.textContent = "Le monstre utilise : " + monster_attack + " et inflige : " + degat;
             }
         } else {
             attaque = Math.random(1,6) + monster_strength;
-        }
+            log_monster.textContent = "Le monstre utilise :" + monster_attack;
             let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
             let degat = Math.round(Math.max(0, attaque - defense));
             hero_pv -= degat;
-        affichage_monstre();
-        affichage_hero();
+            log_monster.textContent = "Le monstre utilise : " + monster_attack + " et inflige : " + degat;
+        }
     }
 
     function first_turn_initiative() {
