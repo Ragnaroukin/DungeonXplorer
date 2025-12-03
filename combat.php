@@ -2,6 +2,7 @@
 require_once("views/header.php");
 ?>
 
+
 <?php
         //Requete pour le Monstre
         $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_spell,monster_xp FROM Monster where monster_id = ?');
@@ -73,7 +74,7 @@ require_once("views/header.php");
     let monster_initiative = <?php echo $reponseMonstre['monster_initiative'];?>;
     let monster_strength = <?php echo $reponseMonstre['monster_strength'];?>;
     let monster_attack = <?php echo json_encode($reponseMonstre['monster_attack']);?>;
-    let monster_spell = null;
+    let monster_spell = <?php echo json_encode($reponseMonstre['monster_spell']);?>;
    
     let hero_name  = <?php echo json_encode($reponseHero['hero_name']); ?>;
     let class_id  = <?php echo $reponseHero['class_id']; ?>;
@@ -101,7 +102,7 @@ require_once("views/header.php");
                     let defense = Math.random(1,6) + Math.round(monster_strength/2);
                     let degat = Math.round(Math.max(0, attaque - defense));
                     monster_pv -= degat;
-                    log_hero.textContent = "Vous l'attaquez pour :" + degat + " !";
+                    log_hero.textContent = "Vous l'attaquez pour : " + degat + " !";
                     break;
                 case "magical" :
                     if (class_id == 1) {
@@ -112,7 +113,7 @@ require_once("views/header.php");
                             let defense = Math.random(1,6) + (monster_strength/2); //Le monstre n'a pas d'armure
                             let degat = Math.round(Math.max(0, attaque - defense));
                             monster_pv -= degat;
-                            log_hero.textContent = "Vous l'attaquez avec vote magie pour :" + degat + " !";
+                            log_hero.textContent = "Vous l'attaquez avec votre magie pour : " + degat + " !";
                         } else {
                             log_hero.textContent = "Vous n'avez pas assez de mana !";
                         }
@@ -176,6 +177,8 @@ require_once("views/header.php");
 
         if(init_hero < init_monstre || (init_hero = init_monstre && class_id != 2) ) {
             tour_monstre();
+            affichage_monstre();
+	        affichage_hero();
         }
     }
 
