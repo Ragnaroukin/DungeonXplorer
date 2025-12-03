@@ -48,10 +48,10 @@ require_once("views/header.php");
 <p id="hero_stat">default</p> 
 
 <form> 
-    <input type="button" value="Attaque physique" onClick="combat(physical)">
-    <input type="button" value="Attaque Magique" onClick="combat(magical)">
-    <input type="button" value="Boire une potion de vie" onClick="combat(health_potion)">
-    <input type="button" value="Boire une potion de mana" onClick="combat(mana_potion)">
+    <input type="button" value="Attaque physique" onClick="action_physique()">
+    <input type="button" value="Attaque Magique" onClick="action_magique()">
+    <input type="button" value="Boire une potion de vie" onClick="action_soin_pv()">
+    <input type="button" value="Boire une potion de mana" onClick="action_soin_mana()">
 </form>
 
 <script>
@@ -84,11 +84,11 @@ require_once("views/header.php");
     const hero_max_mana  = <?php echo $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus']; ?>;
 
     function parserManaCost(spell) {
-            let pos = strpos(spell, '-');
-            return intval(substr( spell,pos + 1));
+        let pos = spell.split('-');
+        return Number(pos[1]);
     }
 
-    function tour_joueur(choice) {
+    function tour_hero(choice) {
             switch(choice) { 
                 case "physical" :
                     let attaque = Math.random(1,6) + hero_strength + hero_weapon_value;
@@ -97,19 +97,19 @@ require_once("views/header.php");
                     monster_pv -= degat;
                     break;
                 case "magical" :
-                    if (classe == 1) {
-                        let magical_mana_cost = parserManaCost(spell);
+                    if (class_id == 1) {
+                        let magical_mana_cost = parserManaCost(hero_spell);
                         if (hero_mana - magical_mana_cost >= 0) {
                             hero_mana -= magical_mana_cost;
                             let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
-                            let defense = Math.random(1,6) + (int) (monster_strength/2); //Le monstre n'a pas d'armure
+                            let defense = Math.random(1,6) + (monster_strength/2); //Le monstre n'a pas d'armure
                             let degat = Math.round(Math.max(0, attaque - defense));
                             monster_pv -= degat;
                         } else {
-                            print("Vous n'avez pas assez de mana !");
+                            //print("Vous n'avez pas assez de mana !");
                         }
                     } else {
-                        print("Vous n'êtes pas un mage !");
+                        //print("Vous n'êtes pas un mage !");
                     }
                     break;
                 case "health_potion" :
@@ -134,7 +134,7 @@ require_once("views/header.php");
     function tour_monstre() {
         let attaque;
         if (monster_spell != null ) {
-            let magical_mana_cost = parserManaCost(spell);
+            let magical_mana_cost = parserManaCost(monster_spell);
             if (monster_mana - magical_mana_cost >= 0) {
                 monster_mana -= magical_mana_cost;
                 attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
@@ -146,7 +146,9 @@ require_once("views/header.php");
         }
             let defense = Math.random(1,6) + Math.round(hero_strength/2) + hero_armor_value + hero_shield_value;
             let degat = Math.round(Math.max(0, attaque - defense));
-            hero_pv -= degat;       
+            hero_pv -= degat;
+        affichage_monstre();
+        affichage_hero();
     }
 
     function first_turn_initiative() {
@@ -170,15 +172,34 @@ require_once("views/header.php");
         hero_stat.textContent = hero_pv + "/" + hero_max_pv + " PV  | " + hero_mana+ " /" + hero_max_mana + " Mana";
     }
     
-    function combat(action){
-			tour_hero(action);
+    function combat(){
 			affichage_monstre();
 			affichage_hero();
-			sleep(2);
 			tour_monstre();
 			affichage_monstre();
 			affichage_hero();
 	}
+
+    function action_physique() {
+        tour_hero('physical');
+        combat();
+    }
+
+    function action_magique() {
+        tour_hero('magical');
+        combat();
+    }
+
+    function action_soin_pv() {
+        tour_hero('health_potion');
+        combat();
+    }
+
+    function action_soin_mana() {
+        tour_hero('mana_potion');
+        combat();
+    }
+
 
     affichage_monstre();
 	affichage_hero();
