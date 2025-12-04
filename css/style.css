@@ -38,6 +38,7 @@ p, span, a, li, button, label, input, blockquote {
 #lienHome h1 {
     align-self: center;
 }
+
 #page-top {
     background-color: var(--fond-principal);
     color: var(--texte-principal);
@@ -148,4 +149,10 @@ p, span, a, li, button, label, input, blockquote {
   margin-right: 0;
   margin-left: 0;
   max-width: none;
+}
+
+#popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

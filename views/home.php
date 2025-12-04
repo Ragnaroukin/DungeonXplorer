@@ -13,7 +13,6 @@ require_once("header.php");
         <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
-
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -25,7 +24,6 @@ require_once("header.php");
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                     <i class="fa-solid fa-book-bookmark"></i>
-
                         </span>
                         <h4 class="my-3">Aventure Immersive</h4>
                         <p class="text-muted">Plongez dans un récit interactif de dark fantasy et faites des choix qui influenceront votre progression dans l'univers du Val Perdu.</p>
@@ -152,7 +150,6 @@ require_once("header.php");
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
-                            <div class="timeline-heading">
                                 <h4>2022-2023</h4>
                                 <h4 class="subheading">Notre Humble Commencement</h4>
                             </div>
@@ -312,6 +309,7 @@ require_once("header.php");
                 </form>
             </div>
         </section>
+
 
 
 
