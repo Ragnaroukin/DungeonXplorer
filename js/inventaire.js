@@ -13,9 +13,18 @@ closePopupBtn.addEventListener('click', () => {
 });
 
 function loadInventoryItems() {
-    fetch("models/getInventaire")
+    
+    fetch("getInventaire", {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
     .then(items => {
-            inventoryGrid.innerHTML = '';
+            inventoryItems.innerHTML = '';
+
+            console.log(items);
 
             items.forEach(item => {
                 const itemElement = document.createElement('div');
@@ -24,10 +33,10 @@ function loadInventoryItems() {
                 itemElement.innerHTML = `
                     <img src="${item.item_image}" alt="${item.item_name}">
                     <strong>${item.item_name}</strong>
-                    <p>Quantité: ${item.quantity}</p>
+                    <p>Quantité: ${item.inventory_quantity}</p>
                 `;
 
-                inventoryGrid.appendChild(itemElement);
+                inventoryItems.appendChild(itemElement);
             });
         })
     .catch(err => {

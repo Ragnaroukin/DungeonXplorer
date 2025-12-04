@@ -13,6 +13,7 @@ $router->addRoute('', 'HomeController@index'); // Pour la racine
 $router->addRoute('login', 'CompteController@login');
 $router->addRoute('signup', 'CompteController@signup');
 $router->addRoute('inventaire', 'InventaireController@show');
+$router->addRoute('getInventaire', 'InventaireController@get');
 
 
 // Appel de la méthode route
