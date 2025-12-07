@@ -8,7 +8,7 @@
             <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
         </div>
         <div class="form-field col-lg-12">
-            <input type="submit" value="Se connecter">
+            <input class="submit-btn" type="submit" value="Se connecter">
         </div>
     </form>
 </section>
@@ -30,7 +30,6 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
     $joueur = $req->fetch(PDO::FETCH_ASSOC);
 
     if ($joueur && password_verify($mdp, $joueur["joueur_mdp"])) {
-        $_SESSION["id"] = $joueur["joueur_id"];
         $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
         header("Location: /DungeonXplorer/");
     } else if ($joueur) //On connait le joueur mais le mot de passe est incorrecte

@@ -1,7 +1,3 @@
-<?php
-require_once("header.php");
-?>
-
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
@@ -368,10 +364,3 @@ require_once("header.php");
         </form>
     </div>
 </section>
-
-
-
-
-<?php
-require_once("views/footer.php");
-?>

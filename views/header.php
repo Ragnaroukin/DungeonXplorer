@@ -29,7 +29,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
         <div class="container">
             <a href="/DungeonXplorer/" id="lienHome"><img id="logo" src="/DungeonXplorer/img/Logo.png" alt="..." />
-            <h1>DungeonXplorer</h1></a>
+                <h1>DungeonXplorer</h1>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -37,9 +38,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="login">Se connecter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="signup">S'inscrire</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/DungeonXplorer/views/dashboard.php">Administration</a></li>
+                    <?php
+                    if (isset($_SESSION["pseudo"])) {
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="admin">Administration</a></li>
+                        <li class="nav-item"><a class="nav-link" href=""><?php echo $_SESSION["pseudo"]; ?></a></li>
+                    <?php
+                    } else {
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="login">Se connecter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="signup">S'inscrire</a></li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

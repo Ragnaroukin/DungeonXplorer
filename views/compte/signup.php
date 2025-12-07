@@ -8,7 +8,7 @@
             <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
         </div>
         <div class="form-field col-lg-12">
-            <input type="submit" value="S'inscrire">
+            <input class="submit-btn" type="submit" value="S'inscrire">
         </div>
     </form>
 </section>
