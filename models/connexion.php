@@ -1,6 +1,6 @@
 <?php
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=DungeonXplorer","solal", "so_pic13");
+    $pdo = new PDO("mysql:host=localhost;dbname=DungeonXplorer","root", "");
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
