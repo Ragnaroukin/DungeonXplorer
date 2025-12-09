@@ -1,7 +1,7 @@
 <?php
-class HomeController {
+class ConnexionController {
     public function index() {
         $pdo = Database::getConnection();
-        require_once 'views/home.php';
+        return 'models/connexion.php';
     }
 }

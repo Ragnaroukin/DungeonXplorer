@@ -1,7 +1,7 @@
 <?php
-class HomeController {
+class DashboardController {
     public function index() {
         $pdo = Database::getConnection();
-        require_once 'views/home.php';
+        require_once 'views/dashboard.php';
     }
 }

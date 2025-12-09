@@ -1,87 +1,106 @@
 :root {
-    /*Couleur*/
-    --fond-principal : #1A1A1A;
-    --fond-secondaire : #2E2E2E;
-    --texte-principal : #E5E5E5;
-    --texte-secondaire : #BFBFBF;
-    --interactif : #C4975E;
-    --attention : #8B1E1E;
-    --succes : #4A7A66;
+  /*Couleur*/
+  --fond-principal: #1A1A1A;
+  --fond-secondaire: #2E2E2E;
+  --texte-principal: #E5E5E5;
+  --texte-secondaire: #BFBFBF;
+  --interactif: #C4975E;
+  --attention: #8B1E1E;
+  --succes: #4A7A66;
 
 
-    /*Police*/
-    --police-titre: 'Pirata One', cursive;
-    --police-texte: 'Roboto', sans-serif;
+  /*Police*/
+  --police-titre: 'Pirata One', cursive;
+  --police-texte: 'Roboto', sans-serif;
 }
 
 html {
-    background-color: var(--fond-principal);
-    color: var(--texte-principal);
-    font: var(--police-texte);
+  background-color: var(--fond-principal);
+  color: var(--texte-principal);
+  font: var(--police-texte);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: var(--police-titre) !important;
-    color: var(--texte-principal);
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--police-titre) !important;
+  color: var(--texte-principal);
 }
 
-p, span, a, li, button, label, input, blockquote {
-    font-family: var(--police-texte) !important;
+p,
+span,
+a,
+li,
+button,
+label,
+input,
+blockquote {
+  font-family: var(--police-texte) !important;
 }
 
 #lienHome {
-    color: var(--texte-principal);
-    display: flex;
-    align-items: flex-start;
+  color: var(--texte-principal);
+  display: flex;
+  align-items: flex-start;
 }
 
 #lienHome h1 {
-    align-self: center;
+  align-self: center;
 }
+
 #page-top {
-    background-color: var(--fond-principal);
-    color: var(--texte-principal);
+  background-color: var(--fond-principal);
+  color: var(--texte-principal);
 }
 
 #logo {
-    height: 6.5em;
+  height: 6.5em;
 }
 
 .masthead {
-    background : linear-gradient(
-        rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/accueil2.png') no-repeat center center;   
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/accueil2.png') no-repeat center center;
 }
 
 
-.btn-primary , .btn-xl {
-    background-color: var(--attention);
-    border-width: 0px ;
+.btn-primary,
+.btn-xl {
+  background-color: var(--attention);
+  border-width: 0px;
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--attention);
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity ease-in-out 0.25s;
-  }
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--attention);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity ease-in-out 0.25s;
+}
 
-  .back-attention{
-    background-color: var(--attention);
-  }
+.back-attention {
+  background-color: var(--attention);
+}
 
-  #submitButton{
-    background-color: var(--attention);
-  }
+#submitButton {
+  background-color: var(--attention);
+}
 
 #sidebarMenu {
-    background-color: var(--fond-secondaire) !important;
-    color: var(--texte-secondaire);
-    position: fixed;
+  background-color: var(--fond-secondaire) !important;
+  color: var(--texte-secondaire);
+  position: fixed;
 }
 
 .bi {
@@ -135,13 +154,13 @@ p, span, a, li, button, label, input, blockquote {
 }
 
 .scroll-container {
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scroll-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .container {
@@ -149,46 +168,177 @@ p, span, a, li, button, label, input, blockquote {
   margin-left: 0;
   max-width: none;
 }
-    /* Chapter */
+
+/*Fin NavBar*/
+
+
+/*
+ * Chapter 
+ */
 #chapterContent {
-    width: 100%;
-    min-height: calc(100vh - 120px);
+  width: 100%;
+  min-height: calc(100vh - 120px);
 }
 
 #chapImage {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    width: min(90vw, calc(100vh - 150px));
-    max-width: 700px;
-    margin: 0 auto;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: min(90vw, calc(100vh - 150px));
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 #chapImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
 }
 
 #story {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 98%;
-    height: 25%; /* recouvre 25% du bas de l'image */
-    background: rgba(0, 0, 0, 0.75);
-    color: var(--texte-principal);
-    padding: 0.75rem 1rem;
-    box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 98%;
+  height: 25%;
+  /* recouvre 25% du bas de l'image */
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--texte-principal);
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
-    overflow-y: auto; /* au cas où le texte est long */
-    font-size: 0.95rem;
+  overflow-y: auto;
+  /* au cas où le texte est long */
+  font-size: 0.95rem;
 }
+
+/*
+ * CSS Froms
+ */
+
+section {
+  background-color: var(--fond-secondaire);
+  padding: 3em;
+  border-radius: 3%;
+}
+
+.get-in-touch {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+
+}
+
+.get-in-touch .title {
+  text-indent: 1em;
+  text-decoration-line: underline;
+  text-decoration-color: var(--attention);
+  font-style: italic;
+}
+
+.get-in-touch .img-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 48px;
+}
+
+.contact-form .form-field {
+  position: relative;
+  margin: 32px 0;
+}
+
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #5543ca;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.contact-form .input-text:focus+.label,
+.contact-form .input-text.not-empty+.label {
+  -webkit-transform: translateY(-24px);
+  transform: translateY(-24px);
+}
+
+.contact-form label {
+  font-size: 1.4em;
+  margin-bottom: 0.2em;
+}
+
+.contact-form .submit-btn {
+  display: inline-block;
+  background-color: #000;
+  background-image: linear-gradient(125deg, var(--fond-secondaire), var(--attention));
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  width: 200px;
+  cursor: pointer;
+}
+
+#upload-box,
+#upload-box1,
+#upload-box2 {
+  width: 250px;
+  height: 250px;
+  border: 5px solid var(--fond-secondaire);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#upload-box:hover,
+#upload-box1:hover,
+#upload-box2:hover {
+  background: var(--fond-secondaire);
+}
+
+#preview,
+#preview1,
+#preview2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.long-text {
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.long-text textarea {
+  width: 100%;
+  resize: vertical;
+  /* l'utilisateur peut agrandir verticalement */
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-control select {
+  font-size: 1.3em;
+}
+
+/*Fin Forms*/
