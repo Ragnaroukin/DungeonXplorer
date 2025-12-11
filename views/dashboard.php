@@ -1,10 +1,3 @@
-<?php
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=DungeonXplorer", "root", "");
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-?>
 <div class="container-fluid">
     <div class="row">
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" id="sidebarMenu">
@@ -163,4 +156,3 @@ try {
         </main>
     </div>
 </div>
-<?php require_once "footer.php" ?>

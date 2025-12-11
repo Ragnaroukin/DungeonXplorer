@@ -14,8 +14,6 @@
 </section>
 
 <?php
-require_once "models/connexion.php";
-
 if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
     $pseudo = $_POST["pseudo"];
     $mdp = $_POST["mdp"];

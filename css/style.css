@@ -171,6 +171,104 @@ blockquote {
 
 /*Fin NavBar*/
 
+
+/*
+ * Chapter 
+ */
+#chapterContent {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+}
+
+#chapImage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: min(90vw, calc(100vh - 150px));
+  max-width: 700px;
+  margin: 0;
+}
+
+#chapImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+#story {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--texte-principal);
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+
+/*
+ * Choix
+ */
+.dialog-container {
+  height: 80vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.dialog-form {
+    display: inline;
+    width: 100%;
+}
+
+.dialog-form .dialog-box {
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    padding: 0;
+}
+
+.dialog-box {
+  width: 100%;
+  min-height: 8em;
+  max-width: 600px;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--fond-secondaire);
+  color: var(--texte-principal);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-box:hover {
+  background-color: var(--fond-principal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  color: yellow;
+}
+
+/* Fin chapitre
+
 /*
  * CSS Froms
  */
@@ -180,6 +278,7 @@ section {
   padding: 3em;
   border-radius: 3%;
 }
+
 .get-in-touch {
   max-width: 800px;
   margin: auto;
@@ -242,7 +341,9 @@ section {
   cursor: pointer;
 }
 
-#upload-box, #upload-box1, #upload-box2 {
+#upload-box,
+#upload-box1,
+#upload-box2 {
   width: 250px;
   height: 250px;
   border: 5px solid var(--fond-secondaire);
@@ -254,11 +355,15 @@ section {
   overflow: hidden;
 }
 
-#upload-box:hover, #upload-box1:hover, #upload-box2:hover {
+#upload-box:hover,
+#upload-box1:hover,
+#upload-box2:hover {
   background: var(--fond-secondaire);
 }
 
-#preview, #preview1, #preview2{
+#preview,
+#preview1,
+#preview2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -273,7 +378,6 @@ section {
 .long-text textarea {
   width: 100%;
   resize: vertical;
-  /* l'utilisateur peut agrandir verticalement */
   padding: 10px;
   font-family: inherit;
   font-size: 14px;
