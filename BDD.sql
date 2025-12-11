@@ -8,12 +8,8 @@ CREATE TABLE Class (
     class_base_mana INT NOT NULL,
     class_base_strength INT NOT NULL,
     class_base_initiative INT NOT NULL,
-<<<<<<< HEAD
-    class_max_items INT NOT NULL
-=======
     class_max_items INT NOT NULL,
     class_img VARCHAR(255)
->>>>>>> Chapitre
 );
 
 -- Création de la table Items (Objets disponibles dans le jeu)
@@ -56,16 +52,8 @@ CREATE TABLE Monster_Loot (
 DROP TABLE IF EXISTS Hero;
 CREATE TABLE Hero (
     hero_id INT AUTO_INCREMENT PRIMARY KEY,
-<<<<<<< HEAD
-    joueur_id INT,
-    hero_name VARCHAR(50) NOT NULL,
-    class_id INT, -- Relation avec Class
-    hero_image VARCHAR(255),
-    hero_biography TEXT,
-=======
     joueur_pseudo varchar(60),
     class_id INT, -- Relation avec Class
->>>>>>> Chapitre
     hero_pv INT NOT NULL,
     hero_mana INT NOT NULL,
     hero_strength INT NOT NULL,
@@ -76,13 +64,8 @@ CREATE TABLE Hero (
     hero_secondary_weapon_item_id INT,
     hero_shield_item_id INT,
     
-<<<<<<< HEAD
-    hero_spell_list TEXT,
-    hero_xp INT NOT NULL,
-=======
     hero_spell_list TEXT DEFAULT NULL,
     hero_xp INT NOT NULL DEFAULT 0,
->>>>>>> Chapitre
     hero_level INT DEFAULT 1
 );
 
@@ -105,11 +88,7 @@ CREATE TABLE Chapter (
     aventure_id INT,
     chapter_id INT,
     chapter_content TEXT NOT NULL,
-<<<<<<< HEAD
     chapter_image VARCHAR(255)
-=======
-    chapter_img VARCHAR(255)
->>>>>>> Chapitre
 );
 
 -- Table intermédiaire pour les trésors dans les chapitres (Chapter - Items)
