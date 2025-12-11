@@ -6,4 +6,9 @@
             <?php echo $chapter["chapter_content"]; ?>
         </div>
     </div>
+    <div class="dialog-container">
+        <?php foreach($links as $link) { ?>
+        <a href="#" class="dialog-box"><?php echo $link["link_description"]?></a>
+        <?php } ?>
+    </div>
 </div>

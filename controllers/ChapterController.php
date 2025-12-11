@@ -35,6 +35,13 @@ class ChapterController
 
         $chapter = $reqChapter->fetch();
 
+        $reqLink = $pdo ->prepare("SELECT * FROM Links where aventure_id = :aventure_id AND chapter_id = :chapter_id");
+        $reqLink->bindParam(":aventure_id", $_SESSION["aventure"], type: PDO::PARAM_STR);
+        $reqLink->bindParam(":chapter_id", $progress["chapter_id"], type: PDO::PARAM_STR);
+        $reqLink->execute();
+        
+        $links = $reqLink->fetchAll();
+
         require_once 'views/chapter.php';
     }
 }

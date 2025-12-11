@@ -123,7 +123,7 @@ CREATE TABLE Links (
     chapter_id INT,
     link_aventure_id INT,
     link_chapter_id INT,
-    description TEXT
+    link_description TEXT NOT NULL
 );
 
 -- Table intermédiaire pour le suivi de progression (Hero - Chapter)
@@ -157,7 +157,7 @@ ALTER TABLE Chapter ADD CONSTRAINT pk_Chapter PRIMARY KEY(aventure_id,chapter_id
 ALTER TABLE Hero_Progress ADD CONSTRAINT pk_Hero_Progress PRIMARY KEY(joueur_id,hero_id,aventure_id,chapter_id);
 ALTER TABLE Inventory ADD CONSTRAINT pk_Inventory PRIMARY KEY(hero_id,item_id);
 ALTER TABLE Encounter ADD CONSTRAINT pk_Encounter PRIMARY KEY(monster_id,aventure_id,chapter_id);
-ALTER TABLE Links ADD CONSTRAINT pk_Links PRIMARY KEY(aventure_id,chapter_id);
+ALTER TABLE Links ADD CONSTRAINT pk_Links PRIMARY KEY(aventure_id,chapter_id, link_aventure_id, link_chapter_id);
 ALTER TABLE Chapter_Treasure ADD CONSTRAINT pk_Chapter_Treasure PRIMARY KEY(item_id,aventure_id,chapter_id);
 ALTER TABLE Level ADD CONSTRAINT pk_Level PRIMARY KEY(level_number,class_id);
 ALTER TABLE Monster_Loot ADD CONSTRAINT pk_Monster_Loot PRIMARY KEY(item_id,monster_id);

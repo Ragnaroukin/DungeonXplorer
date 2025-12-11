@@ -185,7 +185,7 @@ blockquote {
   aspect-ratio: 1 / 1;
   width: min(90vw, calc(100vh - 150px));
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 #chapImage img {
@@ -200,9 +200,8 @@ blockquote {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 98%;
-  height: 25%;
-  /* recouvre 25% du bas de l'image */
+  width: 100%;
+  height: 30%;
   background: rgba(0, 0, 0, 0.75);
   color: var(--texte-principal);
   padding: 0.75rem 1rem;
@@ -216,9 +215,44 @@ blockquote {
   border-bottom-right-radius: 10px;
 
   overflow-y: auto;
-  /* au cas où le texte est long */
   font-size: 0.95rem;
 }
+
+/*
+ * Choix
+ */
+.dialog-container {
+  height: 80vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.dialog-box {
+  width: 100%;
+  min-height: 8em;
+  max-width: 600px;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--fond-secondaire);
+  color: var(--texte-principal);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-box:hover {
+  background-color: var(--fond-principal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Fin chapitre
 
 /*
  * CSS Froms
@@ -329,7 +363,6 @@ section {
 .long-text textarea {
   width: 100%;
   resize: vertical;
-  /* l'utilisateur peut agrandir verticalement */
   padding: 10px;
   font-family: inherit;
   font-size: 14px;
