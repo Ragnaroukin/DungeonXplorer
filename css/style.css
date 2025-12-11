@@ -231,6 +231,20 @@ blockquote {
   padding: 2rem;
 }
 
+.dialog-form {
+    display: inline;
+    width: 100%;
+}
+
+.dialog-form .dialog-box {
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    padding: 0;
+}
+
 .dialog-box {
   width: 100%;
   min-height: 8em;
@@ -250,6 +264,7 @@ blockquote {
   background-color: var(--fond-principal);
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  color: yellow;
 }
 
 /* Fin chapitre

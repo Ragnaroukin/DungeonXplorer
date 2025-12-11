@@ -7,8 +7,14 @@
         </div>
     </div>
     <div class="dialog-container">
-        <?php foreach($links as $link) { ?>
-        <a href="#" class="dialog-box"><?php echo $link["link_description"]?></a>
+        <?php foreach ($links as $link) { ?>
+            <form action="avancement" method="POST" class="dialog-form">
+                <input type="hidden" name="choice" value="<?php echo $link['link_chapter_id']; ?>">
+                <button type="submit" class="dialog-box">
+                    <?php echo $link["link_description"]; ?>
+                </button>
+            </form>
         <?php } ?>
+
     </div>
 </div>

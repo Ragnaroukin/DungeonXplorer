@@ -35,13 +35,31 @@ class ChapterController
 
         $chapter = $reqChapter->fetch();
 
-        $reqLink = $pdo ->prepare("SELECT * FROM Links where aventure_id = :aventure_id AND chapter_id = :chapter_id");
+        $reqLink = $pdo->prepare("SELECT * FROM Links where aventure_id = :aventure_id AND chapter_id = :chapter_id");
         $reqLink->bindParam(":aventure_id", $_SESSION["aventure"], type: PDO::PARAM_STR);
         $reqLink->bindParam(":chapter_id", $progress["chapter_id"], type: PDO::PARAM_STR);
         $reqLink->execute();
-        
+
         $links = $reqLink->fetchAll();
 
         require_once 'views/chapter.php';
+    }
+
+    public function avancement()
+    {
+        $pdo = Database::getConnection();
+
+
+        $choice = intval($_POST["choice"]);
+
+        $req = $pdo->prepare("UPDATE `Hero_Progress` SET `chapter_id` = :new_chapter_id WHERE `Hero_Progress`.`aventure_id` = :aventure_id AND `Hero_Progress`.`joueur_pseudo` = :pseudo AND `Hero_Progress`.`hero_id` = :hero_id");
+        $req->bindParam(":pseudo", $_SESSION["pseudo"], type: PDO::PARAM_STR);
+        $req->bindParam(":hero_id", $_SESSION["hero"], type: PDO::PARAM_STR);
+        $req->bindParam(":aventure_id", $_SESSION["aventure"], type: PDO::PARAM_STR);
+        $req->bindParam(":new_chapter_id", $_POST["choice"], type: PDO::PARAM_STR);
+
+        $req->execute();
+
+        header("Location: chapter");
     }
 }
