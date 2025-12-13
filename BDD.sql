@@ -51,7 +51,7 @@ CREATE TABLE Monster_Loot (
 -- Les équipements (armor, primary_weapon, etc.) font référence à des Items.
 DROP TABLE IF EXISTS Hero;
 CREATE TABLE Hero (
-    hero_id INT AUTO_INCREMENT PRIMARY KEY,
+    hero_id INT AUTO_INCREMENT,
     joueur_pseudo varchar(60),
     class_id INT, -- Relation avec Class
     hero_pv INT NOT NULL,
@@ -141,6 +141,7 @@ CREATE TABLE Hero_Progress (
 DROP TABLE IF EXISTS Aventure;
 CREATE TABLE Aventure (
     aventure_id INT AUTO_INCREMENT PRIMARY KEY,
+    aveture_name varchar(30),
     aventure_content TEXT NOT NULL,
     aventure_image VARCHAR(255)
 );
@@ -154,6 +155,7 @@ CREATE TABLE Joueur (
 );
 
 ALTER TABLE Chapter ADD CONSTRAINT pk_Chapter PRIMARY KEY(aventure_id,chapter_id);
+ALTER TABLE Hero ADD CONSTRAINT pk_Hero PRIMARY KEY(hero_id, joueur_pseudo  );
 ALTER TABLE Hero_Progress ADD CONSTRAINT pk_Hero_Progress PRIMARY KEY(joueur_id,hero_id,aventure_id,chapter_id);
 ALTER TABLE Inventory ADD CONSTRAINT pk_Inventory PRIMARY KEY(hero_id,item_id);
 ALTER TABLE Encounter ADD CONSTRAINT pk_Encounter PRIMARY KEY(monster_id,aventure_id,chapter_id);

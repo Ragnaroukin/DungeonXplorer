@@ -75,8 +75,8 @@
                     foreach ($chapters as $chapter) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap">Chapitre <?php echo $chapter["chapter_id"] ?></h3>
-                            <img src="<?php echo $chapter["chapter_image"] ?>" alt="img">
+                            <h3 class="text-nowrap">Chapitre <?=$chapter["chapter_id"] ?></h3>
+                            <img src="<?=$chapter["chapter_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -99,8 +99,8 @@
                     foreach ($monsters as $monster) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $monster["monster_name"] ?></h3>
-                            <img src="<?php echo $monster["monster_image"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$monster["monster_name"] ?></h3>
+                            <img src="<?=$monster["monster_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -123,8 +123,8 @@
                     foreach ($items as $item) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $item["item_name"] ?></h3>
-                            <img src="<?php echo $item["item_image"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$item["item_name"] ?></h3>
+                            <img src="<?=$item["item_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -147,8 +147,8 @@
                     foreach ($classes as $class) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $class["class_name"] ?></h3>
-                            <img src="<?php echo $class["class_img"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$class["class_name"] ?></h3>
+                            <img src="<?=$class["class_img"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
