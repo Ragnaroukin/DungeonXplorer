@@ -19,7 +19,6 @@ class CreateController
         $stmt->bindParam(":cid", $_POST['class_id']);
         $stmt->execute();
         $row = $stmt->fetch();
-        var_dump($row);
 
         $stmt = $pdo->prepare('SELECT * FROM Aventure');
         $stmt->execute();

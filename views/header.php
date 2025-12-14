@@ -43,7 +43,7 @@
                         ?>
                         <li class="nav-item"><a class="nav-link" href=<?= url("create/class") ?>>Nouveau Héros</a></li>
                         <li class="nav-item"><a class="nav-link" href=<?= url("admin") ?>>Administration</a></li>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("") ?>><?= $_SESSION["pseudo"] ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href=<?= url("profile") ?>><?= $_SESSION["pseudo"] ?></a></li>
                     <?php
                     } else {
                         ?>

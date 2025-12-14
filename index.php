@@ -30,6 +30,7 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
+$router->addRoute('profile', 'ProfileController@show');
 $router->addRoute('chapter', 'ChapterController@index'); // Pour les chapitres
 $router->addRoute('avancement', 'ChapterController@avancement'); // Pour avancer dans l'histoire
 $router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
