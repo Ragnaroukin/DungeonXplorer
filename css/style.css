@@ -4,7 +4,7 @@
   --fond-secondaire: #2E2E2E;
   --texte-principal: #E5E5E5;
   --texte-secondaire: #BFBFBF;
-  --interactif: #C4975E;
+  --interactif: #cba439;
   --attention: #8B1E1E;
   --succes: #4A7A66;
 
@@ -32,7 +32,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--police-titre) !important;
+  font-family: var(--police-titre);
   color: var(--texte-principal);
 }
 
@@ -44,7 +44,7 @@ button,
 label,
 input,
 blockquote {
-  font-family: var(--police-texte) !important;
+  font-family: var(--police-texte);
 }
 
 #lienHome {
@@ -98,7 +98,7 @@ blockquote {
 }
 
 #sidebarMenu {
-  background-color: var(--fond-secondaire) !important;
+  background-color: var(--fond-secondaire);
   color: var(--texte-secondaire);
   position: fixed;
 }
@@ -141,6 +141,8 @@ blockquote {
   display: flex;
   align-items: center;
 }
+
+/*Fin NavBar*/
 
 .card {
   inherits: false;
@@ -191,7 +193,7 @@ blockquote {
 
 .profile-image-box {
   margin: 20px 0;
-  border: 5px solid var(--succes);
+  border: 5px solid var(--attention);
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
@@ -229,7 +231,7 @@ blockquote {
   min-width: 120px;
 }
 
-/*Fin NavBar*/
+/*Fin Profil*/
 
 
 /*
@@ -449,7 +451,7 @@ section {
 
 .long-text {
   width: 100%;
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .long-text textarea {
@@ -467,3 +469,107 @@ section {
 }
 
 /*Fin Forms*/
+
+/*
+ * Gestion de la partie
+ */
+#game-select {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  align-items: center;
+  text-align: center;
+}
+
+.game-choice {
+  flex: 1;
+}
+
+#game-select img {
+  margin: 20px 0;
+  border: 3px solid var(--attention);
+  box-shadow: 0px 0px 150px var(--attention);
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+#game-select a {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--interactif);
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: var(--fond-secondaire);
+  font-size: 2.3em;
+  text-align: center;
+  text-decoration: none;
+  color: var(--fond-principal);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  margin: 20px auto;
+}
+
+#game-select a:hover {
+  background-color: var(--attention);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#game-select a:active {
+  transform: scale(0.97);
+}
+
+/*
+ * Choix du héros
+ */
+.hero-chooser {
+  max-width: 90%;
+  margin: auto;
+  gap: 2em;
+}
+
+.choose-card {
+  flex: 0 0 auto;
+  width: max-content;
+  padding: 1rem;
+  background-color: var(--fond-secondaire);
+  text-align: center;
+  border-radius: 30px;
+}
+
+.choose-header {
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  h4 {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  border-bottom: 10px double var(--attention);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.choose-img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+}
+
+.choose-btn {
+  margin-top: 20px;
+  background-color: var(--interactif);
+  font-size: 2.3em;
+  border-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5px 35px;
+}
+
+.titre {
+  font-size: 4em;
+}

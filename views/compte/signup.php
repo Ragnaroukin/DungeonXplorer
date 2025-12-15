@@ -5,7 +5,7 @@
             <label>Nom d'utilisateur : <input type="text" name="pseudo" required></label>
         </div>
         <div class="form-field col-lg-12">
-            <label>Mot de passe : <input type="password" minlength="8" name="mdp" required></label>
+            <label>Mot de passe : <input type="password" minlength="4" name="mdp" required></label>
         </div>
         <div class="form-field col-lg-12">
             <input class="submit-btn" type="submit" value="S'inscrire">
