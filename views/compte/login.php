@@ -29,6 +29,7 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
 
     if ($joueur && password_verify($mdp, $joueur["joueur_mdp"])) {
         $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
+        $_SESSION["admin"] = $joueur["joueur_admin"];
         header("Location: /DungeonXplorer/");
     } else if ($joueur) //On connait le joueur mais le mot de passe est incorrecte
         echo "<script>alert('Mot de passe incorrect !')</script>";
