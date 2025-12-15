@@ -1,0 +1,71 @@
+<?php
+class CreateController
+{
+    public function classChoice()
+    {
+        $pdo = Database::getConnection();
+
+        $class = $pdo->prepare("SELECT * FROM Class");
+        $class->execute();
+
+        require_once __DIR__.'/../views/characterCreation/creaPerso.php';
+    }
+
+    public function heroDetail()
+    {
+        $pdo = Database::getConnection();
+
+        $stmt = $pdo->prepare('SELECT class_img FROM Class WHERE class_id = :cid');
+        $stmt->bindParam(":cid", $_POST['class_id']);
+        $stmt->execute();
+        $row = $stmt->fetch();
+
+        $stmt = $pdo->prepare('SELECT * FROM Aventure');
+        $stmt->execute();
+        $aventures = $stmt->fetchAll();
+
+        $_SESSION['class_id'] = $_POST['class_id'];
+        $_SESSION['class_img'] = $row["class_img"];
+
+        require_once __DIR__.'/../views/characterCreation/createHero.php';
+    }
+
+    public function create() {
+        $pdo = Database::getConnection();
+
+        $name = trim($_POST['name'] ?? '');
+        $bio = trim($_POST['bio']);
+
+        $classId = $_SESSION["class_id"];
+        $user = $_SESSION["pseudo"];
+        
+        $stmt = $pdo->prepare('SELECT class_base_pv AS pv, class_base_mana AS mana, class_base_strength AS strength, class_base_initiative AS initiative FROM Class WHERE class_id = :cid');
+        $stmt->bindParam(":cid", $classId);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        $pv = (int) ($row['pv']);
+        $mana = (int) ($row['mana']);
+        $strength = (int) ($row['strength']);
+        $initiative = (int) ($row['initiative']);
+
+        $sql = 'INSERT INTO Hero (joueur_pseudo, hero_name, class_id, hero_biography, hero_pv, hero_mana, hero_strength, hero_initiative)
+            VALUES (:joueur_pseudo, :hero_name, :class_id, :hero_bio, :pv, :mana, :strength, :initiative)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':joueur_pseudo', $user);
+        $stmt->bindParam(':hero_name', $name);
+        $stmt->bindParam(':class_id', $classId);
+        $stmt->bindParam(':hero_bio', $bio);
+        $stmt->bindParam(':pv', $pv);
+        $stmt->bindParam(':mana', $mana);
+        $stmt->bindParam(':strength', $strength);
+        $stmt->bindParam(':initiative', $initiative);
+        $stmt->execute();
+
+        unset($_SESSION["class_id"]);
+        unset($_SESSION["class_img"]);
+        $_SESSION["hero"] = $pdo->lastInsertId();
+        $_SESSION["aventure"] = $_POST["aventure"];
+
+        header("Location: ../chapter");
+    }
+}
