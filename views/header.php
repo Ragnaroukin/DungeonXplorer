@@ -48,8 +48,8 @@
                     <?php
                     } else {
                         ?>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("login") ?>>Se connecter</a></li>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("signup") ?>>S'inscrire</a></li>
+                        <li class="nav-item"><a class="nav-link" href=<?= url("connexion") ?>>Se connecter</a></li>
+                        <li class="nav-item"><a class="nav-link" href=<?= url("inscription") ?>>S'inscrire</a></li>
                         <?php
                     }
                     ?>
