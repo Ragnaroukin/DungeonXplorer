@@ -8,9 +8,9 @@ class Inventaire
         $hero = $_SESSION["hero"];
         $req = $pdo->prepare("SELECT item_name, item_image, inventory_quantity FROM Inventory 
                                     JOIN Items USING(item_id)
-                                    JOIN Hero USING(hero_id)
-                                    WHERE Hero.joueur_pseudo = :pseudo
-                                    AND Hero.hero_id = :hero");
+                                    JOIN Hero USING(joueur_pseudo, hero_id)
+                                    WHERE joueur_pseudo = :pseudo
+                                    AND hero_id = :hero");
         $req->bindParam(":pseudo", $pseudo, PDO::PARAM_STR);
         $req->bindParam(":hero", $hero, PDO::PARAM_STR);
         $req->execute();
