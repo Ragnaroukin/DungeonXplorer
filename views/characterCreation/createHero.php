@@ -28,3 +28,6 @@
         </div>
     </form>
 </section>
+<div class="d-flex justify-content-center mt-4">
+    <button class="btn btn-danger align-middle btn-lg text-black fw-bold" type="button" onclick="history.back()">Retour</button>
+</div>

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" id="sidebarMenu">
-            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" aria-labelledby="sidebarMenuLabel">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0" id="sidebarMenu">
+            <div class="offcanvas-md offcanvas-end" tabindex="-1" aria-labelledby="sidebarMenuLabel">
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto" id="div-dashboard">
                     <h2 id="titre-dashboard">
                         <i class="fa-solid fa-dungeon"></i>
