@@ -8,7 +8,7 @@ class ChapterController
                 $req = $pdo->prepare("SELECT chapter_image, chapter_content, link_chapter_id,link_description 
                                                 FROM Hero_Progress 
                                                 JOIN Chapter USING (aventure_id, chapter_id) 
-                                                JOIN Links USING (aventure_id, chapter_id)
+                                                LEFT JOIN Links USING (aventure_id, chapter_id)
                                         WHERE joueur_pseudo = :pseudo 
                                         and hero_id = :hero_id
                                         and aventure_id = :aventure_id");

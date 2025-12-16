@@ -113,6 +113,7 @@ CREATE TABLE Encounter (
 -- Table intermédiaire pour l'inventaire des héros (Hero - Items)
 DROP TABLE IF EXISTS Inventory;
 CREATE TABLE Inventory (
+    joueur_pseudo varchar(60),
     hero_id INT,
     item_id INT,
     inventory_quantity INT NOT NULL DEFAULT 1
@@ -183,7 +184,7 @@ ALTER TABLE Chapter_Treasure ADD CONSTRAINT fk1_Chapter_Treasure FOREIGN KEY (av
 ALTER TABLE Chapter_Treasure ADD CONSTRAINT fk2_Chapter_Treasure FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Links ADD CONSTRAINT fk1_Links FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Links ADD CONSTRAINT fk2_Links FOREIGN KEY (link_aventure_id,link_chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
-ALTER TABLE Inventory ADD CONSTRAINT fk1_Inventory FOREIGN KEY (hero_id) REFERENCES Hero(hero_id);
+ALTER TABLE Inventory ADD CONSTRAINT fk1_Inventory FOREIGN KEY (joueur_pseudo, hero_id) REFERENCES Hero(joueur_pseudo, hero_id);
 ALTER TABLE Inventory ADD CONSTRAINT fk2_Inventory FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk1_Encounter FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk2_Encounter FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);

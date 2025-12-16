@@ -1,3 +1,5 @@
+<?php require_once "inventaire.php";?>
+
 <div id="chapterContent" class="d-flex justify-content-center align-items-center">
     <div id="chapImage">
         <img src="<?= url($data[0]["chapter_image"]) ?>" alt="Château">

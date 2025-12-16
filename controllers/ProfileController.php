@@ -75,7 +75,7 @@ class ProfileController
 
     public function modifying()
     {
-        if (isset($_POST["image"])) {
+        if ($_POST["image"] !== "") {
             $pdo = Database::getConnection();
 
             // Logique pour afficher le profil de l'utilisateur
