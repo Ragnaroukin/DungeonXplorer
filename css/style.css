@@ -1,87 +1,106 @@
 :root {
-    /*Couleur*/
-    --fond-principal : #1A1A1A;
-    --fond-secondaire : #2E2E2E;
-    --texte-principal : #E5E5E5;
-    --texte-secondaire : #BFBFBF;
-    --interactif : #C4975E;
-    --attention : #8B1E1E;
-    --succes : #4A7A66;
+  /*Couleur*/
+  --fond-principal: #1A1A1A;
+  --fond-secondaire: #2E2E2E;
+  --texte-principal: #E5E5E5;
+  --texte-secondaire: #BFBFBF;
+  --interactif: #cba439;
+  --attention: #8B1E1E;
+  --succes: #4A7A66;
 
 
-    /*Police*/
-    --police-titre: 'Pirata One', cursive;
-    --police-texte: 'Roboto', sans-serif;
+  /*Police*/
+  --police-titre: 'Pirata One', cursive;
+  --police-texte: 'Roboto', sans-serif;
 }
 
 html {
-    background-color: var(--fond-principal);
-    color: var(--texte-principal);
-    font: var(--police-texte);
+  background-color: var(--fond-principal);
+  color: var(--texte-principal);
+  font: var(--police-texte);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: var(--police-titre) !important;
-    color: var(--texte-principal);
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--police-titre);
+  color: var(--texte-principal);
 }
 
-p, span, a, li, button, label, input, blockquote {
-    font-family: var(--police-texte) !important;
+p,
+span,
+a,
+li,
+button,
+label,
+input,
+blockquote {
+  font-family: var(--police-texte);
 }
 
 #lienHome {
-    color: var(--texte-principal);
-    display: flex;
-    align-items: flex-start;
+  color: var(--texte-principal);
+  display: flex;
+  align-items: flex-start;
 }
 
 #lienHome h1 {
-    align-self: center;
+  align-self: center;
 }
+
 #page-top {
-    background-color: var(--fond-principal);
-    color: var(--texte-principal);
+  background-color: var(--fond-principal);
+  color: var(--texte-principal);
 }
 
 #logo {
-    height: 6.5em;
+  height: 6.5em;
 }
 
 .masthead {
-    background : linear-gradient(
-        rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/accueil2.png') no-repeat center center;   
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/accueil2.png') no-repeat center center;
 }
 
 
-.btn-primary , .btn-xl {
-    background-color: var(--attention);
-    border-width: 0px ;
+.btn-primary,
+.btn-xl {
+  background-color: var(--attention);
+  border-width: 0px;
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--attention);
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity ease-in-out 0.25s;
-  }
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--attention);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity ease-in-out 0.25s;
+}
 
-  .back-attention{
-    background-color: var(--attention);
-  }
+.back-attention {
+  background-color: var(--attention);
+}
 
-  #submitButton{
-    background-color: var(--attention);
-  }
+#submitButton {
+  background-color: var(--attention);
+}
 
 #sidebarMenu {
-    background-color: var(--fond-secondaire) !important;
-    color: var(--texte-secondaire);
-    position: fixed;
+  background-color: var(--fond-secondaire);
+  color: var(--texte-secondaire);
+  position: fixed;
 }
 
 .bi {
@@ -123,6 +142,8 @@ p, span, a, li, button, label, input, blockquote {
   align-items: center;
 }
 
+/*Fin NavBar*/
+
 .card {
   inherits: false;
   background-color: var(--fond-secondaire);
@@ -135,17 +156,545 @@ p, span, a, li, button, label, input, blockquote {
 }
 
 .scroll-container {
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scroll-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .container {
   margin-right: 0;
   margin-left: 0;
   max-width: none;
+}
+
+/*
+ *Profil
+ */
+
+.profile-container {
+  margin: auto;
+  background-color: var(--fond-secondaire);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  padding: 30px;
+  text-align: center;
+
+  .btn {
+    color: black;
+  }
+
+  .btn-warning {
+    background-color: var(--interactif);
+  }
+
+  .btn-danger {
+    background-color: var(--attention);
+  }
+
+  .btn-success {
+    background-color: var(--succes);
+  }
+}
+
+#disconnect-btn {
+  background-color: #b42727;
+  color: white;
+  position: absolute;
+  top: 6.5em;
+  right: 2em;
+}
+
+.profile-header h1 {
+  font-size: 5em;
+  color: var(--texte-principal);
+  margin-bottom: 5px;
+}
+
+.profile-image-box {
+  margin: 20px 0;
+  border: 5px solid var(--attention);
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 250px;
+  height: 250px;
+}
+
+.profile-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details {
+  background-color: var(--fond-principal);
+  text-align: left;
+  margin-top: 30px;
+  padding: 30px;
+  box-shadow: 10px 5px 5px var(--attention);
+  font-family: var(--police-texte);
+  text-align: center;
+  font-size: 1.8em;
+  text-shadow: 10px 5px 3px #2f2f2f;
+}
+
+.profile-details p {
+  color: var(--texte-secondaire);
+}
+
+.profile-details p span {
+  font-style: normal;
+  font-weight: bold;
+  color: var(--texte-principal);
+  display: inline-block;
+  min-width: 120px;
+}
+
+
+/*Fin NavBar*/
+
+.profile-image-box #preview {
+  display: block;
+}
+
+/*Fin Profil*/
+
+/*
+ * Chapitre
+ */
+#chapterContent {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  z-index: 1;
+}
+
+#chapImage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: min(90vw, calc(100vh - 150px));
+  max-width: 700px;
+  margin: 0;
+  z-index: 1;
+}
+
+#chapImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+#story {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--texte-principal);
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+
+/*
+ * Choix
+ */
+.dialog-container {
+  height: 80vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.dialog-form {
+  display: inline;
+  width: 100%;
+}
+
+.dialog-form .dialog-box {
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  padding: 0;
+}
+
+.dialog-box {
+  width: 100%;
+  min-height: 8em;
+  max-width: 600px;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--fond-secondaire);
+  color: var(--texte-principal);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-box:hover {
+  background-color: var(--fond-principal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  color: yellow;
+}
+
+/* Fin chapitre
+
+/*
+ * CSS Froms
+ */
+
+section {
+  background-color: var(--fond-secondaire);
+  padding: 3em;
+  border-radius: 3%;
+}
+
+.get-in-touch {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+
+}
+
+.get-in-touch .title {
+  text-indent: 1em;
+  text-decoration-line: underline;
+  text-decoration-color: var(--attention);
+  font-style: italic;
+}
+
+.get-in-touch .img-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.contact-form .form-field {
+  position: relative;
+  margin: 32px 0;
+}
+
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #5543ca;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.contact-form .input-text:focus+.label,
+.contact-form .input-text.not-empty+.label {
+  -webkit-transform: translateY(-24px);
+  transform: translateY(-24px);
+}
+
+.contact-form label {
+  font-size: 1.4em;
+  margin-bottom: 0.2em;
+}
+
+.contact-form .submit-btn {
+  display: inline-block;
+  background-color: #000;
+  background-image: linear-gradient(125deg, var(--fond-secondaire), var(--attention));
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  min-width: 200px;
+ cursor: pointer;
+}
+
+#upload-box,
+#upload-box1,
+#upload-box2 {
+  width: 250px;
+  height: 250px;
+  border: 5px solid var(--fond-secondaire);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.image-box {
+  width: 250px;
+  height: 250px;
+  border: 5px solid var(--fond-secondaire);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#upload-box:hover,
+#upload-box1:hover,
+#upload-box2:hover {
+  background: var(--fond-secondaire);
+}
+
+#preview,
+#preview1,
+#preview2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.long-text {
+  width: 100%;
+  margin-top: 0;
+}
+
+.long-text textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-control select {
+  font-size: 1.3em;
+}
+
+/*Fin Forms*/
+
+/*Inventaire*/
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10000;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.inventory-item {
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.inventory-item:hover {
+  transform: scale(1.1);
+  background-color: #555;
+}
+
+.inventory-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff5733;
+}
+
+/*Fin Inventaire*/
+
+/*
+ * Gestion de la partie
+ */
+#game-select {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  align-items: center;
+  text-align: center;
+}
+
+.game-choice {
+  flex: 1;
+}
+
+#game-select img {
+  margin: 20px 0;
+  border: 3px solid var(--attention);
+  box-shadow: 0px 0px 150px var(--attention);
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+#game-select a {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--interactif);
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: var(--fond-secondaire);
+  font-size: 2.3em;
+  text-align: center;
+  text-decoration: none;
+  color: var(--fond-principal);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  margin: 20px auto;
+}
+
+#game-select a:hover {
+  background-color: var(--attention);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#game-select a:active {
+  transform: scale(0.97);
+}
+
+/*
+ * Choix du héros
+ */
+.hero-chooser {
+  max-width: 90%;
+  margin: auto;
+  gap: 2em;
+}
+
+.choose-card {
+  flex: 0 0 auto;
+  width: max-content;
+  padding: 1rem;
+  background-color: var(--fond-secondaire);
+  text-align: center;
+  border-radius: 30px;
+}
+
+.choose-header {
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  h4 {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  border-bottom: 10px double var(--attention);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.choose-img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+}
+
+.choose-btn {
+  margin-top: 20px;
+  background-color: var(--interactif);
+  font-size: 2.3em;
+  border-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5px 35px;
+}
+
+.titre {
+  font-size: 4em;
 }

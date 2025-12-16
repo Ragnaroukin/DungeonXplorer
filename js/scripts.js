@@ -52,3 +52,19 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+const inventoryPopup = document.getElementById('inventoryPopup');
+
+if (inventoryPopup) {
+    const openInventoryBtn = document.getElementById('openInventoryBtn');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const inventoryItems = document.getElementById('inventoryItems');
+
+    openInventoryBtn.addEventListener('click', () => {
+        inventoryPopup.style.display = 'flex';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        inventoryPopup.style.display = 'none';
+    });
+}
