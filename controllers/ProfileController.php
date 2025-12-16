@@ -22,13 +22,17 @@ class ProfileController
 
     public function disconnect()
     {
-        if (isset($_SESSION["pseudo"])) unset($_SESSION["pseudo"]);
-        if (isset($_SESSION["admin"])) unset($_SESSION["admin"]);
-        if (isset($_SESSION["aventure"])) unset($_SESSION["aventure"]);
-        if (isset($_SESSION["hero"])) unset($_SESSION["hero"]);
-        
+        if (isset($_SESSION["pseudo"]))
+            unset($_SESSION["pseudo"]);
+        if (isset($_SESSION["admin"]))
+            unset($_SESSION["admin"]);
+        if (isset($_SESSION["aventure"]))
+            unset($_SESSION["aventure"]);
+        if (isset($_SESSION["hero"]))
+            unset($_SESSION["hero"]);
 
-        header("Location:".url(""));
+
+        header("Location:" . url(""));
     }
 
     public function delete()
@@ -90,6 +94,14 @@ class ProfileController
 
     public function heroes()
     {
+        $pdo = Database::getConnection();
 
+        $req = $pdo->prepare("SELECT * FROM Hero JOIN Class USING(class_id) JOIN Hero_Progress USING (hero_id, joueur_pseudo) WHERE joueur_pseudo = :pseudo");
+        $req->bindParam('pseudo', $_SESSION["pseudo"]);
+        $req->execute();
+
+        $heroes = $req->fetchAll();
+
+        require_once __DIR__ . "/../views/heroList.php";
     }
 }

@@ -62,6 +62,8 @@ $router->addRoute('profile/modifying', 'ProfileController@modifying');
 $router->addRoute('profile/disconnect', 'ProfileController@disconnect');
 // Suppression
 $router->addRoute('profile/delete', 'ProfileController@delete');
+// Liste des héros
+$router->addRoute('profile/heroes', 'ProfileController@heroes');
 
 // Appel de la méthode route
 require_once __DIR__ . "/views/header.php";
