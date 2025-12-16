@@ -1,45 +1,3 @@
-<?php 
-require_once("views/header.php");
-?>
-
-
-<?php
-        //Requete pour le Monstre
-        $queryMonstre = $bdd->prepare('SELECT monster_name,monster_image,monster_pv,monster_mana,monster_initiative,monster_strength,monster_attack,monster_spell,monster_xp FROM Monster where monster_id = ?');
-        $queryMonstre->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
-        $reponseMonstre = $queryMonstre->fetch();
-        
-        //Requete pour le Hero
-        $queryHero = $bdd->prepare('SELECT hero_name ,class_id,hero_pv ,hero_mana ,hero_strength ,hero_initiative ,hero_level, hero_spell_list ,hero_xp, hero_armor_item_id,hero_weapon_item_id,hero_shield_item_id FROM hero where hero_id = ?');
-        $queryHero->execute(array(1)); // Modifier les valeur avec les paramètre qui seront donnée
-        $reponseHero = $queryHero->fetch();
-        
-        //Requete pour les class et les effets propre
-        $queryClass = $bdd->prepare('SELECT class_name,class_image  ,class_base_pv ,class_base_mana  ,class_base_strength  ,class_base_initiative  FROM Class where class_id  = ?');
-        $queryClass->execute(array($reponseHero['class_id']));
-        $reponseClass = $queryClass->fetch();
-        
-        //Requete pour les level et les stats associer
-        $queryLevel = $bdd->prepare('SELECT level_required_xp   ,level_pv_bonus  ,level_mana_bonus   ,level_strength_bonus   ,level_initiative_bonus   FROM level where level_number  = ? and class_id = ?');
-        $queryLevel->execute(array($reponseHero['hero_level'],$reponseHero['class_id']));
-        $reponseLevel = $queryLevel->fetch();
-
-        //Preparation de la requete qui sera appeler a la fin du combat
-        //$queryLink = $bdd->prepare('SELECT link_aventure_id   ,link_chapter_id  FROM Links where aventure_id  = ? and chapter_id = ? and link_choice = ?');
-
-        //Requete pour les Objets du hero
-        $queryItem = $bdd->prepare('SELECT item_value FROM Items where item_id = ?');
-        $queryItem->execute(array($reponseHero['hero_weapon_item_id']));
-        $tempItem = $queryItem->fetch();  
-        $reponseItem['weapon_value'] = $tempItem['item_value']; 
-        $queryItem->execute(array($reponseHero['hero_shield_item_id']));
-        $tempItem = $queryItem->fetch(); 
-        $reponseItem['shield_value'] =  $tempItem['item_value'];
-        $queryItem->execute(array($reponseHero['hero_armor_item_id']));
-        $tempItem = $queryItem->fetch(); 
-        $reponseItem['armor_value'] = $tempItem['item_value'];
-?>
-
 <!-- Affichage Monstre -->
 <h3 id="monster_nom" >default</h3>
 <p id="monster_stat">default</p>
@@ -110,7 +68,7 @@ require_once("views/header.php");
                         if (hero_mana - magical_mana_cost >= 0) {
                             hero_mana -= magical_mana_cost;
                             let attaque = Math.random(1,6) + Math.random(1,6) + magical_mana_cost;
-                            let defense = Math.random(1,6) + (monster_strength/2); //Le monstre n'a pas d'armure
+                            let defense = Math.random(1,6) + (monster_strength/2);
                             let degat = Math.round(Math.max(0, attaque - defense));
                             monster_pv -= degat;
                             log_hero.textContent = "Vous l'attaquez avec votre magie pour : " + degat + " !";
@@ -179,17 +137,16 @@ require_once("views/header.php");
             tour_monstre();
             affichage_monstre();
 	        affichage_hero();
+            isCombatEnded();
         }
     }
 
     function affichage_monstre() {
-        //mettre l'image
         monster_nom.textContent = monster_name;
         monster_stat.textContent = monster_pv + " PV | " + monster_mana + " Mana | " + monster_strength + " Force";
     }
 
     function affichage_hero() {
-        //mettre image
         hero_nom.textContent = hero_name;
         hero_stat.textContent = hero_pv + "/" + hero_max_pv + " PV  | " + hero_mana+ " /" + hero_max_mana + " Mana";
     }
@@ -197,9 +154,11 @@ require_once("views/header.php");
     function combat(){
 			affichage_monstre();
 			affichage_hero();
+            isCombatEnded();
 			tour_monstre();
 			affichage_monstre();
 			affichage_hero();
+            isCombatEnded();
 	}
 
     function action_physique() {
@@ -222,12 +181,16 @@ require_once("views/header.php");
         combat();
     }
 
+    function isCombatEnded() {
+        if (monster_pv <= 0) {
+
+        } else if (hero_pv <= 0) {
+
+        }
+    }
+
 
     affichage_monstre();
 	affichage_hero();
     first_turn_initiative();
 </script>
-
-<?php
-require_once("views/footer.php");
-?>
