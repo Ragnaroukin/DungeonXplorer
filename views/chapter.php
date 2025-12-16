@@ -1,0 +1,22 @@
+<?php require_once "inventaire.php";?>
+
+<div id="chapterContent" class="d-flex justify-content-center align-items-center">
+    <div id="chapImage">
+        <img src="<?= url($data[0]["chapter_image"]) ?>" alt="Château">
+        <div id="story">
+            <!-- Ton texte de dialogue ici -->
+            <?= $data[0]["chapter_content"]; ?>
+        </div>
+    </div>
+    <div class="dialog-container">
+        <?php foreach ($data as $link) { ?>
+            <form action="progress" method="POST" class="dialog-form">
+                <input type="hidden" name="choice" value="<?= $link['link_chapter_id']; ?>">
+                <button type="submit" class="dialog-box">
+                    <?php echo $link["link_description"]; ?>
+                </button>
+            </form>
+        <?php } ?>
+
+    </div>
+</div>
