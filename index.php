@@ -58,6 +58,10 @@ $router->addRoute('profile', 'ProfileController@show');
 // Modifier
 $router->addRoute('profile/modify', 'ProfileController@modify');
 $router->addRoute('profile/modifying', 'ProfileController@modifying');
+// Déconnexion
+$router->addRoute('profile/disconnect', 'ProfileController@disconnect');
+// Suppression
+$router->addRoute('profile/delete', 'ProfileController@delete');
 
 // Appel de la méthode route
 require_once __DIR__ . "/views/header.php";
