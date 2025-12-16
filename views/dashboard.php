@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" id="sidebarMenu">
-            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" aria-labelledby="sidebarMenuLabel">
+         <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" aria-labelledby="sidebarMenuLabel">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0" id="sidebarMenu">
+            <div class="offcanvas-md offcanvas-end" tabindex="-1" aria-labelledby="sidebarMenuLabel">
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto" id="div-dashboard">
                     <h2 id="titre-dashboard">
                         <i class="fa-solid fa-dungeon"></i>
@@ -75,8 +76,8 @@
                     foreach ($chapters as $chapter) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap">Chapitre <?php echo $chapter["chapter_id"] ?></h3>
-                            <img src="<?php echo $chapter["chapter_image"] ?>" alt="img">
+                            <h3 class="text-nowrap">Chapitre <?=$chapter["chapter_id"] ?></h3>
+                            <img src="<?=$chapter["chapter_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -99,8 +100,8 @@
                     foreach ($monsters as $monster) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $monster["monster_name"] ?></h3>
-                            <img src="<?php echo $monster["monster_image"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$monster["monster_name"] ?></h3>
+                            <img src="<?=$monster["monster_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -123,8 +124,8 @@
                     foreach ($items as $item) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $item["item_name"] ?></h3>
-                            <img src="<?php echo $item["item_image"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$item["item_name"] ?></h3>
+                            <img src="<?=$item["item_image"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>
@@ -147,8 +148,8 @@
                     foreach ($classes as $class) {
                         ?>
                         <div class="card">
-                            <h3 class="text-nowrap"><?php echo $class["class_name"] ?></h3>
-                            <img src="<?php echo $class["class_img"] ?>" alt="img">
+                            <h3 class="text-nowrap"><?=$class["class_name"] ?></h3>
+                            <img src="<?=$class["class_img"] ?>" alt="img">
                         </div>
                     <?php } ?>
                 </div>

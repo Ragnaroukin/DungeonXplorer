@@ -8,9 +8,9 @@
         <div id="inventoryItems">
             <?php foreach ($items as $item) {?>
                 <div class="inventory-item">
-                    <img src="<?php echo $item["item_image"]; ?>" alt="<?php echo $item["item_name"]; ?>">
-                    <strong><?php echo $item["item_name"]; ?></strong>
-                    <p>Quantité: <?php echo $item["inventory_quantity"] ?></p>
+                    <img src="<?= url($item["item_image"]) ?>" alt="<?= $item["item_name"] ?>">
+                    <strong><?= $item["item_name"] ?></strong>
+                    <p>Quantité: <?= $item["inventory_quantity"] ?></p>
                 </div>
             <?php } ?>
         </div>

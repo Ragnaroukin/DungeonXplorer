@@ -25,6 +25,7 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
     $req->execute();
 
     $joueur = $req->fetch(PDO::FETCH_ASSOC);
+
     if ($joueur && password_verify($mdp, $joueur["joueur_mdp"])) {
         $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
         $_SESSION["admin"] = $joueur["joueur_admin"];
