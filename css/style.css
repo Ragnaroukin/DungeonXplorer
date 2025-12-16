@@ -183,6 +183,30 @@ blockquote {
   max-width: 600px;
   padding: 30px;
   text-align: center;
+
+  .btn {
+    color: black;
+  }
+
+  .btn-warning {
+    background-color: var(--interactif);
+  }
+
+  .btn-danger {
+    background-color: var(--attention);
+  }
+
+  .btn-success {
+    background-color: var(--succes);
+  }
+}
+
+#disconnect-btn {
+  background-color: #b42727;
+  color: white;
+  position: absolute;
+  top: 6.5em;
+  right: 2em;
 }
 
 .profile-header h1 {
@@ -229,6 +253,10 @@ blockquote {
   color: var(--texte-principal);
   display: inline-block;
   min-width: 120px;
+}
+
+.profile-image-box #preview {
+  display: block;
 }
 
 /*Fin Profil*/

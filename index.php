@@ -31,9 +31,9 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
-$router->addRoute('profile', 'ProfileController@show');$router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
 $router->addRoute('login', 'CompteController@login');
 $router->addRoute('signup', 'CompteController@signup');
+$router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
 
 /*
  * Gestion de l'aventure
@@ -51,6 +51,19 @@ $router->addRoute('game/loading', 'GameController@loading'); // Choix du héros
 $router->addRoute('game/chapter', 'ChapterController@index'); // Pour les chapitres
 $router->addRoute('game/progress', 'ChapterController@progress'); // Pour avancer dans l'histoire
 
+/*
+ *Profil
+ */
+$router->addRoute('profile', 'ProfileController@show');
+// Modifier
+$router->addRoute('profile/modify', 'ProfileController@modify');
+$router->addRoute('profile/modifying', 'ProfileController@modifying');
+// Déconnexion
+$router->addRoute('profile/disconnect', 'ProfileController@disconnect');
+// Suppression
+$router->addRoute('profile/delete', 'ProfileController@delete');
+// Liste des héros
+$router->addRoute('profile/heroes', 'ProfileController@heroes');
 
 // Appel de la méthode route
 require_once __DIR__ . "/views/header.php";

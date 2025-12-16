@@ -30,7 +30,7 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
         echo "<script>alert(\"Erreur lors de l'inscription !\")</script>";
     }
 
-    $req = $pdo->prepare("SELECT joueur_pseudo FROM Joueur WHERE joueur_pseudo = :pseudo");
+    $req = $pdo->prepare("SELECT joueur_pseudo, joueur_admin FROM Joueur WHERE joueur_pseudo = :pseudo");
     $req->bindParam(":pseudo", $pseudo, type: PDO::PARAM_STR);
 
     $req->execute();
@@ -39,6 +39,7 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
 
     if ($joueur) {
         $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
+        $_SESSION["admin"] = $joueur["joueur_admin"];
         header("Location: /DungeonXplorer/");
     }
 }

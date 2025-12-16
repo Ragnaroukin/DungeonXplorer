@@ -17,7 +17,6 @@
 if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
     $pseudo = $_POST["pseudo"];
     $mdp = $_POST["mdp"];
-    echo "";
     $pseudo = strip_tags($pseudo);
     $mdp = strip_tags($mdp);
 
