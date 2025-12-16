@@ -162,6 +162,7 @@
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/1.jpg"
                         alt="..." /></div>
                 <div class="timeline-panel">
+                    <div class="timeline-heading">
                     <h4>2022-2023</h4>
                     <h4 class="subheading">Notre Humble Commencement</h4>
                 </div>
