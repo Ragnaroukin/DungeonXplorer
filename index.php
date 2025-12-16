@@ -30,10 +30,9 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
+
 $router->addRoute('login', 'CompteController@login');
 $router->addRoute('signup', 'CompteController@signup');
-$router->addRoute('inventaire', 'InventaireController@show');
-$router->addRoute('getInventaire', 'InventaireController@get');
 $router->addRoute('profile', 'ProfileController@show');
 $router->addRoute('chapter', 'ChapterController@index'); // Pour les chapitres
 $router->addRoute('avancement', 'ChapterController@avancement'); // Pour avancer dans l'histoire
@@ -43,7 +42,12 @@ $router->addRoute('signup', 'CompteController@signup');
 $router->addRoute('create/class', 'CreateController@classChoice');
 $router->addRoute('create/hero', 'CreateController@heroDetail');
 $router->addRoute('create/creating', 'CreateController@create');
+$router->addRoute('inventaire', 'InventaireController@get');
 
+
+//Pour les tests
+$_SESSION["aventure"] = 1;
+$_SESSION["hero"] = 1;
 
 // Appel de la méthode route
 require_once __DIR__."/views/header.php";

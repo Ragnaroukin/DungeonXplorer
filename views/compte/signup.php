@@ -32,6 +32,7 @@ if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
 
     $req = $pdo->prepare("SELECT joueur_pseudo FROM Joueur WHERE joueur_pseudo = :pseudo");
     $req->bindParam(":pseudo", $pseudo, type: PDO::PARAM_STR);
+
     $req->execute();
 
     $joueur = $req->fetch(PDO::FETCH_ASSOC);

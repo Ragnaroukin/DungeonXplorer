@@ -35,31 +35,14 @@ h6 {
   color: var(--texte-principal);
 }
 
-p, span, a, li, button, label, input, blockquote {
-    font-family: var(--police-texte) !important;
-}
-
-#lienHome {
-    color: var(--texte-principal);
-    display: flex;
-    align-items: flex-start;
-}
-
-#lienHome h1 {
-    align-self: center;
-}
-
-#page-top {
-    background-color: var(--fond-principal);
-    color: var(--texte-principal);
-}
-
-#logo {
-    height: 6.5em;
-}
-
-.masthead {
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/DungeonXplorer/img/1.jpg') no-repeat center center;
+p,
+span,
+a,
+li,
+button,
+label,
+input,
+blockquote {
   font-family: var(--police-texte) !important;
 }
 
@@ -244,7 +227,6 @@ p, span, a, li, button, label, input, blockquote {
   display: inline-block;
   min-width: 120px;
 }
-
 /*Fin NavBar*/
 
 
@@ -254,6 +236,7 @@ p, span, a, li, button, label, input, blockquote {
 #chapterContent {
   width: 100%;
   min-height: calc(100vh - 120px);
+  z-index: 1;
 }
 
 #chapImage {
@@ -262,6 +245,7 @@ p, span, a, li, button, label, input, blockquote {
   width: min(90vw, calc(100vh - 150px));
   max-width: 700px;
   margin: 0;
+  z-index: 1;
 }
 
 #chapImage img {
@@ -270,6 +254,7 @@ p, span, a, li, button, label, input, blockquote {
   object-fit: cover;
   display: block;
   border-radius: 10px;
+  z-index: 1;
 }
 
 #story {
@@ -308,17 +293,17 @@ p, span, a, li, button, label, input, blockquote {
 }
 
 .dialog-form {
-  display: inline;
-  width: 100%;
+    display: inline;
+    width: 100%;
 }
 
 .dialog-form .dialog-box {
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-  font: inherit;
-  padding: 0;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    padding: 0;
 }
 
 .dialog-box {
@@ -369,17 +354,11 @@ section {
   font-style: italic;
 }
 
-#popup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .get-in-touch .img-field {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1em;
+  padding-bottom: 48px;
 }
 
 .contact-form .form-field {
@@ -419,7 +398,7 @@ section {
   font-size: 16px;
   padding: 8px 16px;
   border: none;
-  min-width: 200px;
+  width: 200px;
   cursor: pointer;
 }
 
@@ -490,6 +469,7 @@ section {
 
 /*Fin Forms*/
 
+/*Inventaire*/
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -514,6 +494,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.8); 
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
 .popup-content {
@@ -526,6 +507,7 @@ button:hover {
     max-height: 80%;
     overflow: hidden;
     position: relative;
+    z-index: 10000;
 }
 
 .inventory-grid {
@@ -558,8 +540,8 @@ button:hover {
 }
 
 .inventory-item img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     margin-bottom: 10px;
 }

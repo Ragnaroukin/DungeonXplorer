@@ -54,6 +54,8 @@ CREATE TABLE Hero (
     hero_id INT,
     joueur_pseudo varchar(60),
     class_id INT, -- Relation avec Class
+    hero_name VARCHAR(30),
+    hero_biography TEXT,
     hero_pv INT NOT NULL,
     hero_mana INT NOT NULL,
     hero_strength INT NOT NULL,
@@ -111,8 +113,8 @@ CREATE TABLE Encounter (
 -- Table intermédiaire pour l'inventaire des héros (Hero - Items)
 DROP TABLE IF EXISTS Inventory;
 CREATE TABLE Inventory (
-    hero_id INT,
     joueur_pseudo varchar(60),
+    hero_id INT,
     item_id INT,
     inventory_quantity INT NOT NULL DEFAULT 1
 );
@@ -142,7 +144,7 @@ CREATE TABLE Hero_Progress (
 DROP TABLE IF EXISTS Aventure;
 CREATE TABLE Aventure (
     aventure_id INT AUTO_INCREMENT PRIMARY KEY,
-    aveture_name varchar(30),
+    aventure_name varchar(30),
     aventure_content TEXT NOT NULL,
     aventure_image VARCHAR(255)
 );
@@ -152,14 +154,14 @@ DROP TABLE IF EXISTS Joueur;
 CREATE TABLE Joueur (
     joueur_pseudo VARCHAR(60) PRIMARY KEY,
     joueur_mdp VARCHAR(60),
-    joueur_admin BOOLEAN DEFAULT 0,
-    joueur_image VARCHAR(255)
+    joueur_image VARCHAR(255) DEFAULT 'img/default.jpg',
+    joueur_admin BOOLEAN DEFAULT 0
 );
 
 ALTER TABLE Chapter ADD CONSTRAINT pk_Chapter PRIMARY KEY(aventure_id,chapter_id);
-ALTER TABLE Hero ADD CONSTRAINT pk_Hero PRIMARY KEY(hero_id, joueur_pseudo );
-ALTER TABLE Hero_Progress ADD CONSTRAINT pk_Hero_Progress PRIMARY KEY(hero_id,joueur_pseudo,aventure_id,chapter_id);
-ALTER TABLE Inventory ADD CONSTRAINT pk_Inventory PRIMARY KEY(hero_id,joueur_pseudo,item_id);
+ALTER TABLE Hero ADD CONSTRAINT pk_Hero PRIMARY KEY(hero_id, joueur_pseudo);
+ALTER TABLE Hero_Progress ADD CONSTRAINT pk_Hero_Progress PRIMARY KEY(joueur_pseudo,hero_id,aventure_id,chapter_id);
+ALTER TABLE Inventory ADD CONSTRAINT pk_Inventory PRIMARY KEY(hero_id,item_id);
 ALTER TABLE Encounter ADD CONSTRAINT pk_Encounter PRIMARY KEY(monster_id,aventure_id,chapter_id);
 ALTER TABLE Links ADD CONSTRAINT pk_Links PRIMARY KEY(aventure_id,chapter_id, link_aventure_id, link_chapter_id);
 ALTER TABLE Chapter_Treasure ADD CONSTRAINT pk_Chapter_Treasure PRIMARY KEY(item_id,aventure_id,chapter_id);
@@ -182,7 +184,7 @@ ALTER TABLE Chapter_Treasure ADD CONSTRAINT fk1_Chapter_Treasure FOREIGN KEY (av
 ALTER TABLE Chapter_Treasure ADD CONSTRAINT fk2_Chapter_Treasure FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Links ADD CONSTRAINT fk1_Links FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Links ADD CONSTRAINT fk2_Links FOREIGN KEY (link_aventure_id,link_chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
-ALTER TABLE Inventory ADD CONSTRAINT fk1_Inventory FOREIGN KEY (hero_id, joueur_pseudo) REFERENCES Hero(hero_id, joueur_pseudo);
+ALTER TABLE Inventory ADD CONSTRAINT fk1_Inventory FOREIGN KEY (joueur_pseudo, hero_id) REFERENCES Hero(joueur_pseudo, hero_id);
 ALTER TABLE Inventory ADD CONSTRAINT fk2_Inventory FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk1_Encounter FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk2_Encounter FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);

@@ -16,7 +16,6 @@
                 echo '<span>Statut :</span> Administrateur';
             } else {
                 echo '<span>Statut :</span> Utilisateur';
-                print_r($_SESSION);
             } ?>
         </p>
     </section>
