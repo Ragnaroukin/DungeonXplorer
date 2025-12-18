@@ -3,6 +3,7 @@
             <h1><?= $stats["hero_name"]?></h1>
             <img class="card" src=<?=url($stats["class_img"])?> alt=<?=$stats["class_img"]?>>
             Votre histoire :<br><?= $stats["hero_biography"]?><br><br>
+            Niveau : <?=$stats["hero_level"]?><br>
             PV : <?= $stats["hero_pv"]?><br>
             Mana : <?= $stats["hero_mana"]?><br>
             Force : <?= $stats["hero_strength"]?><br>
