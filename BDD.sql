@@ -19,7 +19,9 @@ CREATE TABLE Items (
     item_name VARCHAR(50) NOT NULL,
     item_description TEXT,
     item_image VARCHAR(255),
-    item_type VARCHAR(50) NOT NULL -- Ex: 'Arme', 'Armure', 'Potion', etc.
+    item_type VARCHAR(50) NOT NULL, -- Ex: 'Arme', 'Armure', 'Potion', etc.
+    item_value INT
+
 );
 
 
@@ -33,6 +35,7 @@ CREATE TABLE Monster (
     monster_initiative INT NOT NULL,
     monster_strength INT NOT NULL,
     monster_attack TEXT,
+    monster_spell TEXT, -- attaque magique
     monster_xp INT NOT NULL,
     monster_image VARCHAR(255)
 );
@@ -48,7 +51,7 @@ CREATE TABLE Monster_Loot (
 );
 
 -- Création de la table Hero (Personnage principal)
--- Les équipements (armor, primary_weapon, etc.) font référence à des Items.
+-- Les équipements (armor, weapon, etc.) font référence à des Items.
 DROP TABLE IF EXISTS Hero;
 CREATE TABLE Hero (
     hero_id INT,
@@ -62,8 +65,7 @@ CREATE TABLE Hero (
     hero_initiative INT NOT NULL,
     
     hero_armor_item_id INT,
-    hero_primary_weapon_item_id INT,
-    hero_secondary_weapon_item_id INT,
+    hero_weapon_item_id INT,
     hero_shield_item_id INT,
     
     hero_spell_list TEXT DEFAULT NULL,
@@ -172,10 +174,9 @@ ALTER TABLE Monster_Loot ADD CONSTRAINT fk1_Monster_Loot FOREIGN KEY (monster_id
 ALTER TABLE Monster_Loot ADD CONSTRAINT fk2_Monster_Loot FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Hero ADD CONSTRAINT fk1_Hero FOREIGN KEY (class_id) REFERENCES Class(class_id);
 ALTER TABLE Hero ADD CONSTRAINT fk2_Hero FOREIGN KEY (hero_armor_item_id) REFERENCES Items(item_id);
-ALTER TABLE Hero ADD CONSTRAINT fk3_Hero FOREIGN KEY (hero_primary_weapon_item_id) REFERENCES Items(item_id);
-ALTER TABLE Hero ADD CONSTRAINT fk4_Hero FOREIGN KEY (hero_secondary_weapon_item_id) REFERENCES Items(item_id);
-ALTER TABLE Hero ADD CONSTRAINT fk5_Hero FOREIGN KEY (hero_shield_item_id) REFERENCES Items(item_id);
-ALTER TABLE Hero ADD CONSTRAINT fk6_Hero FOREIGN KEY (joueur_pseudo) REFERENCES Joueur(joueur_pseudo);
+ALTER TABLE Hero ADD CONSTRAINT fk3_Hero FOREIGN KEY (hero_weapon_item_id) REFERENCES Items(item_id);
+ALTER TABLE Hero ADD CONSTRAINT fk4_Hero FOREIGN KEY (hero_shield_item_id) REFERENCES Items(item_id);
+ALTER TABLE Hero ADD CONSTRAINT fk5_Hero FOREIGN KEY (joueur_pseudo) REFERENCES Joueur(joueur_pseudo);
 ALTER TABLE Level ADD CONSTRAINT fk_Level FOREIGN KEY (class_id) REFERENCES Class(class_id);
 ALTER TABLE Hero_Progress ADD CONSTRAINT fk1_Hero_Progress FOREIGN KEY (joueur_pseudo, hero_id) REFERENCES Hero(joueur_pseudo, hero_id);
 ALTER TABLE Hero_Progress ADD CONSTRAINT fk2_Hero_Progress FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);

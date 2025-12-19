@@ -1,3 +1,5 @@
+<?php require_once "inventaire.php"?>
+
 <section class="get-in-touch">
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-column align-items-center gap-2" style="width: 600px;">

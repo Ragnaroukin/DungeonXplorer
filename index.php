@@ -32,8 +32,8 @@ $router = new Router('DungeonXplorer');
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
 
-$router->addRoute('login', 'CompteController@login');
-$router->addRoute('signup', 'CompteController@signup');
+$router->addRoute('connexion', 'CompteController@index');
+$router->addRoute('inscription', 'CompteController@index');
 $router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
 
 /*
