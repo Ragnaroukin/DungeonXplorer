@@ -42,10 +42,13 @@
                     if (isset($_SESSION["pseudo"])) {
                         ?>
                         <li class="nav-item"><a class="nav-link" href=<?= url("game/start") ?>>Jouer</a></li>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("game/create/class") ?>>Nouvelle Aventure</a></li>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("admin") ?>>Administration</a></li>
-                        <li class="nav-item"><a class="nav-link" href=<?= url("profile") ?>><?= $_SESSION["pseudo"] ?></a></li>
-                    <?php
+                        <?php if ($_SESSION["admin"] == 1) { ?>
+                            <li class="nav-item"><a class="nav-link" href=<?= url("game/create/class") ?>>Nouvelle Aventure</a></li>
+                            <li class="nav-item"><a class="nav-link" href=<?= url("admin") ?>>Administration</a></li>
+                        <?php } ?>
+                        <li class="nav-item"><a class="nav-link" href=<?= url("profile") ?>><?= $_SESSION["pseudo"] ?></a>
+                        </li>
+                        <?php
                     } else {
                         ?>
                         <li class="nav-item"><a class="nav-link" href=<?= url("connexion") ?>>Se connecter</a></li>
