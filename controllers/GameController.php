@@ -3,7 +3,10 @@ class GameController
 {
     public function start()
     {
-        require_once __DIR__ . "/../views/startGame.php";
+        if (isset($_SESSION["pseudo"]))
+            require_once __DIR__ . "/../views/startGame.php";
+        else
+            require_once __DIR__ . "/../views/404.php";
     }
 
     public function load()
