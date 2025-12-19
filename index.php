@@ -66,7 +66,7 @@ $router->addRoute('profile/delete', 'ProfileController@delete');
 // Liste des héros
 $router->addRoute('profile/heroes', 'ProfileController@heroes');
 
-$router->addRoute("statistiques", "StatistiquesController@gather");
+$router->addRoute("game/stats", "StatsController@gather");
 
 // Appel de la méthode route
 require_once __DIR__ . "/views/header.php";

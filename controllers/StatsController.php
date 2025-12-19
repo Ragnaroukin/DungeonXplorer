@@ -1,6 +1,6 @@
 <?php
 
-class StatistiquesController
+class StatsController
 {
     public function gather() {
         $pdo = Database::getConnection();
@@ -12,6 +12,6 @@ class StatistiquesController
         $req->bindParam(":pseudo", $_SESSION["pseudo"], PDO::PARAM_STR);
         $req->execute();
         $stats = $req->fetch(PDO::FETCH_ASSOC);
-        require_once "views/statistiques.php";
+        require_once "views/stats.php";
     }
 }
