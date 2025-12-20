@@ -160,79 +160,93 @@
         <ul class="timeline">
             <li>
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/1.jpg"
-                        alt="..." /></div>
+                        alt="..." />
+                </div>
                 <div class="timeline-panel">
-                    <h4>2022-2023</h4>
-                    <h4 class="subheading">Notre Humble Commencement</h4>
+                    <div class="timeline-heading">
+                        <h4>2022-2023</h4>
+                        <h4 class="subheading">Notre Humble Commencement</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Animée par la nostalgie des livres dont vous êtes le héros populaires dans
+                            les
+                            années 80-90, Les Aventuriers du Val Perdu est officiellement fondée. L'association se donne
+                            pour mission de raviver cette expérience unique en la transposant sur le Web, jetant ainsi
+                            les
+                            bases du projet DungeonXplorer. </p>
+                    </div>
                 </div>
-                <div class="timeline-body">
-                    <p class="text-muted">Animée par la nostalgie des livres dont vous êtes le héros populaires dans les
-                        années 80-90, Les Aventuriers du Val Perdu est officiellement fondée. L'association se donne
-                        pour mission de raviver cette expérience unique en la transposant sur le Web, jetant ainsi les
-                        bases du projet DungeonXplorer. </p>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/2.jpg"
+                        alt="..." />
                 </div>
-    </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/2.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Mai 2024</h4>
-                <h4 class="subheading">Le Projet Web Prend Vie</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Pour concrétiser sa vision, l'association missionne une première équipe de
-                    développement pour concevoir DungeonXplorer, une application Web interactive. L'objectif est de
-                    créer un espace où la communauté pourra réaliser et mettre en ligne ses propres aventures de dark
-                    fantasy.</p>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/3.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Décembre 2024</h4>
-                <h4 class="subheading">Refonte et Plein Service</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Suite à des tensions et l'arrêt des travaux précédents, une nouvelle équipe est
-                    confiée l'intégralité du projet. Cette phase marque la transition vers un service complet, avec
-                    l'adoption du pattern MVC en PHP et la finalisation des fonctionnalités essentielles de la V1</p>
-            </div>
-        </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/4.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Juillet 2025</h4>
-                <h4 class="subheading">Lancement de DungeonXplorer V1</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">DungeonXplorer est officiellement mis en ligne ! La V1 permet aux joueurs de créer
-                    un personnage (Guerrier, Voleur, Magicien) et de plonger dans leur première aventure personnalisée.
-                    Ce lancement ouvre la voie à de futures expansions, incluant de nouvelles aventures et
-                    fonctionnalités avancées (V2).</p>
-            </div>
-        </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image">
-            <h4>
-                Tester
-                <br />
-                Le
-                Jeu
-                <br />
-                ! ! !
-            </h4>
-        </div>
-    </li>
-    </ul>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Mai 2024</h4>
+                        <h4 class="subheading">Le Projet Web Prend Vie</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Pour concrétiser sa vision, l'association missionne une première équipe de
+                            développement pour concevoir DungeonXplorer, une application Web interactive. L'objectif est
+                            de
+                            créer un espace où la communauté pourra réaliser et mettre en ligne ses propres aventures de
+                            dark
+                            fantasy.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/3.jpg"
+                        alt="..." />
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Décembre 2024</h4>
+                        <h4 class="subheading">Refonte et Plein Service</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Suite à des tensions et l'arrêt des travaux précédents, une nouvelle
+                            équipe est
+                            confiée l'intégralité du projet. Cette phase marque la transition vers un service complet,
+                            avec
+                            l'adoption du pattern MVC en PHP et la finalisation des fonctionnalités essentielles de la
+                            V1</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/4.jpg"
+                        alt="..." />
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Juillet 2025</h4>
+                        <h4 class="subheading">Lancement de DungeonXplorer V1</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">DungeonXplorer est officiellement mis en ligne ! La V1 permet aux joueurs
+                            de créer
+                            un personnage (Guerrier, Voleur, Magicien) et de plonger dans leur première aventure
+                            personnalisée.
+                            Ce lancement ouvre la voie à de futures expansions, incluant de nouvelles aventures et
+                            fonctionnalités avancées (V2).</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        Tester
+                        <br />
+                        Le
+                        Jeu
+                        <br />
+                        ! ! !
+                    </h4>
+                </div>
+            </li>
+        </ul>
     </div>
 </section>
 <!-- Team-->

@@ -33,7 +33,14 @@ $router = new Router('DungeonXplorer');
 $router->addRoute('', 'HomeController@index'); // Pour la racine
 $router->addRoute('login', 'CompteController@login');
 $router->addRoute('signup', 'CompteController@signup');
-$router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
+
+/*
+ * Partie administrateur
+ */
+$router->addRoute('admin', 'DashboardController@index');
+$router->addRoute('admin/profile', 'DashboardController@viewProfile');
+$router->addRoute('admin/profile/delete', 'DashboardController@deleteProfile');
+$router->addRoute('admin/profile/heroes', 'DashboardController@viewHeroes');
 
 /*
  * Gestion de l'aventure
