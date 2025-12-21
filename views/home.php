@@ -1,14 +1,32 @@
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">The Dungeon Explorer</div>
-        <div class="masthead-heading text-uppercase">Wanna give it a try ?</div>
+        <div class="masthead-subheading"></div>
+        <div class="masthead-heading text-uppercase">The Dungeon Xplorer</div>
         <a class="btn btn-primary btn-xl text-uppercase" href="#services">En apprendre plus</a>
     </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
+        <div class="text-center mx-5 px-3">
+            <h1 class="my-3">Description</h1>
+            <p class="text-muted fs-5 text-light mx-5">
+                Bienvenue sur DungeonXplorer, l'univers de dark fantasy où se mêlent aventure, stratégie et immersion
+                totale dans les récits interactifs.
+                <br><br>
+                Ce projet est né de la volonté de l’association Les Aventuriers du Val Perdu de raviver l’expérience
+                unique des livres dont vous êtes le héros. Notre vision : offrir à la communauté un espace où chacun peut
+                incarner un personnage et plonger dans des quêtes épiques et personnalisées.
+                <br><br>
+                Dans sa première version, DungeonXplorer permettra aux joueurs de créer un personnage parmi trois
+                classes emblématiques — guerrier, voleur, magicien — et d’évoluer dans un scénario captivant, tout en
+                assurant à chacun la possibilité de conserver sa progression.
+                <br><br>
+                Nous sommes enthousiastes de partager avec vous cette application et espérons qu'elle saura vous
+                plonger au cœur des mystères du Val Perdu !
+            </p>
+        </div>
         <div class="row text-center">
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
@@ -60,7 +78,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 2-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
+                    <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Berserke</div>
                         <div class="portfolio-caption-subheading text-muted">Le Berserker, une classe avancée et
@@ -72,7 +90,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 3-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
+                    <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">L'arbalète</div>
                         <div class="portfolio-caption-subheading text-muted">L'Arbalète est l'incarnation de la
@@ -84,7 +102,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
                 <!-- Portfolio item 4-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
+                    <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le vampire</div>
                         <div class="portfolio-caption-subheading text-muted">Le Vieux Vampire est l'incarnation de la
@@ -96,7 +114,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
                 <!-- Portfolio item 5-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
+                    <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">La Jeune Femme Vampire</div>
                         <div class="portfolio-caption-subheading text-muted">La Jeune Femme Vampire est l'âme de la
@@ -108,7 +126,7 @@
             <div class="col-lg-4 col-sm-6">
                 <!-- Portfolio item 6-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="/DungeonXplorer/img/Evil warrior.jpg" alt="Evil Warrior" />
+                    <img class="img-fluid" src="/DungeonXplorer/img/Evil warrior.jpg" alt="Evil Warrior" />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Guerrier Maléfique</div>
                         <div class="portfolio-caption-subheading text-muted">Le Guerrier Maléfique est l'âme de la
