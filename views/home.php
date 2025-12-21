@@ -48,12 +48,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 1-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Magician01.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Magician01.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">La villageoise</div>
                         <div class="portfolio-caption-subheading text-muted">La quête commence par la disparition de la
@@ -65,12 +60,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 2-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
                         <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
-                    </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Berserke</div>
                         <div class="portfolio-caption-subheading text-muted">Le Berserker, une classe avancée et
@@ -82,12 +72,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 3-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
                         <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
-                    </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">L'arbalète</div>
                         <div class="portfolio-caption-subheading text-muted">L'Arbalète est l'incarnation de la
@@ -99,12 +84,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
                 <!-- Portfolio item 4-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
                         <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
-                    </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le vampire</div>
                         <div class="portfolio-caption-subheading text-muted">Le Vieux Vampire est l'incarnation de la
@@ -116,12 +96,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
                 <!-- Portfolio item 5-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
                         <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
-                    </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">La Jeune Femme Vampire</div>
                         <div class="portfolio-caption-subheading text-muted">La Jeune Femme Vampire est l'âme de la
@@ -133,12 +108,7 @@
             <div class="col-lg-4 col-sm-6">
                 <!-- Portfolio item 6-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
                         <img class="img-fluid" src="/DungeonXplorer/img/Evil warrior.jpg" alt="Evil Warrior" />
-                    </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Guerrier Maléfique</div>
                         <div class="portfolio-caption-subheading text-muted">Le Guerrier Maléfique est l'âme de la

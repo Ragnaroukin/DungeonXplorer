@@ -31,8 +31,8 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
-$router->addRoute('login', 'CompteController@login');
-$router->addRoute('signup', 'CompteController@signup');
+$router->addRoute('connexion', 'CompteController@index');
+$router->addRoute('inscription', 'CompteController@index');
 
 /*
  * Partie administrateur
@@ -57,6 +57,9 @@ $router->addRoute('game/loading', 'GameController@loading'); // Choix du héros
 // Gestion des chapitres
 $router->addRoute('game/chapter', 'ChapterController@index'); // Pour les chapitres
 $router->addRoute('game/progress', 'ChapterController@progress'); // Pour avancer dans l'histoire
+// Gestion des combats
+$router->addRoute('game/chapter/fight', 'CombatController@startCombat');
+$router->addRoute('game/chapter/fight/end/{result}', 'CombatController@endFight');
 
 /*
  *Profil

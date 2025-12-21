@@ -71,12 +71,23 @@ class DashboardController
         if (isset($_POST["pseudo"])) {
             $pdo = Database::getConnection();
 
+
+            $req = $pdo->prepare("DELETE FROM Hero_Progress WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_POST["pseudo"]);
+            $req->execute();
+
+            $req = $pdo->prepare("DELETE FROM Inventory WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_POST["pseudo"]);
+            $req->execute();
+
+            $req = $pdo->prepare("DELETE FROM Hero WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_POST["pseudo"]);
+            $req->execute();
+
             $req = $pdo->prepare("DELETE FROM Joueur WHERE joueur_pseudo = :pseudo");
             $req->bindParam(":pseudo", $_POST["pseudo"]);
             $req->execute();
         }
         header("Location: " . url("admin"));
     }
-
-
 }

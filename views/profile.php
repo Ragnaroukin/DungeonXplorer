@@ -22,6 +22,7 @@
             } ?>
         </p>
     </section>
+
     <div class="d-flex flex-column gap-3 mt-3">
         <?php if ($connected) { ?>
             <a class="btn btn-secondary btn-lg" href=<?= url("profile/heroes") ?>>Héros</a>

@@ -1,12 +1,3 @@
-/*!
-* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -52,3 +43,19 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+const inventoryPopup = document.getElementById('inventoryPopup');
+
+if (inventoryPopup) {
+    const openInventoryBtn = document.getElementById('openInventoryBtn');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const inventoryItems = document.getElementById('inventoryItems');
+
+    openInventoryBtn.addEventListener('click', () => {
+        inventoryPopup.style.display = 'flex';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        inventoryPopup.style.display = 'none';
+    });
+}

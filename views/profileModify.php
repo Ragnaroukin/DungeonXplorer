@@ -3,7 +3,7 @@
         <h1>Profil</h1>
     </header>
 
-    <form method="post" action="modifying">
+    <form method="post" action="modifying" enctype="multipart/form-data">
         <div class="profile-image-box">
             <div id="upload-box">
                 <img id="preview" src=<?= url($joueurImage) ?>>
