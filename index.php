@@ -76,6 +76,4 @@ $router->addRoute('profile/delete', 'ProfileController@delete');
 $router->addRoute('profile/heroes', 'ProfileController@heroes');
 
 // Appel de la méthode route
-require_once __DIR__ . "/views/header.php";
 $router->route(trim($_SERVER['REQUEST_URI'], '/'));
-require_once __DIR__ . "/views/footer.php";

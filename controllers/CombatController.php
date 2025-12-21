@@ -83,7 +83,9 @@ class CombatController
             $reponseItem['armor_value'] = $tempItem['item_value'];
         }
 
+        require_once __DIR__ . "/../views/header.php";
         require_once __DIR__ . '/../views/combat.php';
+        require_once __DIR__ . "/../views/footer.php";
     }
 
     public function endFight($result)
@@ -119,6 +121,9 @@ class CombatController
 
             $data = $req->fetchAll();
         }
+
+        require_once __DIR__ . "/../views/header.php";
         require_once __DIR__ . "/../views/chapter.php";
+        require_once __DIR__ . "/../views/footer.php";
     }
 }

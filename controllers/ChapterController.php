@@ -28,9 +28,13 @@ class ChapterController
                 $encounters = $req->fetchAll();
 
                 if (count($encounters) > 0) {
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/startFight.php";
+                        require_once __DIR__ . "/../views/footer.php";
                 } else {
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/chapter.php";
+                        require_once __DIR__ . "/../views/footer.php";
                 }
         }
 

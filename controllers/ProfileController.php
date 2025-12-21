@@ -19,7 +19,9 @@ class ProfileController
 
         $connected = true;
 
-        require_once 'views/profile.php';
+        require_once __DIR__ . "/../views/header.php";
+        require_once __DIR__ . "/../views/profile.php";
+        require_once __DIR__ . "/../views/footer.php";
     }
 
     public function disconnect()
@@ -76,7 +78,9 @@ class ProfileController
         $admin = $resultat['joueur_admin'];
         $joueurImage = $resultat['joueur_image'];
 
-        require_once 'views/profileModify.php';
+        require_once __DIR__ . "/../views/header.php";
+        require_once __DIR__ . "/../views/profileModify.php";
+        require_once __DIR__ . "/../views/footer.php";
     }
 
     public function modifying()
@@ -148,6 +152,8 @@ class ProfileController
 
         $heroes = $req->fetchAll();
 
+        require_once __DIR__ . "/../views/header.php";
         require_once __DIR__ . "/../views/heroList.php";
+        require_once __DIR__ . "/../views/footer.php";
     }
 }

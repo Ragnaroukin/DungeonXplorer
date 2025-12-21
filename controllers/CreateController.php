@@ -8,7 +8,9 @@ class CreateController
                 $class = $pdo->prepare("SELECT * FROM Class");
                 $class->execute();
 
+                require_once __DIR__ . "/../views/header.php";
                 require_once __DIR__ . '/../views/characterCreation/creaPerso.php';
+                require_once __DIR__ . "/../views/footer.php";
         }
 
         public function heroDetail()
@@ -27,7 +29,10 @@ class CreateController
                 $_SESSION['class_id'] = $_POST['class_id'];
                 $_SESSION['class_img'] = $row["class_img"];
 
+
+                require_once __DIR__ . "/../views/header.php";
                 require_once __DIR__ . '/../views/characterCreation/createHero.php';
+                require_once __DIR__ . "/../views/footer.php";
         }
 
         public function create()

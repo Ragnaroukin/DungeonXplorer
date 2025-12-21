@@ -25,7 +25,7 @@ class DashboardController
         $stmt->execute();
         $accounts = $stmt->fetchAll();
 
-
+        require_once __DIR__ . "/../views/header.php";
         require_once __DIR__ . "/../views/dashboard.php";
     }
 
@@ -46,6 +46,7 @@ class DashboardController
 
         $connected = false;
 
+        require_once __DIR__ . "/../views/header.php";
         require_once 'views/profile.php';
     }
 
@@ -60,7 +61,9 @@ class DashboardController
 
             $heroes = $req->fetchAll();
 
+            require_once __DIR__ . "/../views/header.php";
             require_once __DIR__ . "/../views/heroList.php";
+            require_once __DIR__ . "/../views/footer.php";
         } else {
             header("Location: " . url("admin"));
         }

@@ -2,14 +2,20 @@
 class CompteController
 {
 
-        public function index(){
-                $titre = explode("/",$_SERVER["REQUEST_URI"])[2];
-                require_once "views/compte.php";
-                if($titre === "connexion") self::login();
-                else if($titre === "inscription") self::signup();
+        public function index()
+        {
+                $titre = explode("/", $_SERVER["REQUEST_URI"])[2];
+                require_once __DIR__ . "/../views/header.php";
+                require_once __DIR__ . "/../views/compte.php";
+                require_once __DIR__ . "/../views/footer.php";
+                if ($titre === "connexion")
+                        self::login();
+                else if ($titre === "inscription")
+                        self::signup();
         }
 
-        public function login(){
+        public function login()
+        {
                 $pdo = Database::getConnection();
                 if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
                         $pseudo = $_POST["pseudo"];
@@ -19,12 +25,12 @@ class CompteController
 
                         $req = $pdo->prepare("SELECT * FROM Joueur WHERE joueur_pseudo = :pseudo");
                         $req->bindParam(":pseudo", $pseudo, type: PDO::PARAM_STR);
-                        try{
+                        try {
                                 $req->execute();
-                        } catch(PDOException $e) {
+                        } catch (PDOException $e) {
                                 echo "Une erreur s'est produite !";
                         }
-                        
+
                         $joueur = $req->fetch(PDO::FETCH_ASSOC);
 
                         if ($joueur && password_verify($mdp, $joueur["joueur_mdp"])) {
@@ -35,7 +41,8 @@ class CompteController
                 }
         }
 
-        public function signup(){
+        public function signup()
+        {
                 $pdo = Database::getConnection();
                 if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
                         $pseudo = $_POST["pseudo"];
@@ -50,7 +57,7 @@ class CompteController
 
                         $req->execute();
 
-                        self::login(); 
+                        self::login();
                 }
         }
 }
