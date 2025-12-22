@@ -10,7 +10,7 @@
     </div>
     <div class="dialog-container">
         <?php foreach ($data as $link) { ?>
-            <form action="progress" method="POST" class="dialog-form">
+            <form action=<?= url("game/progress") ?> method="POST" class="dialog-form">
                 <input type="hidden" name="choice" value="<?= $link['link_chapter_id']; ?>">
                 <button type="submit" class="dialog-box">
                     <?php echo $link["link_description"]; ?>

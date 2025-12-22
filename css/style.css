@@ -433,7 +433,7 @@ section {
   padding: 8px 16px;
   border: none;
   min-width: 200px;
- cursor: pointer;
+  cursor: pointer;
 }
 
 #upload-box,
@@ -667,6 +667,10 @@ button:hover {
 }
 
 .choose-header {
+  border-bottom: 10px double var(--attention);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  
   h2 {
     font-family: 'Times New Roman', Times, serif;
   }
@@ -674,10 +678,6 @@ button:hover {
   h4 {
     font-family: 'Courier New', Courier, monospace;
   }
-
-  border-bottom: 10px double var(--attention);
-  margin-bottom: 15px;
-  padding-bottom: 15px;
 }
 
 .choose-img {
@@ -697,4 +697,16 @@ button:hover {
 
 .titre {
   font-size: 4em;
+}
+
+#openInventoryBtn {
+  background-color: var(--succes);
+  color: black;
+  position: absolute;
+  top: 6.5em;
+  right: 2em;
+}
+
+text-light {
+  color: #e4e4e4;
 }

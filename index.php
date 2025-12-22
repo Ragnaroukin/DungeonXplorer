@@ -31,10 +31,17 @@ $router = new Router('DungeonXplorer');
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index'); // Pour la racine
-
 $router->addRoute('connexion', 'CompteController@index');
 $router->addRoute('inscription', 'CompteController@index');
-$router->addRoute('admin', 'DashboardController@index'); // Pour la partie administrateur
+
+/*
+ * Partie administrateur
+ */
+$router->addRoute('admin', 'DashboardController@index');
+$router->addRoute('admin/profile', 'DashboardController@viewProfile');
+$router->addRoute('admin/profile/delete', 'DashboardController@deleteProfile');
+$router->addRoute('admin/profile/heroes', 'DashboardController@viewHeroes');
+
 
 /*
  * Gestion de l'aventure
@@ -51,6 +58,11 @@ $router->addRoute('game/loading', 'GameController@loading'); // Choix du héros
 // Gestion des chapitres
 $router->addRoute('game/chapter', 'ChapterController@index'); // Pour les chapitres
 $router->addRoute('game/progress', 'ChapterController@progress'); // Pour avancer dans l'histoire
+// Gestion des combats
+$router->addRoute('game/chapter/fight', 'CombatController@startCombat');
+$router->addRoute('game/chapter/fight/end/{result}', 'CombatController@endFight');
+//Statistiques du héros courant
+$router->addRoute("game/stats", "StatsController@gather");
 
 /*
  *Profil
@@ -67,6 +79,4 @@ $router->addRoute('profile/delete', 'ProfileController@delete');
 $router->addRoute('profile/heroes', 'ProfileController@heroes');
 
 // Appel de la méthode route
-require_once __DIR__ . "/views/header.php";
 $router->route(trim($_SERVER['REQUEST_URI'], '/'));
-require_once __DIR__ . "/views/footer.php";

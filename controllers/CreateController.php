@@ -3,22 +3,30 @@ class CreateController
 {
         public function classChoice()
         {
-                if (empty($_SESSION["pseudo"]))
+                if (empty($_SESSION["pseudo"])) {
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/404.php";
+                        require_once __DIR__ . "/../views/footer.php";
+                }
+                        
                 else {
                         $pdo = Database::getConnection();
 
                         $class = $pdo->prepare("SELECT * FROM Class");
                         $class->execute();
-
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . '/../views/characterCreation/creaPerso.php';
+                        require_once __DIR__ . "/../views/footer.php";
                 }
         }
 
         public function heroDetail()
         {
-                if (empty($_SESSION["pseudo"]))
+                 if (empty($_SESSION["pseudo"])) {
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/404.php";
+                        require_once __DIR__ . "/../views/footer.php";
+                }
                 else {
                         $pdo = Database::getConnection();
 
@@ -34,14 +42,19 @@ class CreateController
                         $_SESSION['class_id'] = $_POST['class_id'];
                         $_SESSION['class_img'] = $row["class_img"];
 
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . '/../views/characterCreation/createHero.php';
+                        require_once __DIR__ . "/../views/footer.php";
                 }
         }
 
         public function create()
         {
-                if (empty($_SESSION["pseudo"]))
+                if (empty($_SESSION["pseudo"])) {
+                        require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/404.php";
+                        require_once __DIR__ . "/../views/footer.php";
+                }
                 else {
                         $pdo = Database::getConnection();
 

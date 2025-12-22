@@ -47,7 +47,7 @@ CREATE TABLE Monster_Loot (
     monster_id INT,
     item_id INT,
     loot_quantity INT NOT NULL DEFAULT 1,
-    loot_drop_rate DECIMAL(5, 2) DEFAULT 1.0 -- Taux de chance de drop (ex: 0.5 pour 50%)
+    loot_drop_rate DECIMAL(3, 2) DEFAULT 1.0 -- Taux de chance de drop (ex: 0.5 pour 50%)
 );
 
 -- Création de la table Hero (Personnage principal)
@@ -109,7 +109,11 @@ DROP TABLE IF EXISTS Encounter;
 CREATE TABLE Encounter (
     aventure_id INT,
     chapter_id INT,
-    monster_id INT
+    monster_id INT,
+    aventure_id_win INT,
+    chapter_id_win INT,
+    aventure_id_lose INT,
+    chapter_id_lose INT
 );
 
 -- Table intermédiaire pour l'inventaire des héros (Hero - Items)
@@ -156,7 +160,7 @@ DROP TABLE IF EXISTS Joueur;
 CREATE TABLE Joueur (
     joueur_pseudo VARCHAR(60) PRIMARY KEY,
     joueur_mdp VARCHAR(60),
-    joueur_image VARCHAR(255) DEFAULT 'img/default.jpg',
+    joueur_image VARCHAR(255) DEFAULT 'img/profiles/default.jpg',
     joueur_admin BOOLEAN DEFAULT 0
 );
 
@@ -189,3 +193,5 @@ ALTER TABLE Inventory ADD CONSTRAINT fk1_Inventory FOREIGN KEY (joueur_pseudo, h
 ALTER TABLE Inventory ADD CONSTRAINT fk2_Inventory FOREIGN KEY (item_id) REFERENCES Items(item_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk1_Encounter FOREIGN KEY (aventure_id,chapter_id) REFERENCES Chapter(aventure_id,chapter_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk2_Encounter FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);
+ALTER TABLE Encounter ADD CONSTRAINT fk3_Encounter FOREIGN KEY (aventure_id_win, chapter_id_win) REFERENCES Chapter(aventure_id, chapter_id);
+ALTER TABLE Encounter ADD CONSTRAINT fk4_Encounter FOREIGN KEY (aventure_id_lose, chapter_id_lose) REFERENCES Chapter(aventure_id, chapter_id);
