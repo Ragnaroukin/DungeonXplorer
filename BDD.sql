@@ -499,3 +499,426 @@ VALUES
     (3, 8, 6400, 40, 22, 14, 0),
     (3, 9, 12800, 50, 25, 16, 2),
     (3, 10, 25600, 100, 35, 30, 10);
+
+-- ==========================================================
+-- INSERTION DE L'AVENTURE
+-- ==========================================================
+INSERT INTO
+        Aventure (aventure_name, aventure_content, aventure_image)
+VALUES
+        (
+                'Sauver la fille',
+                'Une quête périlleuse pour retrouver la fille du bourgmestre disparue dans la forêt du Val Perdu.',
+                'img/chap'
+        );
+
+-- ==========================================================
+-- INSERTION DES CHAPITRES (0 à 48)
+-- ==========================================================
+INSERT INTO
+        Chapter (
+                aventure_id,
+                chapter_id,
+                chapter_content,
+                chapter_image
+        )
+VALUES
+        (
+                1,
+                0,
+                'Bienvenue au Val Perdu. Votre destin commence ici, devant la taverne du village.',
+                'img/chap0.jpg'
+        ),
+        (
+                1,
+                1,
+                'Introduction : Le ciel est lourd. Le bourgmestre vous supplie de retrouver sa fille enlevée par un sorcier dans un château en ruines.',
+                'img/chap1.jpg'
+        ),
+        (
+                1,
+                2,
+                'L\'orée de la forêt : Un vent froid glisse entre les arbres. Deux chemins s\'offrent à vous : un sinueux ou un envahi de ronces.',
+                'img/chap2.jpg'
+        ),
+        (
+                1,
+                3,
+                'L\'arbre aux corbeaux : Des oiseaux noirs vous observent. Vous ressentez la présence d\'un prédateur proche.',
+                'img/chap3.jpg'
+        ),
+        (
+                1,
+                4,
+                'Combat : Un énorme sanglier enragé aux yeux injectés de sang surgit des buissons et vous charge brutalement.',
+                'img/forestFight.jpg'
+        ),
+        (
+                1,
+                5,
+                'Rencontre avec le paysan : Un vieil homme vous avertit que des créatures rôdent la nuit au cœur de la forêt.',
+                'img/chap5.jpg'
+        ),
+        (
+                1,
+                6,
+                'Combat : Un loup noir aux crocs acérés bondit devant vous. Le combat est inévitable pour survivre.',
+                'img/forestFight.jpg'
+        ),
+        (
+                1,
+                7,
+                'La clairière aux pierres anciennes : Une brume rampe au sol entre des pierres dressées comme un autel oublié.',
+                'img/chap7.jpg'
+        ),
+        (
+                1,
+                8,
+                'Les murmures du ruisseau : Le chant de l\'eau cache des inscriptions anciennes gravées dans une pierre moussue.',
+                'img/chap8.jpg'
+        ),
+        (
+                1,
+                9,
+                'Au pied du château : Devant vous se dresse une colline escarpée couronnée par les ruines menaçantes de la forteresse.',
+                'img/chap9.jpg'
+        ),
+        (
+                1,
+                10,
+                'La lumière au bout du néant : L\'obscurité vous enveloppe. Une voix murmure qu\'une seconde chance vous est accordée, mais sans vos objets.',
+                'img/chap10.jpg'
+        ),
+        (
+                1,
+                11,
+                'La curiosité tua le chat : Un piège magique s\'est déclenché sur la pierre. Le monde s\'effondre autour de vous.',
+                'img/chap11.jpg'
+        ),
+        (
+                1,
+                12,
+                'Le Réduit des Sentinelles : Vous avez atteint une guérite isolée. C\'est un endroit sûr pour planifier l\'infiltration.',
+                'img/chap12.jpg'
+        ),
+        (
+                1,
+                13,
+                'La Traversée de la Cour Ouest : Les débris jonchent le sol. Une patrouille approche, il faut agir vite.',
+                'img/chap13.jpg'
+        ),
+        (
+                1,
+                14,
+                'Le Couloir de la Peur : Un tunnel étroit exhalant une odeur de moisissure. Des symboles brillent d\'une lueur verte.',
+                'img/chap14.jpg'
+        ),
+        (
+                1,
+                15,
+                'Le Piège de la Dalle : Une pierre suspecte semble protéger l\'accès au palier. Une erreur pourrait être fatale.',
+                'img/chap15.jpg'
+        ),
+        (
+                1,
+                16,
+                'Combat : L\'escarmouche nocturne contre un molosse noir aux yeux rouges protégeant l\'accès intérieur.',
+                'img/ruinsFight.jpg'
+        ),
+        (
+                1,
+                17,
+                'Repos du Guerrier : Une alcôve vous permet de panser vos plaies et de préparer la suite de l\'ascension.',
+                'img/chap17.jpg'
+        ),
+        (
+                1,
+                18,
+                'Les Marches de la Crypte : Un escalier décrépit descend vers les profondeurs. L\'air devient glacial.',
+                'img/chap18.jpg'
+        ),
+        (
+                1,
+                19,
+                'Le Dédale des Morts : Des runes pulsantes sur les murs déforment les ombres. Sont-elles protectrices ou maudites?',
+                'img/chap19.jpg'
+        ),
+        (
+                1,
+                20,
+                'Combat : Le réveil des gardiens squelettiques qui sortent du sol pour bloquer votre progression dans les catacombes.',
+                'img/labyrinthFight.jpg'
+        ),
+        (
+                1,
+                21,
+                'Le Mur Illusoire : Une paroi de pierre semble vibrer. La magie du sorcier tente de vous égarer.',
+                'img/chap21.jpg'
+        ),
+        (
+                1,
+                22,
+                'Le Trésor Maudit : Une amulette de jade repose sur un autel. Elle dégage une aura de puissance et de danger.',
+                'img/chap22.jpg'
+        ),
+        (
+                1,
+                23,
+                'L\'Issue Scellée : Une immense porte de granit bloque le passage. Elle semble fermée par un mécanisme ancien.',
+                'img/chap23.jpg'
+        ),
+        (
+                1,
+                24,
+                'L\'Arsenal Oublié : Une salle remplie d\'armures en poussière. Vous avez trouvé un point de sécurité stratégique.',
+                'img/chap24.jpg'
+        ),
+        (
+                1,
+                25,
+                'L\'Erreur Fatale : Une vapeur toxique s\'échappe du puits que vous inspectiez. Vos forces vous abandonnent.',
+                'img/chap25.jpg'
+        ),
+        (
+                1,
+                26,
+                'Combat : Deux esprits de soldats fantomatiques se matérialisent pour protéger l\'accès aux étages supérieurs.',
+                'img/stairsFight.jpg'
+        ),
+        (
+                1,
+                27,
+                'La Discrétion Payante : Vous utilisez les tunnels de service pour contourner les gardes restants.',
+                'img/chap27.jpg'
+        ),
+        (
+                1,
+                28,
+                'Combat : Le duel contre le champion spectral. Chaque coup d\'épée résonne dans le vide de la salle.',
+                'img/chap28.jpg'
+        ),
+        (
+                1,
+                29,
+                'Découverte du Plan : Vous trouvez une carte du château indiquant les points faibles des défenses du sorcier.',
+                'img/chap29.jpg'
+        ),
+        (
+                1,
+                30,
+                'Les Balcons Intérieurs : Vous dominez la cour. Les appartements privés du sorcier ne sont plus loin.',
+                'img/chap30.jpg'
+        ),
+        (
+                1,
+                31,
+                'La Retraite Nécessaire : Trop de gardes ont été alertés. Vous devez fuir vers l\'entrée pour survivre.',
+                'img/chap31.jpg'
+        ),
+        (
+                1,
+                32,
+                'Les Illusions Mobiles : La réalité se fragmente. Les murs semblent bouger pour vous emmurer vivant.',
+                'img/chap32.jpg'
+        ),
+        (
+                1,
+                33,
+                'Le Serviteur Apeuré : Un vieil homme terrifié peut vous livrer les secrets de son maître ou vous trahir.',
+                'img/chap33.jpg'
+        ),
+        (
+                1,
+                34,
+                'Les Fils d\'Arcane : Des pièges magiques invisibles quadrillent la pièce. Un mouvement brusque déclenchera l\'alarme.',
+                'img/chap34.jpg'
+        ),
+        (
+                1,
+                35,
+                'Le Journal du Sorcier : Des notes personnelles révèlent le rituel de sacrifice et une faille dans sa magie.',
+                'img/chap35.jpg'
+        ),
+        (
+                1,
+                36,
+                'La Salle d\'Observation : Vous voyez le sorcier au loin. Le rituel a commencé. C\'est votre dernier répit.',
+                'img/chap36.jpg'
+        ),
+        (
+                1,
+                37,
+                'Le Seuil de la Confrontation : L\'antichambre vibre d\'énergie noire. Le sorcier vous attend pour le duel final.',
+                'img/chap37.jpg'
+        ),
+        (
+                1,
+                38,
+                'Les Révélations Audibles : Vous comprenez enfin le but ultime du sorcier en écoutant ses incantations.',
+                'img/chap38.jpg'
+        ),
+        (
+                1,
+                39,
+                'L\'Aiguisage des Sens : Un moment de concentration extrême avant de franchir la porte du trône.',
+                'img/chap39.jpg'
+        ),
+        (
+                1,
+                40,
+                'Le Dernier Pas : La porte s\'ouvre. La captive est enchaînée derrière l\'autel sacrificiel.',
+                'img/chap40.jpg'
+        ),
+        (
+                1,
+                41,
+                'Le Raccourci Payant : Grâce à vos talents, vous avez trouvé un passage secret menant directement au boss.',
+                'img/chap41.jpg'
+        ),
+        (
+                1,
+                42,
+                'Combat : Le duel arcanique commence. Le sorcier déchaîne des éclairs d\'énergie pure contre vous.',
+                'img/mageFight.jpg'
+        ),
+        (
+                1,
+                43,
+                'Le Contre de l\'Expert : Vous esquivez et trouvez une ouverture dans la défense magique de votre ennemi.',
+                'img/chap43.jpg'
+        ),
+        (
+                1,
+                44,
+                'L\'Exploitation de l\'Environnement : Vous utilisez les piliers de la salle pour déstabiliser le rituel en cours.',
+                'img/chap44.jpg'
+        ),
+        (
+                1,
+                45,
+                'Le Coup Désespéré : Le sorcier lance ses dernières flammes sombres. C\'est maintenant ou jamais.',
+                'img/chap45.jpg'
+        ),
+        (
+                1,
+                46,
+                'Combat : La chute du tyran. Le sorcier s\'effondre et son pouvoir se dissipe dans un cri agonisant.',
+                'img/mageFight.jpg'
+        ),
+        (
+                1,
+                47,
+                'Le Succès et la Récompense : La fille est libre. Vous devez choisir votre récompense finale avant de partir.',
+                'img/chap47.jpg'
+        ),
+        (
+                1,
+                48,
+                'La Vanité Punie : Votre tentative de négociation a échoué. Le sorcier ne connaît aucune pitié.',
+                'img/chap48.jpg'
+        );
+
+-- ==========================================================
+-- INSERTION DES LIENS (LINKS)
+-- ==========================================================
+INSERT INTO
+        Links (
+                link_id,
+                aventure_id,
+                chapter_id,
+                link_aventure_id,
+                link_chapter_id,
+                link_description
+        )
+VALUES
+        (1, 1, 0, 1, 1, 'Commencer l\'aventure'),
+        (2, 1, 1, 1, 2, 'S\'enfoncer dans la forêt'),
+        (3, 1, 2, 1, 3, 'Prendre le chemin sinueux'),
+        (4, 1, 2, 1, 4, 'Prendre le sentier de ronces'),
+        (5, 1, 3, 1, 5, 'Rester prudent'),
+        (6, 1, 3, 1, 6, 'Ignorer les bruits'),
+        (7, 1, 4, 1, 8, 'Vaincre le sanglier'),
+        (8, 1, 4, 1, 10, 'Succomber au sanglier'),
+        (9, 1, 5, 1, 7, 'Continuer vers la clairière'),
+        (10, 1, 6, 1, 7, 'Survivre au loup'),
+        (11, 1, 6, 1, 10, 'Mourir sous les crocs'),
+        (12, 1, 7, 1, 8, 'Prendre le sentier de mousse'),
+        (13, 1, 7, 1, 9, 'Suivre les racines'),
+        (14, 1, 8, 1, 11, 'Toucher la pierre gravée'),
+        (15, 1, 8, 1, 9, 'Ignorer la pierre'),
+        (16, 1, 9, 1, 12, 'Entrer dans le château'),
+        (17, 1, 10, 1, 1, 'Renaître au début'),
+        (18, 1, 11, 1, 10, 'Sombrer dans le vide'),
+        (19, 1, 12, 1, 13, 'Passer par la cour'),
+        (20, 1, 12, 1, 14, 'Prendre le passage dérobé'),
+        (21, 1, 13, 1, 15, 'Se cacher dans les gravats'),
+        (22, 1, 13, 1, 16, 'Détourner l\'attention'),
+        (23, 1, 14, 1, 16, 'Ignorer les symboles'),
+        (24, 1, 14, 1, 17, 'Se reposer dans le tunnel'),
+        (25, 1, 15, 1, 17, 'Analyser la dalle'),
+        (26, 1, 15, 1, 18, 'Traverser rapidement'),
+        (27, 1, 16, 1, 17, 'Se soigner après le combat'),
+        (28, 1, 16, 1, 18, 'Continuer vers la crypte'),
+        (29, 1, 17, 1, 18, 'Partir à l\'aube'),
+        (30, 1, 17, 1, 18, 'Fouiller l\'alcôve'),
+        (31, 1, 18, 1, 19, 'Descendre l\'escalier'),
+        (30, 1, 18, 1, 25, 'Inspecter le puits'),
+        (31, 1, 19, 1, 20, 'Décrypter les glyphes'),
+        (32, 1, 19, 1, 21, 'Se presser vers l\'avant'),
+        (33, 1, 20, 1, 22, 'Engager le combat'),
+        (34, 1, 20, 1, 23, 'Contourner les squelettes'),
+        (35, 1, 21, 1, 23, 'Dissiper l\'illusion'),
+        (36, 1, 21, 1, 24, 'Forcer le mur'),
+        (37, 1, 22, 1, 23, 'Prendre l\'amulette'),
+        (38, 1, 22, 1, 24, 'Laisser le trésor'),
+        (39, 1, 23, 1, 24, 'Forcer la porte'),
+        (40, 1, 23, 1, 24, 'Écouter aux portes'),
+        (41, 1, 24, 1, 26, 'Vers le centre du château'),
+        (42, 1, 24, 1, 31, 'Faire une reconnaissance'),
+        (43, 1, 25, 1, 10, 'Lutter contre le poison'),
+        (44, 1, 25, 1, 10, 'Accepter la mort'),
+        (45, 1, 26, 1, 27, 'Approche furtive'),
+        (46, 1, 26, 1, 28, 'Attaque frontale'),
+        (47, 1, 27, 1, 29, 'Écouter aux portes'),
+        (48, 1, 27, 1, 30, 'Foncer vers la sortie'),
+        (49, 1, 28, 1, 29, 'Déblayer les gravats'),
+        (50, 1, 28, 1, 30, 'Trouver un autre accès'),
+        (51, 1, 29, 1, 30, 'Étudier le plan'),
+        (52, 1, 29, 1, 30, 'Partir immédiatement'),
+        (53, 1, 30, 1, 32, 'Prendre l\'escalier privé'),
+        (54, 1, 30, 1, 41, 'Utiliser la porte sculptée'),
+        (55, 1, 31, 1, 12, 'Repli vers la guérite'),
+        (56, 1, 31, 1, 12, 'Chercher de l\'aide'),
+        (57, 1, 32, 1, 33, 'Dissiper les visions'),
+        (58, 1, 32, 1, 34, 'Frapper le vide'),
+        (59, 1, 33, 1, 35, 'Interroger le serviteur'),
+        (60, 1, 33, 1, 36, 'Ignorer le vieillard'),
+        (61, 1, 34, 1, 35, 'Désactiver les fils'),
+        (62, 1, 34, 1, 36, 'Tenter un saut agile'),
+        (63, 1, 35, 1, 36, 'Lire le journal'),
+        (64, 1, 35, 1, 36, 'Brûler les preuves'),
+        (65, 1, 36, 1, 38, 'Attaquer par surprise'),
+        (66, 1, 36, 1, 39, 'Se reposer une dernière fois'),
+        (67, 1, 37, 1, 42, 'Assaut frontal'),
+        (68, 1, 37, 1, 48, 'Tenter de raisonner'),
+        (69, 1, 38, 1, 40, 'Se préparer à l\'embuscade'),
+        (70, 1, 38, 1, 39, 'Contourner la salle'),
+        (71, 1, 39, 1, 40, 'Améliorer son offensive'),
+        (72, 1, 39, 1, 37, 'Aller au duel'),
+        (73, 1, 40, 1, 37, 'Entrer silencieusement'),
+        (74, 1, 40, 1, 37, 'Défoncer la porte'),
+        (75, 1, 41, 1, 37, 'Entrer immédiatement'),
+        (76, 1, 41, 1, 37, 'Prendre une pause'),
+        (77, 1, 42, 1, 43, 'Plonger sur le côté'),
+        (78, 1, 42, 1, 44, 'Charger malgré l\'éclair'),
+        (79, 1, 43, 1, 45, 'Presser l\'attaque'),
+        (80, 1, 43, 1, 46, 'Se soigner rapidement'),
+        (81, 1, 44, 1, 45, 'Cibler la faille au sol'),
+        (82, 1, 44, 1, 46, 'Focaliser sur le sorcier'),
+        (83, 1, 45, 1, 46, 'Bloquer le coup final'),
+        (84, 1, 45, 1, 46, 'Donner le coup de grâce'),
+        (85, 1, 46, 1, 47, 'Secourir la captive'),
+        (86, 1, 46, 1, 47, 'Prendre les artefacts'),
+        (89, 1, 48, 1, 10, 'Accepter son sort'),
+        (90, 1, 48, 1, 10, 'Action désespérée');
+
