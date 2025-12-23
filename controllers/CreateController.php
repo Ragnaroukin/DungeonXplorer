@@ -73,6 +73,12 @@ class CreateController
                 $stmt->bindParam(':initiative', $initiative);
                 $stmt->execute();
 
+                if($classId == 1){
+                        $req = $pdo->prepare("UPDATE Hero SET hero_spell_list = 'Foudre - 10' WHERE hero_id = :hero_id");
+                        $req->bindParam(':hero_id', $hero);
+                        $req->execute();
+                }
+
                 $new = $pdo->prepare("INSERT INTO `Hero_Progress` (`aventure_id`, `chapter_id`, `joueur_pseudo`, `hero_id`, `progress_completion_date`) VALUES (:aventure_id, 1, :pseudo, :hero_id, NOW())");
                 $new->bindParam(":pseudo", $_SESSION["pseudo"]);
                 $new->bindParam(":hero_id", $hero);
