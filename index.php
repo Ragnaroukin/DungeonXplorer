@@ -42,6 +42,7 @@ $router->addRoute('admin/profile', 'DashboardController@viewProfile');
 $router->addRoute('admin/profile/delete', 'DashboardController@deleteProfile');
 $router->addRoute('admin/profile/heroes', 'DashboardController@viewHeroes');
 
+
 /*
  * Gestion de l'aventure
  */
@@ -60,6 +61,8 @@ $router->addRoute('game/progress', 'ChapterController@progress'); // Pour avance
 // Gestion des combats
 $router->addRoute('game/chapter/fight', 'CombatController@startCombat');
 $router->addRoute('game/chapter/fight/end/{result}', 'CombatController@endFight');
+//Statistiques du héros courant
+$router->addRoute("game/stats", "StatsController@gather");
 
 /*
  *Profil

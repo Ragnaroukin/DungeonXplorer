@@ -3,25 +3,30 @@ class ProfileController
 {
     public function show()
     {
-        $pdo = Database::getConnection();
+        if (empty($_SESSION['pseudo'])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        } else {
+            $pdo = Database::getConnection();
+            // Logique pour afficher le profil de l'utilisateur
+            $pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : "Invité";
 
-        // Logique pour afficher le profil de l'utilisateur
-        $pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : "Invité";
+            $sql = "SELECT joueur_image, joueur_admin FROM Joueur WHERE joueur_pseudo = :pseudo";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':pseudo', $pseudo);
+            $stmt->execute();
+            $resultat = $stmt->fetch();
 
-        $sql = "SELECT joueur_image, joueur_admin FROM Joueur WHERE joueur_pseudo = :pseudo";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':pseudo', $pseudo);
-        $stmt->execute();
-        $resultat = $stmt->fetch();
+            $admin = $resultat['joueur_admin'];
+            $joueurImage = $resultat['joueur_image'];
 
-        $admin = $resultat['joueur_admin'];
-        $joueurImage = $resultat['joueur_image'];
+            $connected = true;
 
-        $connected = true;
-
-        require_once __DIR__ . "/../views/header.php";
-        require_once __DIR__ . "/../views/profile.php";
-        require_once __DIR__ . "/../views/footer.php";
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/profile.php";
+            require_once __DIR__ . "/../views/footer.php";
+        }
     }
 
     public function disconnect()
@@ -41,50 +46,68 @@ class ProfileController
 
     public function delete()
     {
-        $pdo = Database::getConnection();
+        if (empty($_SESSION['pseudo'])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        } else {
+            $pdo = Database::getConnection();
 
-        $req = $pdo->prepare("DELETE FROM Hero_Progress WHERE joueur_pseudo = :pseudo");
-        $req->bindParam(":pseudo", $_SESSION["pseudo"]);
-        $req->execute();
+            $req = $pdo->prepare("DELETE FROM Hero_Progress WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+            $req->execute();
 
-        $req = $pdo->prepare("DELETE FROM Inventory WHERE joueur_pseudo = :pseudo");
-        $req->bindParam(":pseudo", $_SESSION["pseudo"]);
-        $req->execute();
+            $req = $pdo->prepare("DELETE FROM Inventory WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+            $req->execute();
 
-        $req = $pdo->prepare("DELETE FROM Hero WHERE joueur_pseudo = :pseudo");
-        $req->bindParam(":pseudo", $_SESSION["pseudo"]);
-        $req->execute();
+            $req = $pdo->prepare("DELETE FROM Hero WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+            $req->execute();
 
-        $req = $pdo->prepare("DELETE FROM Joueur WHERE joueur_pseudo = :pseudo");
-        $req->bindParam(":pseudo", $_SESSION["pseudo"]);
-        $req->execute();
+            $req = $pdo->prepare("DELETE FROM Joueur WHERE joueur_pseudo = :pseudo");
+            $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+            $req->execute();
 
-        self::disconnect();
+            self::disconnect();
+        }
     }
 
     public function modify()
     {
-        $pdo = Database::getConnection();
+        if (empty($_SESSION['pseudo'])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        } else {
+            $pdo = Database::getConnection();
 
-        // Logique pour afficher le profil de l'utilisateur
-        $pseudo = ($_SESSION['pseudo'] ?? "Invité");
+            // Logique pour afficher le profil de l'utilisateur
+            $pseudo = ($_SESSION['pseudo'] ?? "Invité");
 
-        $sql = "SELECT joueur_image, joueur_admin FROM Joueur WHERE joueur_pseudo = :pseudo";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':pseudo', $pseudo);
-        $stmt->execute();
-        $resultat = $stmt->fetch();
+            $sql = "SELECT joueur_image, joueur_admin FROM Joueur WHERE joueur_pseudo = :pseudo";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':pseudo', $pseudo);
+            $stmt->execute();
+            $resultat = $stmt->fetch();
 
-        $admin = $resultat['joueur_admin'];
-        $joueurImage = $resultat['joueur_image'];
+            $admin = $resultat['joueur_admin'];
+            $joueurImage = $resultat['joueur_image'];
 
-        require_once __DIR__ . "/../views/header.php";
-        require_once __DIR__ . "/../views/profileModify.php";
-        require_once __DIR__ . "/../views/footer.php";
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/profileModify.php";
+            require_once __DIR__ . "/../views/footer.php";
+        }
     }
 
     public function modifying()
     {
+        if (empty($_SESSION['pseudo'])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        }
+
         // On vérifie qu'il n'y a pas eu d'erreur
         if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
             header("Location: " . url("profile"));
@@ -144,16 +167,22 @@ class ProfileController
 
     public function heroes()
     {
-        $pdo = Database::getConnection();
+        if (empty($_SESSION['pseudo'])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        } else {
+            $pdo = Database::getConnection();
 
-        $req = $pdo->prepare("SELECT * FROM Hero JOIN Class USING(class_id) JOIN Hero_Progress USING (hero_id, joueur_pseudo) WHERE joueur_pseudo = :pseudo");
-        $req->bindParam('pseudo', $_SESSION["pseudo"]);
-        $req->execute();
+            $req = $pdo->prepare("SELECT * FROM Hero JOIN Class USING(class_id) JOIN Hero_Progress USING (hero_id, joueur_pseudo) WHERE joueur_pseudo = :pseudo");
+            $req->bindParam('pseudo', $_SESSION["pseudo"]);
+            $req->execute();
 
-        $heroes = $req->fetchAll();
+            $heroes = $req->fetchAll();
 
-        require_once __DIR__ . "/../views/header.php";
-        require_once __DIR__ . "/../views/heroList.php";
-        require_once __DIR__ . "/../views/footer.php";
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/heroList.php";
+            require_once __DIR__ . "/../views/footer.php";
+        }
     }
 }
