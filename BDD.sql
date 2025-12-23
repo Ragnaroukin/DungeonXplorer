@@ -24,7 +24,6 @@ CREATE TABLE Items (
 
 );
 
-
 -- Création de la table Monster (Monstres rencontrés dans l'histoire)
 DROP TABLE IF EXISTS Monster;
 CREATE TABLE Monster (
@@ -38,16 +37,6 @@ CREATE TABLE Monster (
     monster_spell TEXT, -- attaque magique
     monster_xp INT NOT NULL,
     monster_image VARCHAR(255)
-);
-
--- Table intermédiaire pour les butins des monstres (Monster - Items)
--- Permet à un monstre de lâcher plusieurs types d'objets, avec une quantité.
-DROP TABLE IF EXISTS Monster_Loot;
-CREATE TABLE Monster_Loot (
-    monster_id INT,
-    item_id INT,
-    loot_quantity INT NOT NULL DEFAULT 1,
-    loot_drop_rate DECIMAL(3, 2) DEFAULT 1.0 -- Taux de chance de drop (ex: 0.5 pour 50%)
 );
 
 -- Création de la table Hero (Personnage principal)
@@ -172,7 +161,6 @@ ALTER TABLE Encounter ADD CONSTRAINT pk_Encounter PRIMARY KEY(monster_id,aventur
 ALTER TABLE Links ADD CONSTRAINT pk_Links PRIMARY KEY(aventure_id,chapter_id, link_aventure_id, link_chapter_id);
 ALTER TABLE Chapter_Treasure ADD CONSTRAINT pk_Chapter_Treasure PRIMARY KEY(item_id,aventure_id,chapter_id);
 ALTER TABLE Level ADD CONSTRAINT pk_Level PRIMARY KEY(level_number,class_id);
-ALTER TABLE Monster_Loot ADD CONSTRAINT pk_Monster_Loot PRIMARY KEY(item_id,monster_id);
 
 ALTER TABLE Monster_Loot ADD CONSTRAINT fk1_Monster_Loot FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);
 ALTER TABLE Monster_Loot ADD CONSTRAINT fk2_Monster_Loot FOREIGN KEY (item_id) REFERENCES Items(item_id);
@@ -232,7 +220,7 @@ INSERT INTO Chapter (aventure_id, chapter_id, chapter_content, chapter_image) VA
 (1, 23, 'L\'Issue Scellée : Une immense porte de granit bloque le passage. Elle semble fermée par un mécanisme ancien.', 'image/'),
 (1, 24, 'L\'Arsenal Oublié : Une salle remplie d\'armures en poussière. Vous avez trouvé un point de sécurité stratégique.', 'image/'),
 (1, 25, 'L\'Erreur Fatale : Une vapeur toxique s\'échappe du puits que vous inspectiez. Vos forces vous abandonnent.', 'image/'),
-(1, 26, 'Combat : Deux esprits de soldats fantomatiques se matérialisent pour protéger l\'accès aux étages supérieurs.', 'image/'),
+(1, 26, 'Deux esprits de soldats fantomatiques se matérialisent pour protéger l\'accès aux étages supérieurs.', 'image/'),
 (1, 27, 'La Discrétion Payante : Vous utilisez les tunnels de service pour contourner les gardes restants.', 'image/'),
 (1, 28, 'Combat : Le duel contre le champion spectral. Chaque coup d\'épée résonne dans le vide de la salle.', 'image/'),
 (1, 29, 'Découverte du Plan : Vous trouvez une carte du château indiquant les points faibles des défenses du sorcier.', 'image/'),
@@ -252,7 +240,7 @@ INSERT INTO Chapter (aventure_id, chapter_id, chapter_content, chapter_image) VA
 (1, 43, 'Le Contre de l\'Expert : Vous esquivez et trouvez une ouverture dans la défense magique de votre ennemi.', 'image/'),
 (1, 44, 'L\'Exploitation de l\'Environnement : Vous utilisez les piliers de la salle pour déstabiliser le rituel en cours.', 'image/'),
 (1, 45, 'Le Coup Désespéré : Le sorcier lance ses dernières flammes sombres. C\'est maintenant ou jamais.', 'image/'),
-(1, 46, 'Combat : La chute du tyran. Le sorcier s\'effondre et son pouvoir se dissipe dans un cri agonisant.', 'image/'),
+(1, 46, 'La chute du tyran. Le sorcier s\'effondre et son pouvoir se dissipe dans un cri agonisant.', 'image/'),
 (1, 47, 'Le Succès et la Récompense : La fille est libre. Vous devez choisir votre récompense finale avant de partir.', 'image/'),
 (1, 48, 'La Vanité Punie : Votre tentative de négociation a échoué. Le sorcier ne connaît aucune pitié.', 'image/');
  
@@ -388,7 +376,11 @@ VALUES (
 
 INSERT INTO `Items`(`item_id`,`item_name`, `item_description`, `item_image`, `item_type`) 
 VALUES (0,'Potion de soin','Un puissant breuvage permettant de remettre sur pieds un aventurier blessé',
-        '/img/healingPotion.jpg','misc');
+        '/img/Potions.jpg','misc');
+
+INSERT INTO `Items`(`item_id`,`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Potion de mana','Une boisson pour récupérer de la magie',
+        '/img/Potions.jpg','misc');
 
 INSERT INTO `Items`(`item_name`, `item_description`, `item_image`, `item_type`) 
 VALUES ('Casque','Un casque permettant de protéger sa tête',
@@ -506,3 +498,19 @@ INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_b
 
 INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
 `level_initiative_bonus`) VALUES (2, 10, 25600, 100, 35, 30, 10);
+
+INSERT INTO `Monster` (`monster_id`, `monster_name`, `monster_pv`, `monster_mana`, `monster_initiative`, `monster_strength`, `monster_attack`, `monster_spell`, `monster_xp`, `monster_image`) VALUES
+(0,'Sanglier', 5, 0, 4, 10, 'Charge', NULL, 10, '/img/Wild boar.jpg'),
+(1,'Loup', 15, NULL, 8, 15, 'Morsure', NULL, 15, '/img/Wolf02.jpg'),
+(2,'Manticore', 30, 20, 10, 5, 'Brulure', 'Boule de feu - 10', 25, '/img/Manticore.jpg'),
+(3, 'Squelette', 50, NULL, 6, 10, 'Coup d\'épée', NULL, 10, '/img/Skeleton.png'),
+(4, 'Guerrier maléfique', 100, 25, 10, 20, 'Frappe lourde', 'Peur bleue - 15', 30, '/img/Evil warrior.jpg'),
+(5, 'Sorcier', 200, 100, 8, 75, 'Coup de spectre', 'Ténébres - 25', 50, '/img/Wizard.jpg');
+
+INSERT INTO `Encounter` (`aventure_id`, `chapter_id`, `monster_id`, `aventure_id_win`, `chapter_id_win`, `aventure_id_lose`, `chapter_id_lose`) VALUES
+(1, 4, 0, 1, 8, 1, 17),
+(1, 6, 1, 1, 7, 1, 17),
+(1, 16, 2, 1, 18, 1, 10),
+(1, 20, 3, 1, 22, 1, 10),
+(1, 28, 4, 1, 29, 1, 10)
+(1, 42, 5, 1, 43, 1, 10);
