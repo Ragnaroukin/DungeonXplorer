@@ -943,3 +943,21 @@ INSERT INTO `Encounter` (`aventure_id`, `chapter_id`, `monster_id`, `aventure_id
 (1, 20, 3, 1, 22, 1, 10),
 (1, 28, 4, 1, 29, 1, 10),
 (1, 42, 5, 1, 43, 1, 10);
+
+INSERT INTO `Monster_Loot` (`monster_id`, `item_id`, `loot_quantity`, `loot_drop_rate`) VALUES
+(0, 2, 1, 0.05),
+(4, 3, 1, 0.15),
+(3, 4, 1, 0.25),
+(1, 5, 1, 0.10),
+(5, 6, 1, 1.00),
+(2, 7, 3, 0.50);
+
+INSERT INTO `Chapter_Treasure` (`aventure_id`, `chapter_id`, `item_id`, `treasure_quantity`) VALUES
+(1, 5, 1, 3),
+(1, 19, 1, 2),
+(1, 29, 2, 1),
+(1, 24, 3, 1),
+(1, 15, 4, 1),
+(1, 9, 5, 1),
+(1, 40, 5, 1),
+(1, 35, 7, 4);
