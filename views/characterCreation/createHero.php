@@ -20,7 +20,7 @@
     echo($class_id);
 
     session_start();
-    $_SESSION['user_id'] = 1;
+    //$_SESSION['user_id'] = 1;
 
     function createHero(int $heroType) {
     $dsn = "mysql:host=127.0.0.1;port=3306;dbname=dungeonxplorer;charset=utf8mb4";
@@ -60,7 +60,7 @@
 
     // insertion sécurisée (colonnes explicites + paramètres nommés)
     $sql = 'INSERT INTO hero (hero_id, joueur_id, hero_name, class_id, hero_biography, hero_pv, hero_mana, hero_strength, hero_initiative, hero_armor_item_id, hero_primary_weapon_item_id, hero_secondary_weapon_item_id, hero_shield_item_id, hero_spell_list, hero_xp, hero_level)
-            VALUES (:hero_id, :joueur_id, :hero_name, :class_id, :hero_bio, :pv, :mana, :strength, :initiative, NULL, NULL, NULL, NULL, "", 0, 1)';
+            VALUES (:hero_id, :joueur_id, :hero_name, :class_id, :hero_bio, :pv, :mana, :strength, :initiative, NULL, NULL, NULL, NULL, "Foudre - 20", 0, 1)';
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([

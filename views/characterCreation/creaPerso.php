@@ -1,3 +1,7 @@
+<?php 
+require_once(dirname('../header.php'));
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,8 +41,6 @@
 </body>
 </html>
 
-<?php
-
-//require_once  ;
-
+<?php 
+require_once(dirname('../footer.php'));
 ?>
