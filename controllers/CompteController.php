@@ -5,13 +5,13 @@ class CompteController
         public function index()
         {
                 $titre = explode("/", $_SERVER["REQUEST_URI"])[2];
+                if ($titre === "connexion")
+                        self::login();    
+                else if ($titre === "inscription")
+                        self::signup();
                 require_once __DIR__ . "/../views/header.php";
                 require_once __DIR__ . "/../views/compte.php";
                 require_once __DIR__ . "/../views/footer.php";
-                if ($titre === "connexion")
-                        self::login();
-                else if ($titre === "inscription")
-                        self::signup();
         }
 
         public function login()
@@ -26,18 +26,19 @@ class CompteController
                         $req = $pdo->prepare("SELECT * FROM Joueur WHERE joueur_pseudo = :pseudo");
                         $req->bindParam(":pseudo", $pseudo, type: PDO::PARAM_STR);
                         try {
-                                $req->execute();
+                                $req->execute();      
                         } catch (PDOException $e) {
-                                echo "Une erreur s'est produite !";
+                               echo "Une erreur s'est produite !";
                         }
-
+                        
                         $joueur = $req->fetch(PDO::FETCH_ASSOC);
 
                         if ($joueur && password_verify($mdp, $joueur["joueur_mdp"])) {
-                                $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
-                                $_SESSION["admin"] = $joueur["joueur_admin"];
-                                header("Location: /DungeonXplorer/");
-                        }
+                                        $_SESSION["pseudo"] = $joueur["joueur_pseudo"];
+                                        $_SESSION["admin"] = $joueur["joueur_admin"];
+                                        header("Location: " . url(""));
+                                        exit();
+                                }
                 }
         }
 
