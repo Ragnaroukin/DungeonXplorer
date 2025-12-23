@@ -195,3 +195,314 @@ ALTER TABLE Encounter ADD CONSTRAINT fk1_Encounter FOREIGN KEY (aventure_id,chap
 ALTER TABLE Encounter ADD CONSTRAINT fk2_Encounter FOREIGN KEY (monster_id) REFERENCES Monster(monster_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk3_Encounter FOREIGN KEY (aventure_id_win, chapter_id_win) REFERENCES Chapter(aventure_id, chapter_id);
 ALTER TABLE Encounter ADD CONSTRAINT fk4_Encounter FOREIGN KEY (aventure_id_lose, chapter_id_lose) REFERENCES Chapter(aventure_id, chapter_id);
+
+-- ==========================================================
+-- INSERTION DE L'AVENTURE PRINCIPALE
+-- ==========================================================
+INSERT INTO Aventure (aventure_id, aventure_name, aventure_content, aventure_image) 
+VALUES (1, 'Sauver la fille', 'Une quête périlleuse pour retrouver la fille du bourgmestre disparue dans la forêt du Val Perdu.', 'image/');
+ 
+-- ==========================================================
+-- INSERTION DES CHAPITRES (0 à 48)
+-- ==========================================================
+INSERT INTO Chapter (aventure_id, chapter_id, chapter_content, chapter_image) VALUES
+(1, 0, 'Bienvenue au Val Perdu. Votre destin commence ici, devant la taverne du village.', 'image/'),
+(1, 1, 'Introduction : Le ciel est lourd. Le bourgmestre vous supplie de retrouver sa fille enlevée par un sorcier dans un château en ruines.', 'image/'),
+(1, 2, 'L\'orée de la forêt : Un vent froid glisse entre les arbres. Deux chemins s\'offrent à vous : un sinueux ou un envahi de ronces.', 'image/'),
+(1, 3, 'L\'arbre aux corbeaux : Des oiseaux noirs vous observent. Vous ressentez la présence d\'un prédateur proche.', 'image/'),
+(1, 4, 'Combat : Un énorme sanglier enragé aux yeux injectés de sang surgit des buissons et vous charge brutalement.', 'image/'),
+(1, 5, 'Rencontre avec le paysan : Un vieil homme vous avertit que des créatures rôdent la nuit au cœur de la forêt.', 'image/'),
+(1, 6, 'Combat : Un loup noir aux crocs acérés bondit devant vous. Le combat est inévitable pour survivre.', 'image/'),
+(1, 7, 'La clairière aux pierres anciennes : Une brume rampe au sol entre des pierres dressées comme un autel oublié.', 'image/'),
+(1, 8, 'Les murmures du ruisseau : Le chant de l\'eau cache des inscriptions anciennes gravées dans une pierre moussue.', 'image/'),
+(1, 9, 'Au pied du château : Devant vous se dresse une colline escarpée couronnée par les ruines menaçantes de la forteresse.', 'image/'),
+(1, 10, 'La lumière au bout du néant : L\'obscurité vous enveloppe. Une voix murmure qu\'une seconde chance vous est accordée, mais sans vos objets.', 'image/'),
+(1, 11, 'La curiosité tua le chat : Un piège magique s\'est déclenché sur la pierre. Le monde s\'effondre autour de vous.', 'image/'),
+(1, 12, 'Le Réduit des Sentinelles : Vous avez atteint une guérite isolée. C\'est un endroit sûr pour planifier l\'infiltration.', 'image/'),
+(1, 13, 'La Traversée de la Cour Ouest : Les débris jonchent le sol. Une patrouille approche, il faut agir vite.', 'image/'),
+(1, 14, 'Le Couloir de la Peur : Un tunnel étroit exhalant une odeur de moisissure. Des symboles brillent d\'une lueur verte.', 'image/'),
+(1, 15, 'Le Piège de la Dalle : Une pierre suspecte semble protéger l\'accès au palier. Une erreur pourrait être fatale.', 'image/'),
+(1, 16, 'Combat : L\'escarmouche nocturne contre un molosse noir aux yeux rouges protégeant l\'accès intérieur.', 'image/'),
+(1, 17, 'Repos du Guerrier : Une alcôve vous permet de panser vos plaies et de préparer la suite de l\'ascension.', 'image/'),
+(1, 18, 'Les Marches de la Crypte : Un escalier décrépit descend vers les profondeurs. L\'air devient glacial.', 'image/'),
+(1, 19, 'Le Dédale des Morts : Des runes pulsantes sur les murs déforment les ombres. Sont-elles protectrices ou maudites?', 'image/'),
+(1, 20, 'Combat : Le réveil des gardiens squelettiques qui sortent du sol pour bloquer votre progression dans les catacombes.', 'image/'),
+(1, 21, 'Le Mur Illusoire : Une paroi de pierre semble vibrer. La magie du sorcier tente de vous égarer.', 'image/'),
+(1, 22, 'Le Trésor Maudit : Une amulette de jade repose sur un autel. Elle dégage une aura de puissance et de danger.', 'image/'),
+(1, 23, 'L\'Issue Scellée : Une immense porte de granit bloque le passage. Elle semble fermée par un mécanisme ancien.', 'image/'),
+(1, 24, 'L\'Arsenal Oublié : Une salle remplie d\'armures en poussière. Vous avez trouvé un point de sécurité stratégique.', 'image/'),
+(1, 25, 'L\'Erreur Fatale : Une vapeur toxique s\'échappe du puits que vous inspectiez. Vos forces vous abandonnent.', 'image/'),
+(1, 26, 'Combat : Deux esprits de soldats fantomatiques se matérialisent pour protéger l\'accès aux étages supérieurs.', 'image/'),
+(1, 27, 'La Discrétion Payante : Vous utilisez les tunnels de service pour contourner les gardes restants.', 'image/'),
+(1, 28, 'Combat : Le duel contre le champion spectral. Chaque coup d\'épée résonne dans le vide de la salle.', 'image/'),
+(1, 29, 'Découverte du Plan : Vous trouvez une carte du château indiquant les points faibles des défenses du sorcier.', 'image/'),
+(1, 30, 'Les Balcons Intérieurs : Vous dominez la cour. Les appartements privés du sorcier ne sont plus loin.', 'image/'),
+(1, 31, 'La Retraite Nécessaire : Trop de gardes ont été alertés. Vous devez fuir vers l\'entrée pour survivre.', 'image/'),
+(1, 32, 'Les Illusions Mobiles : La réalité se fragmente. Les murs semblent bouger pour vous emmurer vivant.', 'image/'),
+(1, 33, 'Le Serviteur Apeuré : Un vieil homme terrifié peut vous livrer les secrets de son maître ou vous trahir.', 'image/'),
+(1, 34, 'Les Fils d\'Arcane : Des pièges magiques invisibles quadrillent la pièce. Un mouvement brusque déclenchera l\'alarme.', 'image/'),
+(1, 35, 'Le Journal du Sorcier : Des notes personnelles révèlent le rituel de sacrifice et une faille dans sa magie.', 'image/'),
+(1, 36, 'La Salle d\'Observation : Vous voyez le sorcier au loin. Le rituel a commencé. C\'est votre dernier répit.', 'image/'),
+(1, 37, 'Le Seuil de la Confrontation : L\'antichambre vibre d\'énergie noire. Le sorcier vous attend pour le duel final.', 'image/'),
+(1, 38, 'Les Révélations Audibles : Vous comprenez enfin le but ultime du sorcier en écoutant ses incantations.', 'image/'),
+(1, 39, 'L\'Aiguisage des Sens : Un moment de concentration extrême avant de franchir la porte du trône.', 'image/'),
+(1, 40, 'Le Dernier Pas : La porte s\'ouvre. La captive est enchaînée derrière l\'autel sacrificiel.', 'image/'),
+(1, 41, 'Le Raccourci Payant : Grâce à vos talents, vous avez trouvé un passage secret menant directement au boss.', 'image/'),
+(1, 42, 'Combat : Le duel arcanique commence. Le sorcier déchaîne des éclairs d\'énergie pure contre vous.', 'image/'),
+(1, 43, 'Le Contre de l\'Expert : Vous esquivez et trouvez une ouverture dans la défense magique de votre ennemi.', 'image/'),
+(1, 44, 'L\'Exploitation de l\'Environnement : Vous utilisez les piliers de la salle pour déstabiliser le rituel en cours.', 'image/'),
+(1, 45, 'Le Coup Désespéré : Le sorcier lance ses dernières flammes sombres. C\'est maintenant ou jamais.', 'image/'),
+(1, 46, 'Combat : La chute du tyran. Le sorcier s\'effondre et son pouvoir se dissipe dans un cri agonisant.', 'image/'),
+(1, 47, 'Le Succès et la Récompense : La fille est libre. Vous devez choisir votre récompense finale avant de partir.', 'image/'),
+(1, 48, 'La Vanité Punie : Votre tentative de négociation a échoué. Le sorcier ne connaît aucune pitié.', 'image/');
+ 
+-- ==========================================================
+-- INSERTION DES LIENS (LINKS)
+-- ==========================================================
+INSERT INTO Links (aventure_id, chapter_id, link_aventure_id, link_chapter_id, link_description) VALUES
+(1, 0, 1, 1, 'Commencer l\'aventure'),
+(1, 1, 1, 2, 'S\'enfoncer dans la forêt'),
+(1, 2, 1, 3, 'Prendre le chemin sinueux'),
+(1, 2, 1, 4, 'Prendre le sentier de ronces'),
+(1, 3, 1, 5, 'Rester prudent'),
+(1, 3, 1, 6, 'Ignorer les bruits'),
+(1, 4, 1, 8, 'Vaincre le sanglier'),
+(1, 4, 1, 10, 'Succomber au sanglier'),
+(1, 5, 1, 7, 'Continuer vers la clairière'),
+(1, 6, 1, 7, 'Survivre au loup'),
+(1, 6, 1, 10, 'Mourir sous les crocs'),
+(1, 7, 1, 8, 'Prendre le sentier de mousse'),
+(1, 7, 1, 9, 'Suivre les racines'),
+(1, 8, 1, 11, 'Toucher la pierre gravée'),
+(1, 8, 1, 9, 'Ignorer la pierre'),
+(1, 9, 1, 12, 'Entrer dans le château'),
+(1, 10, 1, 1, 'Renaître au début'),
+(1, 11, 1, 10, 'Sombrer dans le vide'),
+(1, 12, 1, 13, 'Passer par la cour'),
+(1, 12, 1, 14, 'Prendre le passage dérobé'),
+(1, 13, 1, 15, 'Se cacher dans les gravats'),
+(1, 13, 1, 16, 'Détourner l\'attention'),
+(1, 14, 1, 16, 'Ignorer les symboles'),
+(1, 14, 1, 17, 'Se reposer dans le tunnel'),
+(1, 15, 1, 17, 'Analyser la dalle'),
+(1, 15, 1, 18, 'Traverser rapidement'),
+(1, 16, 1, 17, 'Se soigner après le combat'),
+(1, 16, 1, 18, 'Continuer vers la crypte'),
+(1, 17, 1, 18, 'Partir à l\'aube'),
+(1, 18, 1, 19, 'Descendre l\'escalier'),
+(1, 18, 1, 25, 'Inspecter le puits'),
+(1, 19, 1, 20, 'Décrypter les glyphes'),
+(1, 19, 1, 21, 'Se presser vers l\'avant'),
+(1, 20, 1, 22, 'Engager le combat'),
+(1, 20, 1, 23, 'Contourner les squelettes'),
+(1, 21, 1, 23, 'Dissiper l\'illusion'),
+(1, 21, 1, 24, 'Forcer le mur'),
+(1, 22, 1, 23, 'Prendre l\'amulette'),
+(1, 22, 1, 24, 'Laisser le trésor'),
+(1, 23, 1, 24, 'Forcer la porte'),
+(1, 24, 1, 26, 'Vers le centre du château'),
+(1, 24, 1, 31, 'Faire une reconnaissance'),
+(1, 25, 1, 10, 'Lutter contre le poison'),
+(1, 26, 1, 27, 'Approche furtive'),
+(1, 26, 1, 28, 'Attaque frontale'),
+(1, 27, 1, 29, 'Écouter aux portes'),
+(1, 27, 1, 30, 'Foncer vers la sortie'),
+(1, 28, 1, 29, 'Déblayer les gravats'),
+(1, 28, 1, 30, 'Trouver un autre accès'),
+(1, 29, 1, 30, 'Étudier le plan'),
+(1, 30, 1, 32, 'Prendre l\'escalier privé'),
+(1, 30, 1, 41, 'Utiliser la porte sculptée'),
+(1, 31, 1, 12, 'Chercher de l\'aide'),
+(1, 32, 1, 33, 'Dissiper les visions'),
+(1, 32, 1, 34, 'Frapper le vide'),
+(1, 33, 1, 35, 'Interroger le serviteur'),
+(1, 33, 1, 36, 'Ignorer le vieillard'),
+(1, 34, 1, 35, 'Désactiver les fils'),
+(1, 34, 1, 36, 'Tenter un saut agile'),
+(1, 35, 1, 36, 'Lire le journal'),
+(1, 36, 1, 38, 'Attaquer par surprise'),
+(1, 36, 1, 39, 'Se reposer une dernière fois'),
+(1, 37, 1, 42, 'Assaut frontal'),
+(1, 37, 1, 48, 'Tenter de raisonner'),
+(1, 38, 1, 40, 'Se préparer à l\'embuscade'),
+(1, 38, 1, 39, 'Contourner la salle'),
+(1, 39, 1, 40, 'Améliorer son offensive'),
+(1, 39, 1, 37, 'Aller au duel'),
+(1, 40, 1, 37, 'Entrer silencieusement'),
+(1, 41, 1, 37, 'Entrer immédiatement'),
+(1, 42, 1, 43, 'Plonger sur le côté'),
+(1, 42, 1, 44, 'Charger malgré l\'éclair'),
+(1, 43, 1, 45, 'Presser l\'attaque'),
+(1, 43, 1, 46, 'Se soigner rapidement'),
+(1, 44, 1, 45, 'Cibler la faille au sol'),
+(1, 44, 1, 46, 'Focaliser sur le sorcier'),
+(1, 45, 1, 46, 'Donner le coup de grâce'),
+(1, 46, 1, 47, 'Secourir la captive'),
+(1, 48, 1, 10, 'Action désespérée');
+
+INSERT INTO `Class`(`class_id`,`class_name`, `class_description`, `class_base_pv`, 
+`class_base_mana`, `class_base_strength`, `class_base_initiative`, `class_max_items`, `class_img`)
+VALUES (
+    0,
+    'Barbare',
+    'Force brute incarnée, un guerrier forgé par les terres sauvages et les épreuves impitoyables. Son corps, massif et couvert de cicatrices, témoigne d’une vie passée à survivre là où d’autres périraient. Sa chevelure, souvent longue et indisciplinée, flotte au vent comme une crinière indomptée, et ses yeux brûlent d’une intensité primitive. Armé d’une lourde arme – hache gigantesque, marteau de guerre ou épée à deux mains – il combat avec une rage qui semble jaillir du plus profond de son être. Sa puissance physique dépasse celle des combattants ordinaires : chaque coup qu’il porte résonne avec la force de la terre elle-même. Bien qu’il puisse sembler brutal ou rustre, le barbare possède souvent un code d’honneur personnel : loyauté envers ses compagnons, respect de la nature et dédain pour les artifices de la civilisation. Vivant en harmonie avec la sauvagerie qui l’entoure, il puise sa force dans l’instinct, la liberté et l’indomptable énergie du monde sauvage.',
+    100,
+    0,
+    5,
+    2,
+    15,
+    '/img/Berserker.jpg');
+
+INSERT INTO `Class`(`class_name`, `class_description`, `class_base_pv`,
+ `class_base_mana`, `class_base_strength`, `class_base_initiative`, `class_max_items`, `class_img`)
+VALUES (
+    'Magicien',
+    'Maître des arcanes, un savant dont l’esprit s’aventure là où la plupart n’oseraient même pas poser les yeux. Drapé dans une longue robe ornée de runes mystérieuses, il dégage une aura à la fois sereine et inquiétante, comme si des secrets anciens murmuraient autour de lui.
+    Son regard, vif et pénétrant, témoigne d’une intelligence affûtée et d’une curiosité insatiable. Là où le barbare compte sur sa force, le magicien puise sa puissance dans les flux invisibles de la magie : l’énergie du feu, la froideur du givre, les courants de la pensée ou même les forces du cosmos lui obéissent lorsqu’il trace des signes dans l’air.
+    Dans sa main, il tient souvent un bâton gravé de symboles ésotériques ou un grimoire poussiéreux rempli de connaissances interdites. Chaque sort qu’il lance est un équilibre délicat entre maîtrise et danger, car la magie est un outil puissant, mais capricieux.
+    Sage, mystérieux et parfois distant, le magicien consacre sa vie à comprendre l’incompréhensible. Il sait que le vrai pouvoir ne se mesure pas en muscles ni en richesse, mais en savoir, en patience, et en la capacité de modeler la réalité elle-même.',
+    50,
+    100,
+    1,
+    1,
+    5,
+    '/img/Magician01.jpg');
+
+INSERT INTO `Class`(`class_name`, `class_description`, `class_base_pv`,
+ `class_base_mana`, `class_base_strength`, `class_base_initiative`, `class_max_items`, `class_img`)
+VALUES (
+    'Voleur',
+    'Une ombre parmi les ombres, un expert de la discrétion et de la ruse. Agile et silencieux, il se déplace avec la souplesse d’un félin, chaque pas calculé pour ne jamais attirer l’attention. Ses vêtements sombres, souvent renforcés de pièces légères de cuir, lui permettent de se fondre naturellement dans l’obscurité, et un capuchon rabattu sur son visage dissimule ses intentions comme ses traits.
+    Ses yeux, vifs et observateurs, ne manquent aucun détail : une serrure fragile, une bourse mal attachée, un passage secret à peine perceptible… rien ne lui échappe. Armé de dagues affûtées ou d’une rapière légère, il privilégie la précision à la force brute, frappant quand l’ennemi ne s’y attend pas.
+    Le voleur n’est pas seulement un maître des larcins : c’est aussi un stratège subtil. Bluff, agilité, acrobaties et sens aigu du danger lui permettent de survivre dans les rues les plus malfamées comme dans les couloirs les plus piégés.
+    Qu’il soit un aventurier pragmatique, un charmeur insolent ou un hors-la-loi au grand cœur, le voleur vit dans l’équilibre fragile entre liberté et danger, toujours prêt à disparaître avant que quiconque ne comprenne qu’il était là.',
+    75,
+    50,
+    3,
+    4,
+    10,
+    '/img/Thief.jpg');
+
+
+/*Insert items*/
+
+INSERT INTO `Items`(`item_id`,`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES (0,'Potion de soin','Un puissant breuvage permettant de remettre sur pieds un aventurier blessé',
+        '/img/healingPotion.jpg','misc');
+
+INSERT INTO `Items`(`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Casque','Un casque permettant de protéger sa tête',
+        '/img/Helmet.jpg','armor');
+
+INSERT INTO `Items`(`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Arbalète','Une arme à distance tirant des carreaux',
+        '/img/Crossbow.jpg','weapon');
+
+INSERT INTO `Items`(`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Plastron en métal','Une pauvre plaque de fer à peu près pliée de sorte à protéger son porteur',
+        '/img/Chestplate.jpg','armor');
+
+INSERT INTO `Items`( `item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Epée','Lame double et acérée, finement gravée de motifs sinueux d’inspiration gothique. Sa garde, richement ornementée de volutes métalliques et de pointes acérées, lui donne une allure à la fois élégante et menaçante. Le manche gainé de cuir sombre complète l’ensemble, faisant de cette arme une pièce aussi esthétique que redoutable',
+        '/img/Sword01.jpg','weapon');
+
+INSERT INTO `Items`(`item_name`, `item_description`, `item_image`, `item_type`) 
+VALUES ('Baton magique','Un catalyseur du pouvoir magique des sorciers',
+        '/img/MagicStaff.jpg','weapon');
+
+
+/*Niveaux Barbare*/
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 1, 50, 10, 0, 1, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 2, 100, 20, 0, 1, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 3, 200, 30, 0, 5, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 4, 400, 50, 0, 7, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 5, 800, 60, 0, 9, 1);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 6, 1600, 70, 0, 11, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 7, 3200, 80, 0, 13, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 8, 6400, 90, 0, 15, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 9, 12800, 100, 0, 17, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (0, 10, 25600, 150, 0, 19, 1);
+
+/*Niveaux Mage*/
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 1, 50, 1, 5, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 2, 100, 3, 10, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 3, 200, 5, 15, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 4, 400, 7, 20, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 5, 800, 20, 35, 0, 1);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 6, 1600, 9, 25, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 7, 3200, 11, 30, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 8, 6400, 13, 35, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 9, 12800, 15, 40, 0, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (1, 10, 25600, 50, 70, 0, 2);
+
+/*Niveaux Voleur*/
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 1, 50, 10, 1, 1, 1);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 2, 100, 15, 4, 2, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 3, 200, 20, 7, 4, 2);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 4, 400, 25, 10, 6, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 5, 800, 50, 13, 15, 5);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 6, 1600, 30, 16, 10, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 7, 3200, 35, 19, 12, 2);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 8, 6400, 40, 22, 14, 0);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 9, 12800, 50, 25, 16, 2);
+
+INSERT INTO `Level`(`class_id`, `level_number`, `level_required_xp`, `level_pv_bonus`, `level_mana_bonus`, `level_strength_bonus`,
+`level_initiative_bonus`) VALUES (2, 10, 25600, 100, 35, 30, 10);
