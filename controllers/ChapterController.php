@@ -22,6 +22,20 @@ class ChapterController
                         $req->execute();
 
                         $data = $req->fetchAll();
+
+                        $req = $pdo->prepare("SELECT item_id, item_image, item_name, treasure_quantity FROM Chapter_Treasure
+                                        JOIN Items USING(item_id)
+                                        WHERE aventure_id = :aventure_id
+                                        AND chapter_id = :chapter_id");
+                        $req->bindParam(":aventure_id", $_SESSION["aventure"]);
+                        $req->bindParam(":chapter_id", $data[0]["chapter_id"]);
+                        $req->execute();
+
+                        $treasure = $req->fetch();
+
+                        if(!empty($treasure))
+                                Inventaire::addItem($treasure["item_id"], $treasure["treasure_quantity"]);
+                        
                         $req = $pdo->prepare("SELECT * FROM Encounter
                                                 WHERE aventure_id = :aventure_id AND chapter_id = :chapter");
                         $req->bindParam(":aventure_id", $_SESSION["aventure"]);
@@ -36,6 +50,8 @@ class ChapterController
                                 require_once __DIR__ . "/../views/footer.php";
                         } else {
                                 require_once __DIR__ . "/../views/header.php";
+                                if(!empty($treasure))
+                                        require_once   __DIR__ . "/../views/tresor.php";
                                 require_once __DIR__ . "/../views/chapter.php";
                                 require_once __DIR__ . "/../views/footer.php";
                         }

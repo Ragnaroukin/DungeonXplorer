@@ -17,4 +17,16 @@ class Inventaire
         $items = $req->fetchAll(PDO::FETCH_ASSOC);
         return $items;
     }
+
+    public static function addItem($item, $quantity){
+        $pdo = Database::getConnection();
+        $pseudo = $_SESSION["pseudo"];
+        $hero = $_SESSION["hero"];
+        $req = $pdo->prepare("INSERT INTO Inventory VALUES(:pseudo, :hero, :item, :quantity)");
+        $req->bindParam(":pseudo", $pseudo, PDO::PARAM_STR);
+        $req->bindParam(":hero", $hero, PDO::PARAM_STR);
+        $req->bindParam(":item", $item, PDO::PARAM_INT);
+        $req->bindParam(":quantity", $quantity, PDO::PARAM_INT);
+        $req->execute();
+    }
 }

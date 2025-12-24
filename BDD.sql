@@ -21,7 +21,6 @@ CREATE TABLE Items (
     item_image VARCHAR(255),
     item_type VARCHAR(50) NOT NULL, -- Ex: 'Arme', 'Armure', 'Potion', etc.
     item_value INT
-
 );
 
 

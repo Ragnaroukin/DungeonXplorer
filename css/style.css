@@ -670,7 +670,7 @@ button:hover {
   border-bottom: 10px double var(--attention);
   margin-bottom: 15px;
   padding-bottom: 15px;
-  
+
   h2 {
     font-family: 'Times New Roman', Times, serif;
   }
