@@ -1,14 +1,32 @@
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">The Dungeon Explorer</div>
-        <div class="masthead-heading text-uppercase">Wanna give it a try ?</div>
+        <div class="masthead-subheading"></div>
+        <div class="masthead-heading text-uppercase">The Dungeon Xplorer</div>
         <a class="btn btn-primary btn-xl text-uppercase" href="#services">En apprendre plus</a>
     </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
+        <div class="text-center mx-5 px-3">
+            <h1 class="my-3">Description</h1>
+            <p class="text-muted fs-5 text-light mx-5">
+                Bienvenue sur DungeonXplorer, l'univers de dark fantasy où se mêlent aventure, stratégie et immersion
+                totale dans les récits interactifs.
+                <br><br>
+                Ce projet est né de la volonté de l’association Les Aventuriers du Val Perdu de raviver l’expérience
+                unique des livres dont vous êtes le héros. Notre vision : offrir à la communauté un espace où chacun peut
+                incarner un personnage et plonger dans des quêtes épiques et personnalisées.
+                <br><br>
+                Dans sa première version, DungeonXplorer permettra aux joueurs de créer un personnage parmi trois
+                classes emblématiques — guerrier, voleur, magicien — et d’évoluer dans un scénario captivant, tout en
+                assurant à chacun la possibilité de conserver sa progression.
+                <br><br>
+                Nous sommes enthousiastes de partager avec vous cette application et espérons qu'elle saura vous
+                plonger au cœur des mystères du Val Perdu !
+            </p>
+        </div>
         <div class="row text-center">
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
@@ -48,12 +66,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 1-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Magician01.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Magician01.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">La villageoise</div>
                         <div class="portfolio-caption-subheading text-muted">La quête commence par la disparition de la
@@ -65,12 +78,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 2-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Berserker.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Berserke</div>
                         <div class="portfolio-caption-subheading text-muted">Le Berserker, une classe avancée et
@@ -82,12 +90,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 3-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Crossbow.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">L'arbalète</div>
                         <div class="portfolio-caption-subheading text-muted">L'Arbalète est l'incarnation de la
@@ -99,12 +102,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
                 <!-- Portfolio item 4-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Vampire01.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le vampire</div>
                         <div class="portfolio-caption-subheading text-muted">Le Vieux Vampire est l'incarnation de la
@@ -116,12 +114,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
                 <!-- Portfolio item 5-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Vampire02.jpg" alt="..." />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">La Jeune Femme Vampire</div>
                         <div class="portfolio-caption-subheading text-muted">La Jeune Femme Vampire est l'âme de la
@@ -133,12 +126,7 @@
             <div class="col-lg-4 col-sm-6">
                 <!-- Portfolio item 6-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/DungeonXplorer/img/Evil warrior.jpg" alt="Evil Warrior" />
-                    </a>
+                    <img class="img-fluid" src="/DungeonXplorer/img/Evil warrior.jpg" alt="Evil Warrior" />
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Le Guerrier Maléfique</div>
                         <div class="portfolio-caption-subheading text-muted">Le Guerrier Maléfique est l'âme de la
@@ -160,79 +148,93 @@
         <ul class="timeline">
             <li>
                 <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/1.jpg"
-                        alt="..." /></div>
+                        alt="..." />
+                </div>
                 <div class="timeline-panel">
-                    <h4>2022-2023</h4>
-                    <h4 class="subheading">Notre Humble Commencement</h4>
+                    <div class="timeline-heading">
+                        <h4>2022-2023</h4>
+                        <h4 class="subheading">Notre Humble Commencement</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Animée par la nostalgie des livres dont vous êtes le héros populaires dans
+                            les
+                            années 80-90, Les Aventuriers du Val Perdu est officiellement fondée. L'association se donne
+                            pour mission de raviver cette expérience unique en la transposant sur le Web, jetant ainsi
+                            les
+                            bases du projet DungeonXplorer. </p>
+                    </div>
                 </div>
-                <div class="timeline-body">
-                    <p class="text-muted">Animée par la nostalgie des livres dont vous êtes le héros populaires dans les
-                        années 80-90, Les Aventuriers du Val Perdu est officiellement fondée. L'association se donne
-                        pour mission de raviver cette expérience unique en la transposant sur le Web, jetant ainsi les
-                        bases du projet DungeonXplorer. </p>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/2.jpg"
+                        alt="..." />
                 </div>
-    </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/2.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Mai 2024</h4>
-                <h4 class="subheading">Le Projet Web Prend Vie</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Pour concrétiser sa vision, l'association missionne une première équipe de
-                    développement pour concevoir DungeonXplorer, une application Web interactive. L'objectif est de
-                    créer un espace où la communauté pourra réaliser et mettre en ligne ses propres aventures de dark
-                    fantasy.</p>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/3.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Décembre 2024</h4>
-                <h4 class="subheading">Refonte et Plein Service</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">Suite à des tensions et l'arrêt des travaux précédents, une nouvelle équipe est
-                    confiée l'intégralité du projet. Cette phase marque la transition vers un service complet, avec
-                    l'adoption du pattern MVC en PHP et la finalisation des fonctionnalités essentielles de la V1</p>
-            </div>
-        </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/4.jpg" alt="..." />
-        </div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4>Juillet 2025</h4>
-                <h4 class="subheading">Lancement de DungeonXplorer V1</h4>
-            </div>
-            <div class="timeline-body">
-                <p class="text-muted">DungeonXplorer est officiellement mis en ligne ! La V1 permet aux joueurs de créer
-                    un personnage (Guerrier, Voleur, Magicien) et de plonger dans leur première aventure personnalisée.
-                    Ce lancement ouvre la voie à de futures expansions, incluant de nouvelles aventures et
-                    fonctionnalités avancées (V2).</p>
-            </div>
-        </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-image">
-            <h4>
-                Tester
-                <br />
-                Le
-                Jeu
-                <br />
-                ! ! !
-            </h4>
-        </div>
-    </li>
-    </ul>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Mai 2024</h4>
+                        <h4 class="subheading">Le Projet Web Prend Vie</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Pour concrétiser sa vision, l'association missionne une première équipe de
+                            développement pour concevoir DungeonXplorer, une application Web interactive. L'objectif est
+                            de
+                            créer un espace où la communauté pourra réaliser et mettre en ligne ses propres aventures de
+                            dark
+                            fantasy.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/3.jpg"
+                        alt="..." />
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Décembre 2024</h4>
+                        <h4 class="subheading">Refonte et Plein Service</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Suite à des tensions et l'arrêt des travaux précédents, une nouvelle
+                            équipe est
+                            confiée l'intégralité du projet. Cette phase marque la transition vers un service complet,
+                            avec
+                            l'adoption du pattern MVC en PHP et la finalisation des fonctionnalités essentielles de la
+                            V1</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/DungeonXplorer/img/4.jpg"
+                        alt="..." />
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Juillet 2025</h4>
+                        <h4 class="subheading">Lancement de DungeonXplorer V1</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">DungeonXplorer est officiellement mis en ligne ! La V1 permet aux joueurs
+                            de créer
+                            un personnage (Guerrier, Voleur, Magicien) et de plonger dans leur première aventure
+                            personnalisée.
+                            Ce lancement ouvre la voie à de futures expansions, incluant de nouvelles aventures et
+                            fonctionnalités avancées (V2).</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        Tester
+                        <br />
+                        Le
+                        Jeu
+                        <br />
+                        ! ! !
+                    </h4>
+                </div>
+            </li>
+        </ul>
     </div>
 </section>
 <!-- Team-->

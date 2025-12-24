@@ -58,6 +58,8 @@ class Router
         }
 
         // Si aucune route n'a été trouvée, gérer l'erreur 404
-        require_once 'views/404.php';
+        require_once __DIR__ . "/../views/header.php";
+        require_once __DIR__ . "/../views/404.php";
+        require_once __DIR__ . "/../views/footer.php";
     }
 }

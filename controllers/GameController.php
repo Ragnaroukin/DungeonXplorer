@@ -3,7 +3,16 @@ class GameController
 {
     public function start()
     {
-        require_once __DIR__ . "/../views/startGame.php";
+
+        if (isset($_SESSION["pseudo"])) {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/startGame.php";
+            require_once __DIR__ . "/../views/footer.php";
+        } else {
+            require_once __DIR__ . "/../views/header.php";
+            require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
+        }
     }
 
     public function load()
@@ -17,11 +26,18 @@ class GameController
 
             $heros = $req->fetchAll();
 
+
+            require_once __DIR__ . "/../views/header.php";
             require_once __DIR__ . "/../views/chooseHero.php";
+            require_once __DIR__ . "/../views/footer.php";
         } else {
+
+            require_once __DIR__ . "/../views/header.php";
             require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
         }
     }
+
     public function loading()
     {
         if (isset($_POST["hero_id"])) {
@@ -30,7 +46,9 @@ class GameController
 
             header("Location: " . url("game/chapter"));
         } else {
+            require_once __DIR__ . "/../views/header.php";
             require_once __DIR__ . "/../views/404.php";
+            require_once __DIR__ . "/../views/footer.php";
         }
     }
 }

@@ -8,6 +8,7 @@
   --attention: #8B1E1E;
   --succes: #4A7A66;
 
+
   /*Police*/
   --police-titre: 'Pirata One', cursive;
   --police-texte: 'Roboto', sans-serif;
@@ -97,8 +98,8 @@ blockquote {
 }
 
 #sidebarMenu {
- background-color: var(--fond-secondaire);
- color: var(--texte-secondaire);
+  background-color: var(--fond-secondaire);
+  color: var(--texte-secondaire);
   position: fixed;
 }
 
@@ -182,22 +183,22 @@ blockquote {
   max-width: 600px;
   padding: 30px;
   text-align: center;
-}
 
-.btn {
-  color: black;
-}
+  .btn {
+    color: black;
+  }
 
-.btn-warning {
-  background-color: var(--interactif);
-}
+  .btn-warning {
+    background-color: var(--interactif);
+  }
 
-.btn-danger {
-  background-color: var(--attention);
-}
+  .btn-danger {
+    background-color: var(--attention);
+  }
 
-.btn-success {
-  background-color: var(--succes);
+  .btn-success {
+    background-color: var(--succes);
+  }
 }
 
 #disconnect-btn {
@@ -261,8 +262,6 @@ blockquote {
 }
 
 /*Fin Profil*/
-
-
 
 /*
  * Chapitre
@@ -432,7 +431,7 @@ section {
   font-size: 16px;
   padding: 8px 16px;
   border: none;
-  width: 200px;
+  min-width: 200px;
   cursor: pointer;
 }
 
@@ -484,7 +483,7 @@ section {
 
 .long-text {
   width: 100%;
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .long-text textarea {
@@ -667,6 +666,9 @@ button:hover {
 }
 
 .choose-header {
+  border-bottom: 10px double var(--attention);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   h2 {
     font-family: 'Times New Roman', Times, serif;
   }
@@ -674,10 +676,6 @@ button:hover {
   h4 {
     font-family: 'Courier New', Courier, monospace;
   }
-
-  border-bottom: 10px double var(--attention);
-  margin-bottom: 15px;
-  padding-bottom: 15px;
 }
 
 .choose-img {
@@ -697,4 +695,16 @@ button:hover {
 
 .titre {
   font-size: 4em;
+}
+
+#openInventoryBtn {
+  background-color: var(--succes);
+  color: black;
+  position: absolute;
+  top: 6.5em;
+  right: 2em;
+}
+
+text-light {
+  color: #e4e4e4;
 }

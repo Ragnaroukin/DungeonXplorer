@@ -1,12 +1,3 @@
-/*!
-* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -54,17 +45,27 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 const inventoryPopup = document.getElementById('inventoryPopup');
+const treasurePopup = document.getElementById('treasurePopup');
 
 if (inventoryPopup) {
     const openInventoryBtn = document.getElementById('openInventoryBtn');
-    const closePopupBtn = document.getElementById('closePopupBtn');
-    const inventoryItems = document.getElementById('inventoryItems');
+    const closeInventoryBtn = document.getElementById('closeInventoryBtn');
 
     openInventoryBtn.addEventListener('click', () => {
         inventoryPopup.style.display = 'flex';
     });
 
-    closePopupBtn.addEventListener('click', () => {
+    closeInventoryBtn.addEventListener('click', () => {
         inventoryPopup.style.display = 'none';
+    });
+}
+
+if(treasurePopup){
+    const closeTreasureBtn = document.getElementById('closeTreasureBtn');
+
+    treasurePopup.style.display = 'flex';
+    
+    closeTreasureBtn.addEventListener('click', () => {
+        treasurePopup.style.display = 'none';
     });
 }

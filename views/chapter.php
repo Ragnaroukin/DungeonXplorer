@@ -1,5 +1,6 @@
 <?php require_once "inventaire.php";?>
 
+<a href="<?= url("game/stats")?>">Voir vos statistiques</a>
 <div id="chapterContent" class="d-flex justify-content-center align-items-center">
     <div id="chapImage">
         <img src="<?= url($data[0]["chapter_image"]) ?>" alt="Château">
@@ -10,10 +11,10 @@
     </div>
     <div class="dialog-container">
         <?php foreach ($data as $link) { ?>
-            <form action="progress" method="POST" class="dialog-form">
+            <form action=<?= url("game/progress") ?> method="POST" class="dialog-form">
                 <input type="hidden" name="choice" value="<?= $link['link_chapter_id']; ?>">
                 <button type="submit" class="dialog-box">
-                    <?php echo $link["link_description"]; ?>
+                    <?= $link["link_description"]; ?>
                 </button>
             </form>
         <?php } ?>

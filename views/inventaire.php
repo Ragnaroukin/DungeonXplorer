@@ -3,7 +3,7 @@
 <button id="openInventoryBtn">Ouvrir Inventaire</button>
 <div id="inventoryPopup" class="popup">
     <div class="popup-content">
-        <span id="closePopupBtn" class="close">&times;</span>
+        <span id="closeInventoryBtn" class="close">&times;</span>
         <h2>Inventaire</h2>
         <div id="inventoryItems">
             <?php foreach ($items as $item) {?>
