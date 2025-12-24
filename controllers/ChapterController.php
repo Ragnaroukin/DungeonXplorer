@@ -44,7 +44,7 @@ class ChapterController
 
         public function progress()
         {
-                if (empty($_SESSION["pseudo"]) || empty($_SESSION["hero"]) || empty($_SESSION["aventure"]) || empty($_SESSION["choice"])) {
+                if (empty($_SESSION["pseudo"]) || empty($_SESSION["hero"]) || empty($_SESSION["aventure"])) {
                         require_once __DIR__ . "/../views/header.php";
                         require_once __DIR__ . "/../views/404.php";
                         require_once __DIR__ . "/../views/footer.php";
