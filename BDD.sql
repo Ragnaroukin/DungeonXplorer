@@ -353,7 +353,7 @@ VALUES
         'Force brute incarnée, un guerrier forgé par les terres sauvages et les épreuves impitoyables. Son corps, massif et couvert de cicatrices, témoigne d’une vie passée à survivre là où d’autres périraient. Sa chevelure, souvent longue et indisciplinée, flotte au vent comme une crinière indomptée, et ses yeux brûlent d’une intensité primitive. Armé d’une lourde arme – hache gigantesque, marteau de guerre ou épée à deux mains – il combat avec une rage qui semble jaillir du plus profond de son être. Sa puissance physique dépasse celle des combattants ordinaires : chaque coup qu’il porte résonne avec la force de la terre elle-même. Bien qu’il puisse sembler brutal ou rustre, le barbare possède souvent un code d’honneur personnel : loyauté envers ses compagnons, respect de la nature et dédain pour les artifices de la civilisation. Vivant en harmonie avec la sauvagerie qui l’entoure, il puise sa force dans l’instinct, la liberté et l’indomptable énergie du monde sauvage.',
         100,
         0,
-        5,
+        10,
         2,
         15,
         'img/Barbarian.jpg'
@@ -366,7 +366,7 @@ VALUES
     Sage, mystérieux et parfois distant, le magicien consacre sa vie à comprendre l’incompréhensible. Il sait que le vrai pouvoir ne se mesure pas en muscles ni en richesse, mais en savoir, en patience, et en la capacité de modeler la réalité elle-même.',
         50,
         100,
-        1,
+        5,
         1,
         5,
         'img/Magician01.jpg'
@@ -379,7 +379,7 @@ VALUES
     Qu’il soit un aventurier pragmatique, un charmeur insolent ou un hors-la-loi au grand cœur, le voleur vit dans l’équilibre fragile entre liberté et danger, toujours prêt à disparaître avant que quiconque ne comprenne qu’il était là.',
         75,
         50,
-        3,
+        7,
         4,
         10,
         'img/Thief.jpg'
@@ -419,8 +419,8 @@ VALUES
         'armor'
     ),
     (
-        'epée',
-        'lame double et acérée, finement gravée de motifs sinueux d’inspiration gothique. Sa garde, richement ornementée de volutes métalliques et de pointes acérées, lui donne une allure à la fois élégante et menaçante. Le manche gainé de cuir sombre complète l’ensemble, faisant de cette arme une pièce aussi esthétique que redoutable',
+        'Épée',
+        'Lame double et acérée, finement gravée de motifs sinueux d’inspiration gothique. Sa garde, richement ornementée de volutes métalliques et de pointes acérées, lui donne une allure à la fois élégante et menaçante. Le manche gainé de cuir sombre complète l’ensemble, faisant de cette arme une pièce aussi esthétique que redoutable',
         'img/Sword01.jpg',
         'weapon'
     ),
@@ -983,7 +983,7 @@ VALUES
         'Squelette',
         50,
         NULL,
-        6,
+        3,
         10,
         'Coup d\'épée',
         NULL,
@@ -994,7 +994,7 @@ VALUES
         5,
         'Guerrier maléfique',
         100,
-        25,
+        5,
         10,
         20,
         'Frappe lourde',
@@ -1007,7 +1007,7 @@ VALUES
         'Sorcier',
         200,
         100,
-        8,
+        4,
         75,
         'Coup de spectre',
         'Ténébres - 25',
@@ -1064,3 +1064,18 @@ VALUES
     (1, 9, 5, 1),
     (1, 40, 5, 1),
     (1, 35, 7, 4);
+
+INSERT INTO
+    `Joueur` (
+        `joueur_pseudo`,
+        `joueur_mdp`,
+        `joueur_image`,
+        `joueur_admin`
+    )
+VALUES
+    (
+        'admin',
+        '$2y$10$tWfy.r0oa5o7jZat/DtseuRBmF78HOH9F5WKvrwebhPbM8n2CIIt2',
+        'img/profiles/default.jpg',
+        '1'
+    );
