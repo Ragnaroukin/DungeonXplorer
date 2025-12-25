@@ -353,7 +353,7 @@ VALUES
         'Force brute incarnée, un guerrier forgé par les terres sauvages et les épreuves impitoyables. Son corps, massif et couvert de cicatrices, témoigne d’une vie passée à survivre là où d’autres périraient. Sa chevelure, souvent longue et indisciplinée, flotte au vent comme une crinière indomptée, et ses yeux brûlent d’une intensité primitive. Armé d’une lourde arme – hache gigantesque, marteau de guerre ou épée à deux mains – il combat avec une rage qui semble jaillir du plus profond de son être. Sa puissance physique dépasse celle des combattants ordinaires : chaque coup qu’il porte résonne avec la force de la terre elle-même. Bien qu’il puisse sembler brutal ou rustre, le barbare possède souvent un code d’honneur personnel : loyauté envers ses compagnons, respect de la nature et dédain pour les artifices de la civilisation. Vivant en harmonie avec la sauvagerie qui l’entoure, il puise sa force dans l’instinct, la liberté et l’indomptable énergie du monde sauvage.',
         100,
         0,
-        5,
+        10,
         2,
         15,
         'img/Barbarian.jpg'
@@ -366,7 +366,7 @@ VALUES
     Sage, mystérieux et parfois distant, le magicien consacre sa vie à comprendre l’incompréhensible. Il sait que le vrai pouvoir ne se mesure pas en muscles ni en richesse, mais en savoir, en patience, et en la capacité de modeler la réalité elle-même.',
         50,
         100,
-        1,
+        5,
         1,
         5,
         'img/Magician01.jpg'
@@ -379,7 +379,7 @@ VALUES
     Qu’il soit un aventurier pragmatique, un charmeur insolent ou un hors-la-loi au grand cœur, le voleur vit dans l’équilibre fragile entre liberté et danger, toujours prêt à disparaître avant que quiconque ne comprenne qu’il était là.',
         75,
         50,
-        3,
+        7,
         4,
         10,
         'img/Thief.jpg'
@@ -419,8 +419,8 @@ VALUES
         'armor'
     ),
     (
-        'epée',
-        'lame double et acérée, finement gravée de motifs sinueux d’inspiration gothique. Sa garde, richement ornementée de volutes métalliques et de pointes acérées, lui donne une allure à la fois élégante et menaçante. Le manche gainé de cuir sombre complète l’ensemble, faisant de cette arme une pièce aussi esthétique que redoutable',
+        'Epée',
+        'Lame double et acérée, finement gravée de motifs sinueux d’inspiration gothique. Sa garde, richement ornementée de volutes métalliques et de pointes acérées, lui donne une allure à la fois élégante et menaçante. Le manche gainé de cuir sombre complète l’ensemble, faisant de cette arme une pièce aussi esthétique que redoutable',
         'img/Sword01.jpg',
         'weapon'
     ),
@@ -928,29 +928,29 @@ VALUES
         (90, 1, 48, 1, 10, 'Action désespérée');
 
 INSERT INTO `Monster` (`monster_name`, `monster_pv`, `monster_mana`, `monster_initiative`, `monster_strength`, `monster_attack`, `monster_spell`, `monster_xp`, `monster_image`) VALUES
-(0,'Sanglier', 5, 0, 4, 10, 'Charge', NULL, 10, '/img/Wild boar.jpg'),
-(1,'Loup', 15, NULL, 8, 15, 'Morsure', NULL, 15, '/img/Wolf02.jpg'),
-(2,'Manticore', 30, 20, 10, 5, 'Brulure', 'Boule de feu - 10', 25, '/img/Manticore.jpg'),
-(3, 'Squelette', 50, NULL, 6, 10, 'Coup d\'épée', NULL, 10, '/img/Skeleton.png'),
-(4, 'Guerrier maléfique', 100, 25, 10, 20, 'Frappe lourde', 'Peur bleue - 15', 30, '/img/Evil warrior.jpg'),
-(5, 'Sorcier', 200, 100, 8, 75, 'Coup de spectre', 'Ténébres - 25', 50, '/img/Wizard.jpg');
+('Sanglier', 5, 0, 2, 10, 'Charge', NULL, 10, '/img/Wild boar.jpg'),
+('Loup', 15, NULL, 1, 15, 'Morsure', NULL, 15, '/img/Wolf02.jpg'),
+('Manticore', 30, 20, 5, 5, 'Brulure', 'Boule de feu - 10', 25, '/img/Manticore.jpg'),
+('Squelette', 50, NULL, 3, 10, 'Coup d\'épée', NULL, 10, '/img/Skeleton.png'),
+('Guerrier maléfique', 100, 5, 10, 20, 'Frappe lourde', 'Peur bleue - 15', 30, '/img/Evil warrior.jpg'),
+('Sorcier', 200, 100, 4, 75, 'Coup de spectre', 'Ténébres - 25', 50, '/img/Wizard.jpg');
 
 
 INSERT INTO `Encounter` (`aventure_id`, `chapter_id`, `monster_id`, `aventure_id_win`, `chapter_id_win`, `aventure_id_lose`, `chapter_id_lose`) VALUES
-(1, 4, 0, 1, 8, 1, 17),
-(1, 6, 1, 1, 7, 1, 17),
-(1, 16, 2, 1, 18, 1, 10),
-(1, 20, 3, 1, 22, 1, 10),
-(1, 28, 4, 1, 29, 1, 10),
-(1, 42, 5, 1, 43, 1, 10);
+(1, 4, 1, 1, 8, 1, 17),
+(1, 6, 2, 1, 7, 1, 17),
+(1, 16, 3, 1, 18, 1, 10),
+(1, 20, 4, 1, 22, 1, 10),
+(1, 28, 5, 1, 29, 1, 10),
+(1, 42, 6, 1, 43, 1, 10);
 
 INSERT INTO `Monster_Loot` (`monster_id`, `item_id`, `loot_quantity`, `loot_drop_rate`) VALUES
-(0, 2, 1, 0.05),
-(4, 3, 1, 0.15),
-(3, 4, 1, 0.25),
-(1, 5, 1, 0.10),
-(5, 6, 1, 1.00),
-(2, 7, 3, 0.50);
+(1, 2, 1, 0.05),
+(5, 3, 1, 0.15),
+(4, 4, 1, 0.25),
+(2, 5, 1, 0.10),
+(6, 6, 1, 1.00),
+(3, 7, 3, 0.50);
 
 INSERT INTO `Chapter_Treasure` (`aventure_id`, `chapter_id`, `item_id`, `treasure_quantity`) VALUES
 (1, 5, 1, 3),
