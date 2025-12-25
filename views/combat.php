@@ -43,9 +43,8 @@
     let hero_shield_value = <?= $reponseItem['shield_value'] ?>;
     let hero_spell = <?= json_encode($reponseHero['hero_spell_list']) ?>;
 
-    const hero_max_pv = <?= $reponseClass['class_base_pv'] + $reponseLevel['level_pv_bonus'] ?>;
-    const hero_max_mana = <?= $reponseClass['class_base_mana'] + $reponseLevel['level_mana_bonus'] ?>;
-
+    const hero_max_pv = <?= $reponseHero['hero_pv'] ?>;
+    const hero_max_mana = <?= $reponseHero['hero_mana'] ?>;
     function parserManaCost(spell) {
         let pos = spell.split('-');
         return Number(pos[1]);

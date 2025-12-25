@@ -117,6 +117,46 @@ class CombatController
                 $req->execute();
 
                 $data = $req->fetchAll();
+
+                $req = $pdo->prepare("SELECT monster_xp FROM Monster join Encounter USING (monster_id) WHERE chapter_id = :chapter");
+                $req->bindParam(":chapter", $data[0]["chapter_id"]);
+                $req->execute();
+
+                $xp = ($req->fetch())["monster_xp"];
+
+                $req = $pdo->prepare("SELECT hero_level, hero_pv, hero_mana, hero_strength, hero_initiative, hero_xp, level_required_xp, level_pv_bonus, level_strength_bonus, level_mana_bonus, level_initiative_bonus FROM Hero JOIN Level ON Hero.hero_level = Level.level_number AND Hero.class_id = Level.class_id WHERE Hero.hero_id = :hero");
+                $req->bindParam(":hero", $_SESSION["hero"]);
+                $req->execute();
+
+                $stats = $req->fetch();
+
+                if ($stats["level_required_xp"] < $stats["hero_xp"] + $xp) {
+                    $xp = $stats["hero_xp"] + $xp - $stats["level_required_xp"];
+                    $lvl = $stats["hero_level"] + 1;
+                    $pv = $stats["hero_pv"] + $stats["level_pv_bonus"];
+                    $pm = $stats["hero_mana"] + $stats["level_mana_bonus"];
+                    $str = $stats["hero_strength"] + $stats["level_strength_bonus"];
+                    $agi = $stats["hero_initiative"] + $stats["level_initiative_bonus"];
+
+                    $req = $pdo->prepare($sql = "UPDATE `Hero` SET `hero_pv` = :pv, `hero_mana` = :pm, `hero_strength` = :str, `hero_initiative` = :agi, `hero_xp` = :xp, `hero_level` = :lvl WHERE `Hero`.`hero_id` = :hero AND `Hero`.`joueur_pseudo` = :pseudo");
+                    $req->bindParam(":xp", $xp);
+                    $req->bindParam(":lvl", $lvl);
+                    $req->bindParam(":pv", $pv);
+                    $req->bindParam(":pm", $pm);
+                    $req->bindParam(":str", $str);
+                    $req->bindParam(":agi", $agi);
+                    $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+                    $req->bindParam(":hero", $_SESSION["hero"]);
+                    $req->execute();
+
+                } else {
+                    $xp = $stats["hero_xp"] + $xp;
+                    $req = $pdo->prepare($sql = "UPDATE `Hero` SET `hero_xp` = :xp WHERE `Hero`.`hero_id` = :hero AND `Hero`.`joueur_pseudo` = :pseudo");
+                    $req->bindParam(":xp", $xp);
+                    $req->bindParam(":pseudo", $_SESSION["pseudo"]);
+                    $req->bindParam(":hero", $_SESSION["hero"]);
+                    $req->execute();
+                }
             } else {
                 $req = $pdo->prepare("SELECT chapter_id, chapter_image, chapter_content, chapter_id_lose as link_chapter_id, 'Défaite' as link_description 
                                                 FROM Hero_Progress 
