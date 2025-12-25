@@ -94,6 +94,12 @@ class CreateController
                         $new->bindParam(":aventure_id", $_POST["aventure"]);
                         $new->execute();
 
+                        if ($classId == 2) {
+                                $req = $pdo->prepare("UPDATE Hero SET hero_spell_list = 'Foudre - 10' WHERE hero_id = :hero_id");
+                                $req->bindParam(':hero_id', $hero);
+                                $req->execute();
+                        }
+
                         unset($_SESSION["class_id"]);
                         unset($_SESSION["class_img"]);
                         $_SESSION["hero"] = $hero;
